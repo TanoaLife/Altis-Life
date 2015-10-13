@@ -4,127 +4,167 @@ class Socket_Reciever
 	class SQL_Socket
 	{
 		file = "core\session";
+		class requestReceived {};
 		class dataQuery {};
 		class insertPlayerInfo {};
-		class requestReceived {};
+		class updateRequest {};
 		class syncData {};
 		class updatePartial {};
-		class updateRequest {};
 	};
 };
 
 class Life_Client_Core
 {
 	tag = "life";
-
+	
 	class Master_Directory
 	{
 		file = "core";
+		class setupActions {};
+		class setupEVH {};
 		class initCiv {};
 		class initCop {};
 		class initMedic {};
-		class setupActions {};
-		class setupEVH {};
-		class survival {};
 		class welcomeNotification {};
+		class survival {};
 	};
-
+	
+	class tempGangs
+	{
+		file = "core\tempGangs";
+		class createGroup {};
+		class gangBrowser {};
+		class gangManagement {};
+		class groupMenu {};
+		class joinGang {};
+		class kickGang {};
+		class leaveGang {};
+		class setGangLeader {};
+		class lockGang {};
+		class unlockGang {};
+	};	
+	
+	
 	class Admin
 	{
 		file = "core\admin";
-		class admingetID {};
-		class adminid {};
 		class admininfo {};
+		class adminid {};
+		class admingetID {};
 		class adminMenu {};
 		class adminQuery {};
+		class adminSpectate {};
+		class adminTeleport {};
+		class adminTpHere {};
+		class adminDebugCon {};
+		class adminCompensate {};
+		class adminGodMode {};
+		class adminFreeze {};
+		class adminMarkers {};
+		class adminInvisibility {};
+		class adminRevive {};
 	};
-
+	
 	class Medical_System
 	{
 		file = "core\medical";
-		class deathScreen {};
-		class medicLights {};
-		class medicLoadout {};
-		class medicMarkers {};
-		class medicRequest {};
-		class medicSiren {};
-		class medicSirenLights {};
 		class onPlayerKilled {};
 		class onPlayerRespawn {};
-		class requestMedic {};
 		class respawned {};
-		class revived {};
 		class revivePlayer {};
+		class revived {};
+		class medicMarkers {};
+		class requestMedic {};
+		class medicRequest {};
+		class deathScreen {};
+		class medicLoadout {};
+		class medicSirenLights {};
+		class medicLights {};
+		class medicSiren {};
+		class newLifeRule {};
+		class pulloutDead {};
 	};
-
+	
 	class Actions
 	{
 		file = "core\actions";
-		class arrestAction {};
+		class surrender {}; //Surrender action
 		class buyLicense {};
-		class captureHideout {};
+		class healHospital {};
+		class pushVehicle {};
+		class repairTruck {};
+		class serviceChopper {};
 		class catchFish {};
 		class catchTurtle {};
 		class dpFinish {};
 		class dropFishingNet {};
-		class escortAction {};
-		class gather {};
 		class getDPMission {};
-		class gutAnimal {};
-		class healHospital {};
-		class impoundAction {};
-		class packupSpikes {};
-		class pickupItem {};
-		class pickupMoney {};
 		class postBail {};
 		class processAction {};
+		class arrestAction {};
+		class escortAction {};
+		class impoundAction {};
 		class pulloutAction {};
-		class pumpRepair {};
-		class pushVehicle {};
 		class putInCar {};
-		class repairTruck {};
+		class stopEscorting {};
 		class restrainAction {};
-		class robAction {};
 		class searchAction {};
 		class searchVehAction {};
-		class serviceChopper {};
-		class stopEscorting {};
-		class storeVehicle {};
-		class surrender {};
-		class ticketAction {};
 		class unrestrain {};
+		class pickupItem {};
+		class pickupMoney {};
+		class ticketAction {};
+		class packupSpikes {};
+		class storeVehicle {};
+		class robAction {};
+		class captureHideout {};
+		class captureRebelHideout {};
+		class gather {};
+		class gutAnimal {};
+		class copPullOutAction {};
+		class robShops {};
+		class skyDiving {};
+		class jailBreakout {}; 
+		class jailBreakoutCompleted {};
+		class suicideBomb {};
+		class douevenlift {};
+		class douevenliftjail {};
 	};
-
+	
+	class Paintball
+	{
+		file = "core\paintball";
+		class pb_response {};
+	};
+	
 	class Housing
 	{
 		file = "core\housing";
 		class buyHouse {};
-		class copBreakDoor {};
-		class copHouseOwner {};
-		class garageRefund {};
 		class getBuildingPositions {};
 		class houseMenu {};
-		class initHouses {};
 		class lightHouse {};
 		class lightHouseAction {};
-		class lockHouse {};
-		class lockupHouse {};
-		class raidHouse {};
 		class sellHouse {};
+		class initHouses {};
+		class copBreakDoor {};
+		class raidHouse {};
+		class lockupHouse {};
+		class copHouseOwner {};
+		class lockHouse {};
+		class garageRefund {};
+		class boughtHouse{};
+		class boughtHouseFail{};
+		class openHouseVInv {};
+		class displayStats {};
+		class swapItem {};
 	};
-
+	
 	class Config
 	{
 		file = "core\config";
-		class eatFood {};
-		class impoundPrice {};
 		class itemWeight {};
-		class licensePrice {};
-		class licenseType {};
-		class shopMenus {};
 		class taxRate {};
-		class varHandle {};
-		class varToStr {};
 		class vehicleAnimate {};
 		class vehicleWeightCfg {};
 	};
@@ -132,232 +172,330 @@ class Life_Client_Core
 	class Player_Menu
 	{
 		file = "core\pmenu";
-		class cellphone {};
+		class wantedList {};
+		class wantedInfo {};
+		class wantedMenu {};
+		class wantedAddP {};
+		class pardon {};
 		class giveItem {};
 		class giveMoney {};
-		class keyDrop {};
-		class keyGive {};
-		class keyMenu {};
-		class pardon {};
 		class p_openMenu {};
 		class p_updateMenu {};
 		class removeItem {};
-		class settingsInit {};
+		class useItem {};
+		class cellphone {};
+		class keyMenu {};
+		class keyGive {};
+		class keyDrop {};
+		class s_onSliderChange {};
+		class updateViewDistance {};
 		class settingsMenu {};
 		class s_onChar {};
 		class s_onCheckedChange {};
-		class s_onSliderChange {};
-		class updateViewDistance {};
-		class useItem {};
-		class wantedAddP {};
-		class wantedInfo {};
-		class wantedList {};
-		class wantedMenu {};
+		class smartphone {};
+		class newMsg {};
+		class showMsg {};
+		class AAN {};
+		class revokeLicense {};
+		class updateBounty {};
+		class vUseItem {};
+		class p_prisionbreak {};
 	};
-
+	
 	class Functions
 	{
 		file = "core\functions";
-		class accType {};
-		class actionKeyHandler {};
-		class animSync {};
 		class calWeightDiff {};
-		class clearVehicleAmmo {};
-		class dropItems {};
-		class escInterupt {};
 		class fetchCfgDetails {};
-		class fetchDeadGear {};
-		class fetchVehInfo {};
-		class giveDiff {};
-		class handleDamage {};
 		class handleInv {};
-		class handleItem {};
 		class hudSetup {};
 		class hudUpdate {};
-		class inString {};
+		class tazeSound {};
+		class animSync {};
+		class simDisable {};
+		class keyHandler {};
+		class dropItems {};
+		class handleDamage {};
+		class numberText {};
+		class handleItem {};
+		class accType {};
+		class receiveItem {};
+		class giveDiff {};
+		class receiveMoney {};
+		class playerTags {};
+		class clearVehicleAmmo {};
+		class pullOutVeh {};
+		class nearUnits {};
+		class actionKeyHandler {};
+		class playerCount {};
+		class fetchDeadGear {};
+		class loadDeadGear {};
+		class isnumeric {};
+		class escInterupt {};
+		class onTakeItem {};
+		class fetchVehInfo {};
+		class pushObject {};
+		class onFired {};
+		class revealObjects {};
+		class nearestDoor {};
 		class inventoryClosed {};
 		class inventoryOpened {};
-		class isnumeric {};
 		class isUIDActive {};
-		class keyHandler {};
-		class loadDeadGear {};
-		class loadGear {};
-		class mouseHandler {};
-		class nearATM {};
-		class nearestDoor {};
-		class nearUnits {};
-		class numberText {};
-		class onFired {};
-		class onPutItem {};
-		class onTakeItem {};
-		class playerCount {};
-		class playerTags {};
-		class pullOutVeh {};
-		class pushObject {};
-		class receiveItem {};
-		class receiveMoney {};
-		class revealObjects {};
 		class saveGear {};
-		class simDisable {};
+		class loadGear {};
 		class stripDownPlayer {};
-		class tazeSound {};
+		class nearATM {};
+		class earplugs {};
+		class handleDowned {};
+		class emptyFuel {};
+		class CarAlarmSound {};
+		class Info {};
+		class speaking {};
+		class Uniformscolor {};
+		class prisionbreak {};
+		class progressBaren {};
+		class ryn_message {};
+		class collectArmaItems {};
 	};
-
+	class pauction
+	{
+   	file = "core\pauction";
+   	class CAH_Sell {};
+   	class CAH_Buy {};
+   	class CAH_reciever {};
+   	class CAH_getPlayerObj {};
+   	class CAH_loadOffers {};
+   	class CAH_loadInventory {};
+   	class CAH_fetchDetails {};
+   	class CAH_loggedIn {};
+	};
 	class Network
 	{
 		file = "core\functions\network";
 		class broadcast {};
-		class corpse {};
-		class jumpFnc {};
 		class MP {};
 		class MPexec {};
-		class netSetVar {};
-		class say3D {};
+		class corpse {};
+		class jumpFnc {};
+		class soundDevice {};
 		class setFuel {};
 		class setTexture {};
-		class soundDevice {};
+		class say3D {};
 	};
-
+	
 	class Civilian
 	{
 		file = "core\civilian";
-		class civLoadout {};
-		class demoChargeTimer {};
-		class jail {};
 		class jailMe {};
+		class jail {};
 		class knockedOut {};
 		class knockoutAction {};
-		class removeLicenses {};
-		class robPerson {};
 		class robReceive {};
-		class tazed {};
+		class robPerson {};
+		class removeLicenses {};
+		class demoChargeTimer {};
+		class civLoadout {};
+		class civInteractionMenu {}; //civ interaction menu
+		class freezePlayer {};
+		class breakoutTimer {};
+		class waterChargeTimer {};
+		class heliChargeTimer {};
+		
 	};
-
+	
 	class Vehicle
 	{
 		file = "core\vehicle";
-		class addVehicle2Chain {};
 		class colorVehicle {};
-		class deviceMine {};
-		class lockVehicle {};
 		class openInventory {};
+		class lockVehicle {};
 		class vehicleOwners {};
-		class vehicleWeight {};
-		class vehInventory {};
 		class vehStoreItem {};
 		class vehTakeItem {};
+		class vehInventory {};
 		class vInteractionMenu {};
+		class vehicleWeight {};
+		class deviceMine {};
+		class addVehicle2Chain {};
+		class civVinteractionMenu {};
+		class medVinteractionMenu {};
+		class blinkerinit {};
+		class blinkerleft {};
+		class blinkerright {};
+		class warnblinker {};
+		class upgradeMenu {};
+		class upgradeMenuChange {};
+		class upgradeVehicle {};
+		class toggleGPS {};
+		class lowerCenter {};
 	};
-
+	
 	class Cop
 	{
 		file = "core\cop";
-		class bountyReceive {};
-		class copInteractionMenu {};
-		class copLights {};
-		class copLoadout {};
 		class copMarkers {};
+		class copLights {};
+		class vehInvSearch {};
 		class copSearch {};
-		class copSiren {};
-		class doorAnimate {};
-		class fedCamDisplay {};
-		class licenseCheck {};
-		class licensesRead {};
-		class questionDealer {};
-		class radar {};
-		class repairDoor {};
-		class restrain {};
+		class bountyReceive {};
 		class searchClient {};
-		class sirenLights {};
-		class spikeStripEffect {};
+		class restrain {};
 		class ticketGive {};
-		class ticketPaid {};
 		class ticketPay {};
 		class ticketPrompt {};
-		class vehInvSearch {};
+		class copSiren {};
+		class spikeStripEffect {};
+		class radar {};
+		class questionDealer {};
+		class copInteractionMenu {};
+		class sirenLights {};
+		class licenseCheck {};
+		class licensesRead {};
+		class repairDoor {};
+		class doorAnimate {};
+		class fedCamDisplay {};
+		class copLoadout {};
+		class ticketPaid {};
 		class wantedGrab {};
+		class copOpener {};
+		class seizeAction {};
+		class seizePlayerWeaponAction {};
+		class seizePlayerWeapon {};
+		class seizeObjects {};
+		class copEnter {};
+		class copSiren2 {};
+		class showArrestDialog {}; 
+		class arrestDialog_Arrest {};
+		class breathalyzer {};
+		class copHorn {};
+		
 	};
-
+	
 	class Gangs
 	{
 		file = "core\gangs";
+		class initGang {};
 		class createGang {};
 		class gangCreated {};
-		class gangDisband {};
-		class gangDisbanded {};
-		class gangInvite {};
-		class gangInvitePlayer {};
+		class gangMenu {};
 		class gangKick {};
 		class gangLeave {};
-		class gangMenu {};
 		class gangNewLeader {};
 		class gangUpgrade {};
-		class initGang {};
+		class gangInvitePlayer {};
+		class gangInvite {};
+		class gangDisband {};
+		class gangDisbanded {};
+		class gangMarkers {};
+		class updateGangInfo {};
+		class gangDemote {};
+		class updateGangHouse {};
 	};
-
+	
 	class Shops
 	{
 		file = "core\shops";
 		class atmMenu {};
 		class buyClothes {};
 		class changeClothes {};
-		class chopShopMenu {};
-		class chopShopSelection {};
-		class chopShopSell {};
-		class clothingFilter {};
 		class clothingMenu {};
-		class impoundMenu {};
-		class vehicleShopBuy {};
-		class vehicleShopLBChange {};
+		class clothingFilter {};
 		class vehicleShopMenu {};
-		class virt_buy {};
-		class virt_menu {};
-		class virt_sell {};
-		class virt_update {};
-		class weaponShopBuySell {};
+		class vehicleShopLBChange {};
+		class vehicleShopBuy {};
 		class weaponShopFilter {};
 		class weaponShopMenu {};
 		class weaponShopSelection {};
+		class weaponShopBuySell {};
+		class virt_buy {};
+		class virt_menu {};
+		class virt_update {};
+		class virt_sell {};
+		class chopShopMenu {};
+		class chopShopSelection {};
+		class chopShopSell {};
+		
 	};
-
+	
 	class Items
 	{
 		file = "core\items";
-		class blastingCharge {};
-		class boltcutter {};
-		class defuseKit {};
-		class flashbang {};
-		class jerryRefuel {};
-		class lockpick {};
 		class pickaxeUse {};
+		class lockpick {};
 		class spikeStrip {};
+		class jerryRefuel {};
+		class flashbang {};
+		class boltcutter {};
+		class blastingCharge {};
+		class defuseKit {};
 		class storageBox {};
+		class heroine {};
+		class cocaine {};
+		class weed {};
+		class bankalarmsound {};
+		class underwaterCharge {};
+		class heliblastCharge {};
+		class gpsTracker {};
+		class speedbomb {};
+		class drinkbeer {};
+		class drinkmoonshine {};
+		class drinkwhiskey {};
 	};
-
+	
+	class Scripts
+	{
+		file = "scripts";
+		class vdmWatcher {};
+	};
+	
 	class Dialog_Controls
 	{
 		file = "dialog\function";
-		class bankDeposit {};
-		class bankTransfer {};
-		class bankWithdraw {};
-		class displayHandler {};
-		class gangDeposit {};
-		class garageLBChange {};
-		class impoundMenu {};
-		class progressBar {};
-		class safeFix {};
-		class safeInventory {};
-		class safeOpen {};
-		class safeStore {};
-		class safeTake {};
-		class sellGarage {};
 		class setMapPosition {};
+		class displayHandler {};
 		class spawnConfirm {};
 		class spawnMenu {};
 		class spawnPointCfg {};
 		class spawnPointSelected {};
+		class progressBar {};
+		class impoundMenu {};
 		class unimpound {};
+		class sellGarage {};
+		class bankDeposit {};
+		class bankWithdraw {};
+		class bankTransfer {};
+		class garageLBChange {};
+		class safeInventory {};
+		class safeOpen {};
+		class safeTake {};
+		class safeFix {};
 		class vehicleGarage {};
+		class gangDeposit {};
 		class wireTransfer {};
+		class calldialog {};
+		class sendChannel {};		
+		class safeInvGold {};
+		class safeGold {};
+		class goldTake {};
+		class safeInvCargo {};
+		class safeCargo {};
+		class cargoTake {};
+	};
+	
+	class Cam
+	{
+	   file ="core";
+	   class IntroCam {};
+	};
+	
+	class economy
+	{
+		file = "core\economy";
+		class virt_updatePrice {};
+		class addsubstract {};
+		class openEconomy {};
+		class virt_updateEconomy {};
+		class marketGrab {};
+		class retrievePrices {};
 	};
 };

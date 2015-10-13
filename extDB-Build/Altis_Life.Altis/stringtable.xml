@@ -16,11 +16,17 @@
 		<Key ID="STR_Shops_C_Kart">
 			<Original>Bobby's Kart-Racing Outfits</Original>
 		</Key>
+		<Key ID="STR_Shops_Burger">
+			<Original>Red Burger</Original>
+		</Key>
 		<Key ID="STR_Shops_Market">
 			<Original>Altis Market</Original>
 			<German>Altis Markt</German>
 			<Italian>Mercato</Italian>
 			<French>Marché</French>
+		</Key>
+		<Key ID="STR_Shops_Medicalw">
+			<Original>UnNamed's Good Bud</Original>
 		</Key>
 		<Key ID="STR_Shops_Rebel">
 			<Original>Rebel Market</Original>
@@ -77,8 +83,8 @@
 			<French>Acheteur Industriel</French>
 		</Key>
 		<Key ID="STR_Shops_Cop">
-			<Original>APD Item Shop</Original>
-			<German>APD Gegenstände</German>
+			<Original>MST Item Shop</Original>
+			<German>MST Gegenstände</German>
 			<Italian>Negozio Polizia</Italian>
 			<French>Equipement de Police</French>
 		</Key>
@@ -105,6 +111,15 @@
 			<German>Salzhändler</German>
 			<Italian>Vendita Sale</Italian>
 			<French>Acheteur de Sel</French>
+		</Key>
+		<Key ID="STR_Shops_Vigilante">
+			<Original>Vigilante Shop</Original>
+		</Key>
+		<Key ID="STR_Shops_News">
+			<Original>News Shop</Original>
+		</Key>
+		<Key ID="STR_Shops_Law">
+			<Original>Law School</Original>
 		</Key>
 	</Package>
 	<Package name="Global">
@@ -214,6 +229,132 @@
 			<French>Obtenir ID</French>
 			<Italian>Vedi ID</Italian>
 			<Portuguese>Menu do Admin</Portuguese>
+		</Key>
+		<Key ID="STR_Admin_Spectate">
+			<Original>Spectate</Original>
+			<English>Spectate</English>
+			<German>Zuschauen</German>
+			<French>Regardez</French>
+		</Key>
+		<Key ID="STR_Admin_Teleport">
+			<Original>Teleport</Original>
+			<English>Teleport</English>
+			<German>Teleport</German>
+			<French>Teleport</French>
+		</Key>
+		<Key ID="STR_Admin_TpHere">
+			<Original>TP Here</Original>
+			<English>TP Here</English>
+			<German>TP Hier</German>
+			<French>TP Ici</French>
+		</Key>
+		<Key ID="STR_Admin_Debug">
+			<Original>Debug</Original>
+			<English>Debug</English>
+			<German>Debug</German>
+			<French>Debug</French>
+		</Key>
+		<Key ID="STR_Admin_Compensate">
+			<Original>Comp</Original>
+			<English>Comp</English>
+			<German>Comp</German>
+			<French>Comp</French>
+		</Key>
+		<Key ID="STR_Admin_God">
+			<Original>GodMode</Original>
+			<English>GodMode</English>
+			<German>Gott</German>
+			<French>Dieu</French>
+		</Key>
+		<Key ID="STR_Admin_Freeze">
+			<Original>Freeze</Original>
+			<English>Freeze</English>
+			<German>Freeze</German>
+			<French>Geler</French>
+		</Key>
+		<Key ID="STR_Admin_Markers">
+			<Original>Markers</Original>
+			<English>Markers</English>
+			<German>Markers</German>
+			<French>Markers</French>
+		</Key>
+		<Key ID="STR_ANOTF_CompWarn">
+			<Original>You are about to give yourself $%1 to compensate to another player &lt;br/&gt;&lt;br/&gt;You must give this cash to the person you are compensating manually.</Original>
+			<English>You are about to give yourself $%1 to compensate to another player &lt;br/&gt;&lt;br/&gt;You must give this cash to the person you are compensating manually.</English>
+			<German>To Be Changed</German>
+			<French>Vous êtes sur le point de vous donner $%1 pour compenser à un autre joueur &lt;br/&gt;&lt;br/&gt; S'il vous plaît donner à cette à la personne vous compensez manuellement</French>
+		</Key>
+		<Key ID="STR_ANOTF_Success">
+			<Original>You have added $%1 to your account.</Original>
+			<English>You have added $%1 to your account.</English>
+			<German>To Be Changed</German>
+			<French>Vous avez ajouté $%1 à votre compte</French>
+		</Key>
+		<Key ID="STR_ANOTF_Fail">
+			<Original>You can not go above 999999.</Original>
+			<English>You can not go above 999999.</English>
+			<German>To Be Changed</German>
+			<French>Vous ne pouvez pas aller au-dessus $999999</French>
+		</Key>
+		<Key ID="STR_ANOTF_Amount">
+			<Original>Please type in the amount to compensate.</Original>
+			<English>Please type in the amount to compensate.</English>
+			<German>To Be Changed</German>
+			<French>S'il vous plaît entrer la quantité pour compenser</French>
+		</Key>
+		<Key ID="STR_ANOTF_Frozen">
+			<Original>You have disabled %1's input.</Original>
+			<English>You have disabled %1's input.</English>
+			<German>To Be Changed</German>
+			<French>Vous avez désactivé %1's contrôles</French>
+		</Key>
+		<Key ID="STR_ANOTF_Unfrozen">
+			<Original>You have enabled %1's input.</Original>
+			<English>You have enabled %1's input.</English>
+			<German>To Be Changed</German>
+			<French>Vous avez permis %1's contrôles</French>
+		</Key>
+		<Key ID="STR_ANOTF_Error">
+			<Original>You can't do that dumbass.</Original>
+			<English>You can't do that dumbass.</English>
+			<German>To Be Changed</German>
+			<French>Vous ne pouvez pas le faire sur vous-même</French>
+		</Key>
+		<Key ID="STR_ANOTF_ErrorLevel">
+			<Original>Your Admin Level is not high enough.</Original>
+			<English>Your Admin Level is not high enough.</English>
+			<German>To Be Changed</German>
+			<French>Votre Niveau admin n'est pas suffisamment élevée</French>
+		</Key>
+		<Key ID="STR_ANOTF_MDisabled">
+			<Original>Player Markers Disabled.</Original>
+			<English>Player Markers Disabled.</English>
+			<German>To Be Changed</German>
+			<French>Votre Niveau admin n'est pas suffisamment élevée</French>
+		</Key>
+		<Key ID="STR_ANOTF_MEnabled">
+			<Original>Player Markers Enabled.</Original>
+			<English>Player Markers Enabled.</English>
+			<German>To Be Changed</German>
+			<French>Votre Niveau admin n'est pas suffisamment élevée</French>
+		</Key>
+		<Key ID="STR_NOTF_ActionCancel">
+			<Original>Action Cancelled</Original>
+			<English>Action Cancelled</English>
+			<German>Aktion abgebrochen</German>
+			<French>Action Annulée</French>
+		</Key>
+		<Key ID="STR_Global_Yes">
+			<Original>Yes</Original>
+			<English>Yes</English>
+			<German>Ja</German>
+			<French>Oui</French>
+		</Key>
+		<Key ID="STR_Global_No">
+			<Original>No</Original>
+			<English>No</English>
+			<German>Nein</German>
+			<French>Aucun</French>
 		</Key>
 	</Package>
 	<Package name="Admin_Notifications">
@@ -484,7 +625,7 @@
 			<Portuguese>Kick</Portuguese>
 		</Key>
 		<Key ID="STR_Gang_SetLeader">
-			<Original>Set Leader</Original>
+			<Original>Promote</Original>
 			<German>Neuer Anführer</German>
 			<French>Passer Chef</French>
 			<Italian>Imposta Capo</Italian>
@@ -590,6 +731,13 @@
 			<Italian>Questo Covo è controllato da %1.&lt;br/&gt;&lt;br/&gt;Sicuro di voler prendere il controllo della loro area?</Italian>
 			<Portuguese>Esse esconderijo é controlado por %1.&lt;br/&gt;&lt;br/&gt;Você tem certeza que deseja tomar essa área?</Portuguese>
 		</Key>
+		<Key ID="STR_GNOTF_AlreadyControlledreb">
+			<Original>This hideout is controlled by %1.&lt;br/&gt;&lt;br/&gt;Are you sure you want to take over their Rebel Hideout?</Original>
+			<German>Das Versteck wird durch %1 kontrolliert.&lt;br/&gt;&lt;br/&gt;Bist du sicher, dass du ihr Gang Gebiet übernehmen möchtest?</German>
+			<French>Cette cachette est contrôlée par %1.&lt;br/&gt;&lt;br/&gt;Etes-vous sûr que vous voulez prendre en charge leur zone de gang?</French>
+			<Italian>Questo Covo è controllato da %1.&lt;br/&gt;&lt;br/&gt;Sicuro di voler prendere il controllo della loro area?</Italian>
+			<Portuguese>Esse esconderijo é controlado por %1.&lt;br/&gt;&lt;br/&gt;Você tem certeza que deseja tomar essa área?</Portuguese>
+		</Key>
 		<Key ID="STR_GNOTF_CurrentCapture">
 			<Original>Hideout is currently under control...</Original>
 			<German>Versteck ist derzeit unter Kontrolle...</German>
@@ -618,6 +766,13 @@
 			<Italian>%1 e la sua Gang: % 2 - hanno preso il controllo di un Covo!</Italian>
 			<Portuguese>%1 e sua gangue: %2 - agora tem o controle de um esconderijo!</Portuguese>
 		</Key>
+		<Key ID="STR_GNOTF_CaptureSuccessreb">
+			<Original>%1 and his gang: %2 - have taken control of a Rebel hideout!</Original>
+			<German>%1 und seine Gang: 2% - haben die Kontrolle über ein lokales Versteck übernommen!</German>
+			<French>%1 et sa gang: %2 ont pris le controle de la cachette !</French>
+			<Italian>%1 e la sua Gang: % 2 - hanno preso il controllo di un Covo!</Italian>
+			<Portuguese>%1 e sua gangue: %2 - agora tem o controle de um esconderijo!</Portuguese>
+		</Key>
 		<Key ID="STR_GNOTF_Over32">
 			<Original>You can't have a gang name longer then 32 characters.</Original>
 			<German>Dein Gang Name kann nicht länger als 32 Zeichen sein.</German>
@@ -637,7 +792,7 @@
 			<German>Du hast nicht genug Geld auf deinem Bankkonto.\n\nDir fehlen: $%1</German>
 			<French>Vous n'avez pas assez d'argent dans votre compte bancaire.\n\nVous manquez de: $%1</French>
 			<Italian>Non hai abbastanza fondi nel tuo conto in banca.\n\nTi mancano: €%1</Italian>
-			<Portuguese>Você não tem dinheiro suficiente na sua conta bancária.\n\nFaltam: R$%1</Portuguese>
+			<Portuguese>Você não tem dinheiro suficiente na sua conta bancária.\n\nFaltam: $%1</Portuguese>
 		</Key>
 		<Key ID="STR_GNOTF_CreateSuccess">
 			<Original>You have created the gang %1 for $%2</Original>
@@ -752,7 +907,7 @@
 			<Portuguese>Transferencia de liderança cancelada.</Portuguese>
 		</Key>
 		<Key ID="STR_GNOTF_TransferSelf">
-			<Original>You are already the leader!</Original>
+			<Original>You cannot promote yourself!</Original>
 			<German>Du bist bereits der Anführer!</German>
 			<French>Vous êtes déjà leader!</French>
 			<Italian>Sei già il Capo!</Italian>
@@ -1038,7 +1193,7 @@
 			<Portuguese>Lista de Foragidos</Portuguese>
 		</Key>
 		<Key ID="STR_PM_CellPhone">
-			<Original>Cell Phone</Original>
+			<Original>SmartPhone</Original>
 			<German>Telefon</German>
 			<French>Téléphone</French>
 			<Italian>Cellulare</Italian>
@@ -1323,18 +1478,18 @@
 			<Portuguese>%1 has been added to the wanted list.</Portuguese>
 		</Key>
 		<Key ID="STR_Wanted_Count">
-			<Original>%1 count(s) of %2</Original>
-			<German>%1 count(s) of %2</German>
-			<French>%1 count(s) of %2</French>
-			<Italian>%1 count(s) of %2</Italian>
-			<Portuguese>%1 count(s) of %2</Portuguese>
+			<Original>(%1) %2</Original>
+			<German>(%1) %2</German>
+			<French>(%1) %2</French>
+			<Italian>(%1) %2</Italian>
+			<Portuguese>(%1) %2 </Portuguese>
 		</Key>
 		<Key ID="STR_Wanted_Bounty">
-			<Original>Current Bounty Price: $%1</Original>
-			<German>Current Bounty Price: $%1</German>
-			<French>Current Bounty Price: $%1</French>
-			<Italian>Current Bounty Price: $%1</Italian>
-			<Portuguese>Current Bounty Price: $%1</Portuguese>
+			<Original>Bounty: $%1</Original>
+			<German>Bounty: $%1</German>
+			<French>Bounty: $%1</French>
+			<Italian>Bounty: $%1</Italian>
+			<Portuguese>Bounty: $%1</Portuguese>
 		</Key>
 	</Package>
 	<Package name="Animals">
@@ -1389,6 +1544,16 @@
 		</Key>
 	</Package>
 	<Package name="Notifications">
+		<Key ID="STR_NOTF_Frozen">
+			<Original>You have been frozen by an administrator</Original>
+			<English>You have been frozen by an administrator</English>
+			<German>To Be Changed</German>
+		</Key>
+		<Key ID="STR_NOTF_Unfrozen">
+			<Original>You have been unfrozen by an administrator</Original>
+			<English>You have been unfrozen by an administrator</English>
+			<German>To Be Changed</German>
+		</Key>
 		<Key ID="STR_NOTF_NE_1">
 			<Original>You do not have $%1 for a %2</Original>
 			<German>Du hast keine $%1 für einen %2</German>
@@ -2017,6 +2182,36 @@
 		</Key>
 	</Package>
 	<Package name="Civ_Strings">
+		<Key ID="STR_pInAct_Breathalyzer">
+			<Orignal>Breathalyze Player</Orignal>
+		</Key>
+		<Key ID="STR_pInAct_RevokeLicense">
+			<Orignal>Revoke Licenses</Orignal>
+		</Key>
+		<Key ID="STR_Civ_RevokeLicense_Driver">
+			<Original>Your Drivers License has been REVOKED by the Police!</Original>
+		</Key>
+		<Key ID="STR_Civ_RevokeLicense_Truck">
+			<Original>Your Truck License has been REVOKED by the Police!</Original>
+		</Key>
+		<Key ID="STR_Civ_RevokeLicense_Pilot">
+			<Original>Your Pilot License has been REVOKED by the Police!</Original>
+		</Key>
+		<Key ID="STR_Civ_RevokeLicense_Boating">
+			<Original>Your Boating License has been REVOKED by the Police!</Original>
+		</Key>
+		<Key ID="STR_Civ_RevokeLicense_Diving">
+			<Original>Your Diving License has been REVOKED by the Police!</Original>
+		</Key>
+		<Key ID="STR_Civ_RevokeLicense_Taxi">
+			<Original>Your Taxi License has been REVOKED by the Police!</Original>
+		</Key>
+		<Key ID="STR_Civ_RevokeLicense_AllMotor">
+			<Original>Your Motor Vehicle Licenses have been REVOKED by the Police!</Original>
+		</Key>
+		<Key ID="STR_Civ_RevokeLicense_Firearm">
+			<Original>Your Firearms License has been REVOKED by the Police!</Original>
+		</Key>
 		<Key ID="STR_Civ_KnockedOut">
 			<Original>%1 has knocked you out.</Original>
 			<German>%1 hat dich niedergeschlagen.</German>
@@ -2093,6 +2288,10 @@
 			<Italian>Nella cassaforte non ci sono %1 lingotti d'oro</Italian>
 			<Portuguese>Não existem %1 barra(s) de ouro no cofre!</Portuguese>
 		</Key>
+		<Key ID="STR_Civ_GatherGun">
+			<Original>You cannot Gather while holding a weapon!</Original>
+		</Key>
+		
 	</Package>
 	<Package name="Cop_Strings">
 		<Key ID="STR_Cop_TicketError">
@@ -2129,13 +2328,6 @@
 			<French>Vous n'avez pas saisi de nombre.</French>
 			<Italian>Non hai inserito un numero correttamente.</Italian>
 			<Portuguese>Você não digitou um número válido</Portuguese>
-		</Key>
-		<Key ID="STR_Cop_TicketOver100">
-			<Original>Tickets can not be more than $200,000!</Original>
-			<German>Strafzettel können nicht mehr als $200.000 betragen!</German>
-			<French>Les billets ne peuvent être plus de $ 200,000!</French>
-			<Italian>La multa non può essere più di €200.000!</Italian>
-			<Portuguese>A multa não pode ser maior que R$200.000!</Portuguese>
 		</Key>
 		<Key ID="STR_Cop_TicketGive">
 			<Original>%1 gave a ticket of $%2 to %3</Original>
@@ -2312,6 +2504,7 @@
 			<Italian>Non puoi selezionare nulla sotto l'1!</Italian>
 			<Portuguese>Não é permitido usar valor abaixo de 1!</Portuguese>
 		</Key>
+		
 		<Key ID="STR_Cop_OnlyGold">
 			<Original>You can't store anything but gold bars in the safe.</Original>
 			<German>Du kannst nur Goldbarren in den Tresor legen.</German>
@@ -2396,8 +2589,56 @@
 			<Italian>%1 ti ha tolto le manette</Italian>
 			<Portuguese>Você foi solto por %1</Portuguese>
 		</Key>
+		<Key ID="STR_pAct_DriverSeat">
+			<Original>driver's seat</Original>
+			<English>driver's seat</English>
+			<German>Auf den Fahrersitz</German>
+			<French>Place conducteur</French>
+		</Key>
+		<Key ID="STR_pAct_PassengerSeat">
+			<Original>passenger seat</Original>
+			<English>passenger seat</English>
+			<German>Auf den Passagiersitz</German>
+			<French>Place passager</French>
+		</Key>
+		<Key ID="STR_pAct_GunnerSeat">
+			<Original>gunner seat</Original>
+			<English>gunner seat</English>
+			<German>gunner seat</German>
+			<French>Place tireur</French>
+		</Key>
+		<Key ID="STR_pAct_GoOut">
+			<Original>Go out of vehicle</Original>
+			<English>Go out of vehicle</English>
+			<German>Aus dem Fahrzeug austeigen</German>
+			<French>Sortir du véhicule</French>
+		</Key>
 	</Package>
 	<Package name="MISC_Strings">
+		<Key ID="STR_MISC_StPubIntox">
+			<Original>%1 has passed out drunk in public!</Original>
+			<English>%1 has passed out drunk in public!</English>
+			<German>%1 hat sich betrunken im öffentlichen bestanden!</German>
+		</Key>
+		<Key ID="STR_MISC_AlreadyDrinking">
+			<Original>You are already drinking some booze</Original>
+			<English>You are already drinking some booze</English>
+			<German>Du bist schon etwas trinken Alkohol</German>
+		</Key>
+		<Key ID="STR_MISC_WestIndNoNo">
+			<Original>No drinking on duty</Original>
+			<English>No drinking on duty</English>
+			<German>Kein Trinkwasser im Dienst</German>
+			<French>Pas boire pendant le travail</French>
+		</Key>
+		<Key ID="STR_MISC_DrunkBlackOut">
+			<Original>You have passed out</Original>
+			<English>You have passed out</English>
+		</Key>
+		<Key ID="STR_MISC_DrunkBlackOut1">
+			<Original>What the hell happened to me??</Original>
+			<English>What the hell happened to me??</English>
+		</Key>
 		<Key ID="STR_MISC_TooMuch">
 			<Original>You tried to give %1 %2 %3 but they couldn't hold that so it was returned.</Original>
 			<German>Du wolltest %1 %2 %3 geben, aber er hat keinen Platz in seinem Inventar und hat es darum zurückgegeben.</German>
@@ -2816,6 +3057,19 @@
 			<Italian>Mele</Italian>
 			<Portuguese>Maçãs</Portuguese>
 		</Key>
+		<Key ID="STR_Item_Frog">
+			<Original>Frogs</Original>
+		</Key>
+		<Key ID="STR_Item_Froglsd">
+			<Original>Frog Lsd</Original>
+
+		</Key>
+		<Key ID="STR_Item_Mushroom">
+			<Original>Edible Mushroom</Original>
+		</Key>
+		<Key ID="STR_Item_Magicm">
+			<Original>Magical Mushroom</Original>
+		</Key>
 		<Key ID="STR_Item_Cocaine">
 			<Original>Cocaine</Original>
 			<German>Kokain</German>
@@ -2887,7 +3141,7 @@
 			<Portuguese>Maconha</Portuguese>
 		</Key>
 		<Key ID="STR_Item_Rabbit">
-			<Original>Rabbit Meat</Original>
+			<Original>Raw Rabbit</Original>
 			<German>Kaninchenfleisch</German>
 			<French>Viande de Lapin</French>
 			<Italian>Carne di coniglio</Italian>
@@ -2984,7 +3238,7 @@
 			<Italian>profondo palombo fritti</Italian>
 			<Portuguese>profundo de cação frito</Portuguese>
 		</Key>
-		<Key ID="STR_Item_Turtle">
+		<Key ID="STR_Item_TurtleMeat">
 			<Original>Turtle Meat</Original>
 			<German>Schildkröten Fleisch</German>
 			<French>Viande de Tortue</French>
@@ -3082,14 +3336,17 @@
 			<Italian>Ciambelle</Italian>
 			<Portuguese>Rosquinha</Portuguese>
 		</Key>
-		<Key ID="STR_Item_FuelE">
+		<Key ID="STR_Item_speedbomb">
+			<Original>SpeedBomb</Original>
+		</Key>
+		<Key ID="STR_Item_FuelEmpty">
 			<Original>Empty Fuel Can</Original>
 			<German>Leerer Benzinkanister</German>
 			<French>Jerrican Vide</French>
 			<Italian>Tanica di carburante vuota</Italian>
 			<Portuguese>Tanque de Gasolina Vazio</Portuguese>
 		</Key>
-		<Key ID="STR_Item_FuelF">
+		<Key ID="STR_Item_FuelFull">
 			<Original>Full Fuel Can</Original>
 			<German>Benzinkanister</German>
 			<French>Jerrican de Carburant</French>
@@ -3194,6 +3451,9 @@
 			<Italian>Grimaldello</Italian>
 			<Portuguese>Chave Mestra</Portuguese>
 		</Key>
+		<Key ID="STR_Item_JerryRefuel">
+			<Original>Refuel</Original>
+		</Key>	
 		<Key ID="STR_Item_Rock">
 			<Original>Rock</Original>
 			<German>Stein</German>
@@ -3208,6 +3468,15 @@
 			<Italian>Sacco di Cemento</Italian>
 			<Portuguese>Saco de Cimento</Portuguese>
 		</Key>
+		<Key ID="STR_Item_UCharge">
+			<Original>Underwater Charge</Original>
+		</Key>
+		<Key ID="STR_Item_GoldScrap">
+			<Original>Gold Scrap</Original>
+		</Key>
+		<Key ID="STR_Item_heliblastcharge">
+			<Original>Helicopter Blast Charge</Original>
+		</Key>	
 		<Key ID="STR_Item_GoldBar">
 			<Original>Gold Bar</Original>
 			<German>Goldbarren</German>
@@ -3271,6 +3540,27 @@
 			<Italian>Striscia Chiodata</Italian>
 			<Portuguese>Spike Strip</Portuguese>
 		</Key>
+		<Key ID="STR_Item_Ziptie">
+			<Original>Ziptie</Original>
+		</Key>
+		<Key ID="STR_Item_Underwatercharge">
+			<Original>Under Water Charge</Original>
+		</Key>
+		<Key ID="STR_Item_lostcargo">
+			<Original>Lost Cargo</Original>
+		</Key>
+		<Key ID="STR_Item_gpstracker">
+			<Original>Gps Tracker</Original>
+		</Key>
+		<Key ID="STR_Item_bottledwhiskey">
+			<Original>Bottled Whiskey</Original>
+		</Key>
+		<Key ID="STR_Item_bottledshine">
+			<Original>Bottled Shine</Original>
+		</Key>
+		<Key ID="STR_Item_bottledbeer">
+			<Original>Bottled Beer</Original>
+		</Key>
 	</Package>
 	<Package name="Life_License">
 		<Key ID="STR_License_Driver">
@@ -3279,6 +3569,9 @@
 			<French>Permis de Conduire</French>
 			<Italian>Licenza di Guida</Italian>
 			<Portuguese>Licença de Motorista</Portuguese>
+		</Key>
+		<Key ID="STR_License_Medmarijuana">
+			<Original>Medical Marijuana Card</Original>
 		</Key>
 		<Key ID="STR_License_Pilot">
 			<Original>Pilot License</Original>
@@ -3385,6 +3678,9 @@
 			<Italian>Processo Sale</Italian>
 			<Portuguese>Processamento de Sal</Portuguese>
 		</Key>
+		<Key ID="STR_License_Magicm">
+			<Original>Mushroom Preparation</Original>
+		</Key>
 		<Key ID="STR_License_Cocaine">
 			<Original>Cocaine Training</Original>
 			<German>Kokainausbildung</German>
@@ -3412,6 +3708,21 @@
 			<French>Droit de Propriété</French>
 			<Italian>Licenza possesso Casa</Italian>
 			<Portuguese>Licença de Casas</Portuguese>
+		</Key>
+		<Key ID="STR_License_Vigilante">
+			<Original>Vigilante License</Original>
+		</Key>
+		<Key ID="STR_License_News">
+			<Original>News License</Original>
+		</Key>
+		<Key ID="STR_License_Law">
+			<Original>Law Degree</Original>
+		</Key>
+		<Key ID="STR_License_Taxi">
+			<Original>Taxi licenses</Original>
+		</Key>
+		<Key ID="STR_License_Frog">
+			<Original>Frog Lsd Technique</Original>
 		</Key>
 	</Package>
 	<Package name="More_Item_Strings">
@@ -3690,6 +4001,9 @@
 			<Italian>Raffinando diamanti</Italian>
 			<Portuguese>Lapidando Diamante</Portuguese>
 		</Key>
+		<Key ID="STR_Process_Frog">
+			<Original>Processing Frog lsd</Original>
+		</Key>
 		<Key ID="STR_Process_Heroin">
 			<Original>Processing Heroin</Original>
 			<German>Heroin wird verarbeitet</German>
@@ -3745,6 +4059,9 @@
 			<French>Mélange de ciment</French>
 			<Italian>Processando Cemento</Italian>
 			<Portuguese>Misturando Cimento</Portuguese>
+		</Key>
+		<Key ID="STR_Process_Magicm">
+			<Original>Drying and curing mushrooms</Original>
 		</Key>
 		<Key ID="STR_Process_Stay">
 			<Original>You need to stay within 10m to process.</Original>
@@ -3821,7 +4138,7 @@
 			<Portuguese>Médicos Online: %1</Portuguese>
 		</Key>
 		<Key ID="STR_Medic_Near">
-			<Original>Medics Nearby: %1</Original>
+			<Original>Closest Medic: %1</Original>
 			<German>Sanitäter in der Nähe: %1</German>
 			<French>Medics à proximité: %1</French>
 			<Italian>Medici Vicini: %1</Italian>
@@ -3979,6 +4296,9 @@
 			<French>Embarquer</French>
 			<Italian>Metti nel Veicolo</Italian>
 			<Portuguese>Colocar no Veículo</Portuguese>
+		</Key>
+		<Key ID="STR_pInAct_SeizeWeapon">
+			<Original>Seize Illegal Personnel</Original>
 		</Key>
 		<Key ID="STR_pInAct_Unrestrain">
 			<Original>Un-Restrain</Original>
@@ -4150,6 +4470,9 @@
 			<Italian>Raddrizza veicolo</Italian>
 			<Portuguese>Desvirar Veículo</Portuguese>
 		</Key>
+		<Key ID="STR_vInAct_vUseItem">
+			<Original>Use Item</Original>
+		</Key>
 		<Key ID="STR_vInAct_GetInKart">
 			<Original>Get In Kart</Original>
 			<German>Ins Kart setzen</German>
@@ -4192,12 +4515,18 @@
 			<Italian>Estrai Giocatore</Italian>
 			<Portuguese>Retirar Jogadores</Portuguese>
 		</Key>
+		<Key ID="STR_vInAct_copPullOut">
+			<Original>copPullout Players</Original>
+		</Key>
 		<Key ID="STR_vInAct_Impound">
 			<Original>Impound Vehicle</Original>
 			<German>Fahrzeug beschlagnahmen</German>
 			<French>Mise en fourrière</French>
 			<Italian>Sequestra Veicolo</Italian>
 			<Portuguese>Apreender Veículo</Portuguese>
+		</Key>
+		<Key ID="STR_vInAct_Seize">
+			<Original>Seize Vehicle</Original>
 		</Key>
 		<Key ID="STR_vInAct_DeviceMine">
 			<Original>Mine from device</Original>
@@ -4206,6 +4535,18 @@
 			<Italian>Piazza mine dal veicolo</Italian>
 			<Portuguese>Minerar</Portuguese>
 		</Key>
+		<Key ID="STR_vInAct_Lockpick">
+			<Original>Lockpick Vehicle</Original>
+		</Key>
+		<Key ID="STR_vInAct_JerryRefuel">
+			<Original>Refuel Vehicle</Original>
+		</Key>
+		<Key ID="STR_vInAct_GpsTracker">
+			<Original>Track Vehicle</Original>
+		</Key>		
+		<Key ID="STR_vInAct_SpeedBomb">
+			<Original>Attach SpeedBomb</Original>
+		</Key>	
 	</Package>
 	<Package name="Session_Strings">
 		<Key ID="STR_Session_Query">
@@ -4698,7 +5039,7 @@
 			<Portuguese>Roubar Jogador</Portuguese>
 		</Key>
 	</Package>
-	<Package name="Crimes">
+<Package name="Crimes">
 		<Key ID="STR_Crime_187V">
 			<Original>Vehicular Manslaughter</Original>
 			<German>Vehicular Manslaughter</German>
@@ -4708,11 +5049,9 @@
 		</Key>
 		<Key ID="STR_Crime_187">
 			<Original>Manslaughter</Original>
-			<German>Manslaughter</German>
-			<French>Manslaughter</French>
-			<Italian>Manslaughter</Italian>		
-			<Portuguese>Manslaughter</Portuguese>
 		</Key>
+		
+		
 		<Key ID="STR_Crime_901">
 			<Original>Escaping Jail</Original>
 			<German>Escaping Jail</German>
@@ -4783,6 +5122,36 @@
 			<Italian>Hit and run</Italian>		
 			<Portuguese>Hit and run</Portuguese>
 		</Key>
+		<Key ID="STR_Crime_1018">
+			<Original>Use of Firearms in city limits</Original>
+		</Key>
+		<Key ID="STR_Crime_5447">
+			<Original>Impersonating a trooper.</Original>
+		</Key>
+		<Key ID="STR_Crime_5489">
+			<Original>Possession of MST Equipment</Original>
+		</Key>
+		<Key ID="STR_Crime_1412">
+			<Original>Possession of an illegal weapon</Original>
+		</Key>
+		<Key ID="STR_Crime_1337">
+			<Original>Weapon Trafficking</Original>
+		</Key>
+		<Key ID="STR_Crime_13371">
+			<Original>Heavy Weapon Trafficking</Original>
+		</Key>
+		<Key ID="STR_Crime_4389">
+			<Original>Insurance fraud</Original>
+		</Key>
+		<Key ID="STR_Crime_5894">
+		<Original>Speeding</Original>
+		</Key>
+		<Key ID="STR_Crime_4532">
+		<Original>Verbal threats</Original>
+		</Key>
+		<Key ID="STR_Crime_5217">
+		<Original>Disobeying a trooper</Original>
+		</Key>
 		<Key ID="STR_Crime_481">
 			<Original>Drug Possession</Original>
 			<German>Drug Possession</German>
@@ -4805,7 +5174,7 @@
 			<Portuguese>Drug Trafficking</Portuguese>
 		</Key>
 		<Key ID="STR_Crime_459">
-			<Original>Burglary</Original>
+			<Original>Armed Robbery</Original>
 			<German>Burglary</German>
 			<French>Burglary</French>
 			<Italian>Burglary</Italian>		
@@ -4848,7 +5217,7 @@
 		</Key>
 		
 		<Key ID="STR_Crime_1">
-			<Original>Driving without Lights</Original>
+			<Original>Driving w/o Lights or Blinkers</Original>
 			<German>Driving without Lights</German>
 			<French>Driving without Lights</French>
 			<Italian>Driving without Lights</Italian>		
@@ -4862,7 +5231,7 @@
 			<Portuguese>Driving without License</Portuguese>
 		</Key>
 		<Key ID="STR_Crime_3">
-			<Original>Driving over the Speed</Original>
+			<Original>Driving over the Speed Limit</Original>
 			<German>Driving over the Speed</German>
 			<French>Driving over the Speed</French>
 			<Italian>Driving over the Speed</Italian>		
@@ -4895,6 +5264,68 @@
 			<French>Attempted Murder</French>
 			<Italian>Attempted Murder</Italian>		
 			<Portuguese>Attempted Murder</Portuguese>
+		</Key>
+		<Key ID="STR_Crime_8">
+			<Original>Resisting/Evading Arrest</Original>
+		</Key>
+		<Key ID="STR_Crime_9">
+			<Original>Driving an Illegal Vehicle</Original>
+		</Key>
+		<Key ID="STR_Crime_10">
+			<Original>Firearms w/o License</Original>
+		</Key>
+		<Key ID="STR_Crime_11">
+			<Original>Wielding Firearms in city</Original>
+		</Key>
+		<Key ID="STR_Crime_12">
+			<Original>Noise Pollution</Original>
+		</Key>
+		<Key ID="STR_Crime_13">
+			<Original>Vehicle Theft</Original>
+		</Key>
+		<Key ID="STR_Crime_13A">
+			<Original>Attempted Vehicle Theft</Original>
+		</Key>
+		<Key ID="STR_Crime_14">
+			<Original>Terroristic Actions</Original>
+		</Key>
+		<Key ID="STR_Crime_14A">
+			<Original>Terroristic Threats</Original>
+		</Key>
+	</Package>
+	<Package name="Smartphone">
+		<Key ID="STR_PM_Smartphone">
+			<Original>Smartphone</Original>
+		</Key>
+		<Key ID="STR_SMARTPHONE_TITLE">
+			<Original>Smartphone Menu</Original>
+		</Key>
+		<Key ID="STR_SMARTPHONE_PLAYERLISTTITLE">
+			<Original>Player List</Original>
+		</Key>
+		<Key ID="STR_SMARTPHONE_MESSAGETITLE">
+			<Original>Emergency Calls!</Original>
+		</Key>
+		<Key ID="STR_SMARTPHONE_RANDOMTITLE">
+			<Original>Select a Message</Original>
+		</Key>
+		<Key ID="STR_Global_Close">
+			<Original>Close</Original>
+		</Key>
+		<Key ID="STR_SMARTPHONE_SCHREIBEN">
+			<Original>Compose</Original>
+		</Key>
+		<Key ID="STR_SMARTPHONE_NOTRUF">
+			<Original>Emergency</Original>
+		</Key>
+		<Key ID="STR_SMARTPHONE_Absenden">
+			<Original>Send</Original>
+		</Key>
+		<Key ID="STR_SMARTPHONE_NACHRICHTTITLE">
+			<Original>Message:</Original>
+		</Key>
+		<Key ID="STR_SMARTPHONE_Notruftitle">
+			<Original>Emergency Calls!</Original>
 		</Key>
 	</Package>
 </Project>
