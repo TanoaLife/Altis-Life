@@ -1,4 +1,23 @@
-#Altis-Life
+# Altis-Life
+
+## This is the current working repository for a version of Altis Life that will eventually run on the upcoming terrain, Tanoa.
+
+The purpose of this repository is to develop an up to date version of Altis Life that has fewer bugs and a wider base feature set than the current.
+
+### Contributions
+
+Any contributions are welcome, all you have to do is:
+- Fork this repository
+- Make a new branch (ie git checkout -b "My-new-feature")
+- Push that branch to your github repository
+- Submit a pull request
+
+Anyone who wants to contribute can also join the Slack, this is the URL to get an invitation.
+[Form to request invite](http://goo.gl/forms/NeeEFa734t)
+
+Any without further ado, here is Tonic's ToA
+
+# ToA
 
 Altis Life / Altis Life RPG is developed by Tonic / TAW_Tonic. This contains primarily the release contain and on-going development changes to the mission.
 Altis Life RPG by Tonic is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License
