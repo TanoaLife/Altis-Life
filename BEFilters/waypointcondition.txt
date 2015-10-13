@@ -1,1 +1,2 @@
-7 ""
+// There's no AI in life...
+5 ""
