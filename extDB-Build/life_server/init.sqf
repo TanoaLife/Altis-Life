@@ -6,6 +6,7 @@
 	Initialize the server and required systems.
 */
 "BIS_fnc_MP_packet" addPublicVariableEventHandler {_this call life_fnc_MPexec};
+["diag_log",["Running server init.sqf"]] call TON_fnc_logIt;
 DB_Async_Active = false;
 DB_Async_ExtraLock = false;
 life_server_isReady = false;
@@ -18,6 +19,7 @@ PVAR_ALL("life_server_isReady");
 	for the server.
 */
 if(isNil {GVAR_UINS "life_sql_id"}) then {
+	["diag_log",["life_sql_id uninitialized"]] call TON_fnc_logIt;
 	life_sql_id = round(random(9999));
 	CONSTVAR(life_sql_id);
 	SVAR_UINS ["life_sql_id",life_sql_id];
@@ -73,6 +75,7 @@ if(isNil {GVAR_UINS "life_sql_id"}) then {
 	EXTDB "9:LOCK";
 	["diag_log",["extDB: Connected to the Database"]] call TON_fnc_logIt;
 } else {
+	["diag_log",["life_sql_id existed"]] call TON_fnc_logIt;
 	life_sql_id = GVAR_UINS "life_sql_id";
 	CONSTVAR(life_sql_id);
 	["diag_log",["extDB: Still Connected to the Database"]] call TON_fnc_logIt;
@@ -93,7 +96,10 @@ if(isNil {GVAR_UINS "life_sql_id"}) then {
 	};
 };
 
+["diag_log",["Checking if extDB is loaded"]] call TON_fnc_logIt;
 if(!(EQUAL(life_server_extDB_notLoaded,""))) exitWith {}; //extDB did not fully initialize so terminate the rest of the initialization process.
+
+["diag_log",["extDB is loaded"]] call TON_fnc_logIt;
 
 /* Run stored procedures for SQL side cleanup */
 ["resetLifeVehicles",1] spawn DB_fnc_asyncCall;

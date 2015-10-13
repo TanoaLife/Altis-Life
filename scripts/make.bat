@@ -13,7 +13,7 @@ echo Working in %ProjectHome%
 call %PBO% %ServerFiles%
 call %PBO% %ClientFiles%
 
-copy %ServerFiles%.pbo %ARMA%@LifeServer\addons\life_server.pbo"
+copy %ServerFiles%.pbo %ARMA%@life_server\addons\life_server.pbo"
 copy %ExtDB%extdb-conf.ini %ARMA%@ExtDB\extdb-conf.ini"
 copy %ExtDB%extdb\db_custom\altis-life-rpg-4.ini %ARMA%@ExtDB\extdb\db_custom\altis-life-rpg-4.ini"
 
