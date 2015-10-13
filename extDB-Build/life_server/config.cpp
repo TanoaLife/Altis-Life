@@ -47,17 +47,19 @@ class CfgFunctions
 		class MP
 		{
 			file = "Functions\MP";
-			class initMultiplayer{};
-			class call{};
-			class spawn{};
-			class execFSM{};
-			class execVM{};
-			class execRemote{};
-			class addScore{};
-			class setRespawnDelay{};
-			class onPlayerConnected{};
-			class initPlayable{};
-			class missionTimeLeft{};
+			class addScore {};
+			class call {};
+			class execFSM {};
+			class execRemote {};
+			class execVM {};
+			class initMultiplayer {};
+			class initPlayable {};
+			class missionTimeLeft {};
+			class MP {};
+			class MPexec {};
+			class onPlayerConnected {};
+			class setRespawnDelay {};
+			class spawn {};
 		};
 	};
 
@@ -67,15 +69,15 @@ class CfgFunctions
 		class MySQL
 		{
 			file = "Functions\MySQL";
-			class numberSafe {};
-			class mresArray {};
-			class queryRequest{};
-			class asyncCall{};
-			class insertRequest{};
-			class updateRequest{};
+			class asyncCall {};
+			class bool {};
+			class insertRequest {};
 			class insertVehicle {};
-			class bool{};
+			class mresArray {};
+			class numberSafe {};
+			class queryRequest {};
 			class updatePartial {};
+			class updateRequest {};
 		};
 	};
 
@@ -85,13 +87,13 @@ class CfgFunctions
 		class Wanted_Sys
 		{
 			file = "Functions\WantedSystem";
+			class wantedAdd {};
+			class wantedBounty {};
+			class wantedCrimes {};
 			class wantedFetch {};
 			class wantedPerson {};
-			class wantedBounty {};
-			class wantedRemove {};
-			class wantedAdd {};
-			class wantedCrimes {};
 			class wantedProfUpdate {};
+			class wantedRemove {};
 		};
 
 		class Jail_Sys
@@ -103,6 +105,7 @@ class CfgFunctions
 		class Client_Code
 		{
 			file = "Functions\Client";
+			class updateMoney {};
 		};
 	};
 
@@ -112,24 +115,24 @@ class CfgFunctions
 		class Systems
 		{
 			file = "Functions\Systems";
-			class managesc {};
+			class chopShopSell {};
 			class cleanup {};
-			class huntingZone {};
+			class cleanupRequest {};
+			class clientDisconnect {};
+			class federalUpdate {};
 			class getID {};
+			class getVehicles {};
+			class huntingZone {};
+			class keyManagement {};
+			class logIt {};
+			class managesc {};
+			class setObjVar {};
+			class spawnVehicle {};
+			class spikeStrip {};
 			class vehicleCreate {};
 			class vehicleDead {};
-			class spawnVehicle {};
-			class getVehicles {};
-			class vehicleStore {};
 			class vehicleDelete {};
-			class spikeStrip {};
-			class logIt {};
-			class federalUpdate {};
-			class chopShopSell {};
-			class clientDisconnect {};
-			class cleanupRequest {};
-			class setObjVar {};
-			class keyManagement {};
+			class vehicleStore {};
 		};
 
 		class Housing
@@ -137,12 +140,13 @@ class CfgFunctions
 			file = "Functions\Housing";
 			class addHouse {};
 			class fetchPlayerHouses {};
+			class houseCleanup {};
 			class initHouses {};
+			class nearestDoor {};
+			class preCheckHouse {};
 			class sellHouse {};
 			class updateHouseContainers {};
 			class updateHouseTrunk {};
-			class houseCleanup {};
-			class preCheckHouse {};
 		};
 
 		class Gangs
