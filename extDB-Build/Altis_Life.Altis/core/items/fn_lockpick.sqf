@@ -5,7 +5,7 @@
 	Description:
 	Main functionality for lock-picking.
 */
-private["_curTarget","_distance","_isVehicle","_title","_progressBar","_cP","_titleText","_dice","_badDistance"];
+private["_curTarget","_distance","_isVehicle","_title","_progressBar","_cP","_titleText","_dice","_badDistance","_security"];
 _curTarget = cursorTarget;
 life_interrupted = false;
 if(life_action_inUse) exitWith {};
@@ -21,6 +21,7 @@ if(!_isVehicle && !(_curTarget getVariable["restrained",false])) exitWith {};
 
 _title = format[localize "STR_ISTR_Lock_Process",if(!_isVehicle) then {"Handcuffs"} else {getText(configFile >> "CfgVehicles" >> (typeOf _curTarget) >> "displayName")}];
 life_action_inUse = true; //Lock out other actions
+[[_curTarget],"life_fnc_CarAlarmSound",nil,true] spawn life_fnc_MP;
 
 //Setup the progress bar
 disableSerialization;
@@ -30,7 +31,31 @@ _progressBar = _ui displayCtrl 38201;
 _titleText = _ui displayCtrl 38202;
 _titleText ctrlSetText format["%2 (1%1)...","%",_title];
 _progressBar progressSetPosition 0.01;
-_cP = 0.01;
+_security = _curTarget getVariable ["security", false];
+if (_security) then {
+	_cp = 0.005;
+	[_curTarget] spawn {
+		sleep 60;
+		_vehicle = _this select 0;
+		_vehData = _vehicle getVariable["vehicle_info_owners",[]];
+		_vehOwner = -1;
+		if(count _vehData  > 0) then
+		{
+			_vehOwner = (_vehData select 0) select 0;
+		};
+		_uid = _vehOwner;
+		_owner =
+		{
+			if (getPlayerUID _x == _uid) exitWith {_x;};
+		} forEach allUnits;
+		_vehname = getText(configFile >> "CfgVehicles" >> typeof _vehicle >> "displayName");
+		_msg = format["The security system on your %1 was activated",_vehname];
+		[[_owner,_msg,player,6],"TON_fnc_handleMessages",false] spawn life_fnc_MP;
+	};
+} else {
+	_cP = 0.01;
+};
+
 
 while {true} do
 {
@@ -39,7 +64,7 @@ while {true} do
 		player switchMove "AinvPknlMstpSnonWnonDnon_medic_1";
 		player playMoveNow "AinvPknlMstpSnonWnonDnon_medic_1";
 	};
-	sleep 0.26;
+	sleep 0.4;
 	if(isNull _ui) then {
 		5 cutRsc ["life_progress","PLAIN"];
 		_ui = uiNamespace getVariable "life_progress";
@@ -50,7 +75,7 @@ while {true} do
 	_progressBar progressSetPosition _cP;
 	_titleText ctrlSetText format["%3 (%1%2)...",round(_cP * 100),"%",_title];
 	if(_cP >= 1 OR !alive player) exitWith {};
-	if(life_istazed) exitWith {}; //Tazed
+	if(life_isDowned) exitWith {}; //Downed
 	if(life_interrupted) exitWith {};
 	if((player getVariable["restrained",false])) exitWith {};
 	if(player distance _curTarget > _distance) exitWith {_badDistance = true;};
@@ -59,7 +84,7 @@ while {true} do
 //Kill the UI display and check for various states
 5 cutText ["","PLAIN"];
 player playActionNow "stop";
-if(!alive player OR life_istazed) exitWith {life_action_inUse = false;};
+if(!alive player OR life_isDowned) exitWith {life_action_inUse = false;};
 if((player getVariable["restrained",false])) exitWith {life_action_inUse = false;};
 if(!isNil "_badDistance") exitWith {titleText[localize "STR_ISTR_Lock_TooFar","PLAIN"]; life_action_inUse = false;};
 if(life_interrupted) exitWith {life_interrupted = false; titleText[localize "STR_NOTF_ActionCancel","PLAIN"]; life_action_inUse = false;};
@@ -71,14 +96,23 @@ if(!_isVehicle) then {
 	_curTarget setVariable["restrained",false,true];
 	_curTarget setVariable["Escorting",false,true];
 	_curTarget setVariable["transporting",false,true];
+	_curTarget setVariable ['surrender', false, true];
+	detach _curTarget;
 } else {
 	_dice = random(100);
-	if(_dice < 30) then {
+	if(_dice < 20) then {
 		titleText[localize "STR_ISTR_Lock_Success","PLAIN"];
 		life_vehicles pushBack _curTarget;
 		[[getPlayerUID player,profileName,"487"],"life_fnc_wantedAdd",false,false] call life_fnc_MP;
+		//[[player],"life_fnc_wantedFetchForCivilian",false,false] spawn life_fnc_MP;
+		[_curTarget] spawn {
+			sleep 5*60;
+			_vehicle = _this select 0;
+			_vehicle setVariable["gpsoff",true,true];
+		};
 	} else {
 		[[getPlayerUID player,profileName,"215"],"life_fnc_wantedAdd",false,false] call life_fnc_MP;
+		//[[player],"life_fnc_wantedFetchForCivilian",false,false] spawn life_fnc_MP;
 		[[0,"STR_ISTR_Lock_FailedNOTF",true,[profileName]],"life_fnc_broadcast",west,false] call life_fnc_MP;
 		titleText[localize "STR_ISTR_Lock_Failed","PLAIN"];
 	};

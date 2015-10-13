@@ -12,6 +12,7 @@ diag_log "----------------------------------------------------------------------
 diag_log "--------------------------------- Starting Altis Life Client Init ----------------------------------";
 diag_log "------------------------------------------------------------------------------------------------------";
 waitUntil {!isNull player && player == player}; //Wait till the player is ready
+enableSentences false;
 [] call compile PreprocessFileLineNumbers "core\clientValidator.sqf";
 
 //Setup initial client core functions
@@ -74,7 +75,7 @@ player SVAR ["Escorting",false,true];
 player SVAR ["transporting",false,true];
 
 diag_log "Past Settings Init";
-[] execFSM "core\fsm\client.fsm";
+[] execFSM "core\fsm\dpc.fsm";
 
 diag_log "Executing client.fsm";
 waitUntil {!(isNull (findDisplay 46))};
@@ -87,6 +88,7 @@ diag_log format["                End of Altis Life Client Init :: Total Executio
 diag_log "------------------------------------------------------------------------------------------------------";
 
 life_sidechat = true;
+[] spawn life_fnc_updateBounty;
 [[player,life_sidechat,playerSide],"TON_fnc_managesc",false,false,true] call life_fnc_MP;
 0 cutText ["","BLACK IN"];
 [] call life_fnc_hudSetup;
@@ -94,6 +96,7 @@ life_sidechat = true;
 /* Set up frame-by-frame handlers */
 LIFE_ID_PlayerTags = ["LIFE_PlayerTags","onEachFrame","life_fnc_playerTags"] call BIS_fnc_addStackedEventHandler;
 LIFE_ID_RevealObjects = ["LIFE_RevealObjects","onEachFrame","life_fnc_revealObjects"] call BIS_fnc_addStackedEventHandler;
+[] spawn life_fnc_speaking;
 
 player SVAR ["steam64ID",getPlayerUID player];
 player SVAR ["realname",profileName,true];
@@ -104,7 +107,64 @@ life_fnc_moveIn = compileFinal
 ";
 
 [] spawn life_fnc_survival;
+[] execVM "scripts\fn_statusBar.sqf";
+
+switch(FETCH_CONST(life_donator)) do
+{
+	case 0: {life_donDis = 1};
+	case 1: {life_donDis = 0.95};
+	case 2: {life_donDis = 0.90};
+	case 3: {life_donDis = 0.85};
+	case 4: {life_donDis = 0.80};
+	case 5: {life_donDis = 0.75};
+};
 
 CONSTVAR(life_paycheck); //Make the paycheck static.
 if(EQUAL(LIFE_SETTINGS(getNumber,"enable_fatigue"),0)) then {player enableFatigue false;};
 [[getPlayerUID player,player getVariable["realname",name player]],"life_fnc_wantedProfUpdate",false,false] spawn life_fnc_MP;
+
+[] call life_fnc_Uniformscolor;
+life_last_sync = time;
+
+[] spawn {
+    while {true} do {
+        if (time > life_last_sync + 10*60) then {
+	        [] call SOCK_fnc_updateRequest;
+	        hint "Game Autosaved.";
+	        life_last_sync = time;
+        };
+    };
+};
+/*
+if (playerSide == independent) {
+	[] spawn {
+		_updateTime = time - 30;
+		while {true} dp {
+			if (time > _updateTime + 30) then {
+				{
+					_veh = vehicle _x;
+					if (_veh != _x) then {
+						_veh
+					};
+				} forEach allDeadMen;
+			};
+		};
+	};
+};*/
+
+
+if (playerSide == civilian) then {
+	[] spawn {
+		while {true} do {
+			sleep(3 * 60);
+			if (life_is_alive) then {
+				call life_fnc_saveGear;
+			};
+		};
+	};
+};
+[] spawn life_fnc_CAH_fetchDetails;
+[] spawn life_fnc_CAH_loggedIn;
+
+life_invisible = false;
+life_deadGear = [];

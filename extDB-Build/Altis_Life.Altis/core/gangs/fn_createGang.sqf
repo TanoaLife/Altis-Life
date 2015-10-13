@@ -8,6 +8,8 @@
 private["_gangName","_length","_badChar","_chrByte","_allowed"];
 disableSerialization;
 
+[player] joinSilent (createGroup civilian);
+
 _gangName = ctrlText (CONTROL(2520,2522));
 _length = count (toArray(_gangName));
 _chrByte = toArray (_gangName);
@@ -18,7 +20,7 @@ _badChar = false;
 if(_badChar) exitWith {hint localize "STR_GNOTF_IncorrectChar";};
 if(BANK < (LIFE_SETTINGS(getNumber,"gang_price"))) exitWith {hint format[localize "STR_GNOTF_NotEnoughMoney",[((LIFE_SETTINGS(getNumber,"gang_price")) - BANK)] call life_fnc_numberText];};
 
-[[player,getPlayerUID player,_gangName],"TON_fnc_insertGang",false,false] call life_fnc_MP;
+[[player,getPlayerUID player,_gangName, profileName],"TON_fnc_insertGang",false,false] call life_fnc_MP;
 hint localize "STR_NOTF_SendingData";
 closeDialog 0;
 life_action_gangInUse = true;

@@ -33,5 +33,6 @@ hint localize "STR_Session_SyncData";
 	life_session_time = true;
 	sleep (5 * 60);
 	life_session_time = false;
+	life_last_sync = time;
 };
 	

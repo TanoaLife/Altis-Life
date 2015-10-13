@@ -7,7 +7,13 @@
     Loads saved civilian gear, this is limited for a reason and that's balance.
 */
 private["_itemArray","_uniform","_vest","_backpack","_goggles","_headgear","_items","_prim","_seco","_uItems","_bItems","_vItems","_pItems","_hItems","_yItems","_uMags","_bMags","_vMags","_handle"];
-_itemArray = life_gear;
+if (playerSide == west) then {
+    sleep 5;
+    _itemArray = life_copgear;
+} else {
+    _itemArray = life_gear;
+};
+diag_log format ["loadGear: %1", _itemArray];
 waitUntil {!(isNull (findDisplay 46))};
 
 _handle = [] spawn life_fnc_stripDownPlayer;
@@ -46,12 +52,40 @@ _vMags = [_itemArray,13,[],[[]]] call BIS_fnc_param;
 _pItems = [_itemArray,14,[],[[]]] call BIS_fnc_param;
 _hItems = [_itemArray,15,[],[[]]] call BIS_fnc_param;
 _yItems = [_itemArray,16,[],[[]]] call BIS_fnc_param;
+_launch = [_itemArray,17,"",[""]] call BIS_fnc_param;
 
 if(!(EQUAL(_goggles,""))) then {_handle = [_goggles,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
 if(!(EQUAL(_headgear,""))) then {_handle = [_headgear,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
 if(!(EQUAL(_uniform,""))) then {_handle = [_uniform,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
 if(!(EQUAL(_vest,""))) then {_handle = [_vest,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
 if(!(EQUAL(_backpack,""))) then {_handle = [_backpack,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
+
+
+// Removing lethal rounds from dumbass privates or cadets who synced gear with them
+if ((playerSide == west) && ((FETCH_CONST(life_coplevel)) < 3)) then {
+    {
+        if (_x == "30Rnd_65x39_caseless_mag") then {
+            _uMags set [_foreachindex, -1];
+        };
+    } foreach _uMags;
+    
+    {
+        if (_x == "30Rnd_65x39_caseless_mag") then {
+            _bMags set [_foreachindex, -1];
+        };
+    } foreach _bMags;
+    
+    {
+        if (_x == "30Rnd_65x39_caseless_mag") then {
+            _vMags set [_foreachindex, -1];
+        };
+    } foreach _vMags;
+};
+
+SUB(_uMags,[-1]);
+SUB(_bMags,[-1]);
+SUB(_vMags,[-1]);
+
 
 /* Hotfix for losing virtual items on login */
 if(!isNil {SEL(_this,0)}) then {
@@ -76,6 +110,7 @@ life_maxWeight = 24;
 //Primary & Secondary (Handgun) should be added last as magazines do not automatically load into the gun.
 if(!(EQUAL(_prim,""))) then {_handle = [_prim,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
 if(!(EQUAL(_seco,""))) then {_handle = [_seco,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
+if(!(EQUAL(_launch,""))) then {_handle = [_launch,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};};
 
 {
     if (!(EQUAL(_x,""))) then {
@@ -88,6 +123,9 @@ if(!(EQUAL(_seco,""))) then {_handle = [_seco,true,false,false,false] spawn life
     };
 } foreach (_hItems);
 
-if(playerSide == independent && {EQUAL(uniform player,"U_Rangemaster")}) then {
+if(playerSide == independent && {EQUAL(uniform player,"U_I_CombatUniform_tshirt")}) then {
 	[[player,0,"textures\medic_uniform.jpg"],"life_fnc_setTexture",true,false] call life_fnc_MP;
 };
+[] call life_fnc_Uniformscolor;
+
+

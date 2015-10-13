@@ -17,6 +17,17 @@ _players = _display displayCtrl 2406;
 lbClear _list;
 _units = [];
 
+if (playerSide == civilian) then {
+		ctrlShow[2405,false];
+		ctrlShow[9800,false];
+		ctrlShow[2407,false];
+};
+
+if (playerSide == independent) then {
+	closeDialog 0;
+	hint "You have no business looking through criminal records!";
+};
+
 lbClear _players;
 
 {
@@ -38,9 +49,9 @@ _crimes = LIFE_SETTINGS(getArray,"crimes");
 
 ctrlSetText[2404,"Establishing connection..."];
 
-if(FETCH_CONST(life_coplevel) < 3 && FETCH_CONST(life_adminlevel) == 0) then
+if(FETCH_CONST(life_coplevel) < 2 && FETCH_CONST(life_adminlevel) == 0) then
 {
 	ctrlShow[2405,false];
 };
 
-[[player],"life_fnc_wantedFetch",false,false] spawn life_fnc_MP; 
+[] spawn life_fnc_wantedList;

@@ -12,6 +12,7 @@ _uid = getPlayerUID player;
 if(isNull _house) exitWith {};
 if(!(_house isKindOf "House_F")) exitWith {};
 if(isNil {_house getVariable "house_owner"}) exitWith {hint "There is no owner for this house."};
+if ((typeOf _house == "Land_i_Shed_Ind_F") && (life_gangrank < 5)) exitWith {hint "You need to be the gang owner to sell this house."};
 closeDialog 0;
 
 _houseCfg = [M_CONFIG(getNumber,"Houses",typeOf(_house),"price"),M_CONFIG(getNumber,"Houses",typeOf(_house),"maxStorage")];
@@ -30,7 +31,6 @@ if(_action) then {
 	_house setVariable["Trunk",nil,true];
 	_house setVariable["containers",nil,true];
 	deleteMarkerLocal format["house_%1",_house getVariable "uid"];
-	_house setVariable["uid",nil,true];
 	
 	BANK = BANK + (round((_houseCfg select 0)/2));
 	_index = life_vehicles find _house;
@@ -44,6 +44,13 @@ if(_action) then {
 		life_houses set[_index,-1];
 		life_houses = life_houses - [-1];
 	};
+	
+	
+	if(typeOf _house == "Land_i_Shed_Ind_F") then {
+		[[life_gangid],"life_fnc_updateGangHouse",true,false] call life_fnc_MP;
+	};
+	
+	_house setVariable["uid",nil,true];
 	_numOfDoors = getNumber(configFile >> "CfgVehicles" >> (typeOf _house) >> "numberOfDoors");
 	for "_i" from 1 to _numOfDoors do {
 		_house setVariable[format["bis_disabled_Door_%1",_i],0,true];

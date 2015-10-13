@@ -23,7 +23,7 @@ life_bail_paid = false;
 life_impound_inuse = false;
 life_action_inUse = false;
 life_spikestrip = ObjNull;
-life_respawn_timer = 0.1; //Scaled in minutes
+life_respawn_timer = 1; //Scaled in minutes
 life_knockout = false;
 life_interrupted = false;
 life_respawned = false;
@@ -33,6 +33,66 @@ life_vdFoot = viewDistance;
 life_vdCar = viewDistance;
 life_vdAir = viewDistance;
 tawvd_addon_disable = true;
+life_earplugs = false;
+life_is_alive = false;
+life_siren2_active = false;
+life_fake_weapons = ["Binocular","Laserdesignator","Rangefinder"];
+mecca_vdm_watcher_count = 0;
+mecca_wanted_status = 0;
+life_hudStarted = false;
+life_isSuicide = false;
+life_redgull_effect = time;
+life_TankLaster = 1; //able to load anything?
+last_known_position = [];
+diag_log format ["configuration.sqf: last_known_position currently unknown"];
+life_drink = 0;
+life_my_gang = ObjNull;
+
+life_noname_clothing = [
+	"U_I_GhillieSuit",
+	"U_O_GhillieSuit",
+	"U_B_GhillieSuit",
+	"U_B_FullGhillie_lsh",
+	"U_O_FullGhillie_lsh",
+	"U_I_FullGhillie_lsh",
+	"U_B_FullGhillie_sard",
+	"U_O_FullGhillie_sard",
+	"U_I_FullGhillie_sard",
+	"U_B_FullGhillie_ard",
+	"U_O_FullGhillie_ard",
+	"U_I_FullGhillie_ard"
+];
+
+life_hidden_clothing = [
+	"H_Shemag_khk",
+	"H_Shemag_tan",
+	"H_Shemag_olive",
+	"H_Shemag_olive_hs",
+	"H_ShemagOpen_khk",
+	"H_ShemagOpen_tan",
+	"G_Balaclava_lowprofile",
+	"G_Balaclava_combat",
+	"G_Bandanna_beast",
+	"U_O_GhillieSuit",
+	"U_I_GhillieSuit",
+	"U_B_GhillieSuit",
+	"U_B_FullGhillie_lsh",
+	"U_O_FullGhillie_lsh",
+	"U_I_FullGhillie_lsh",
+	"U_B_FullGhillie_sard",
+	"U_O_FullGhillie_sard",
+	"U_I_FullGhillie_sard",
+	"U_B_FullGhillie_ard",
+	"U_O_FullGhillie_ard",
+	"U_I_FullGhillie_ard"
+	
+];
+
+life_god = false; 
+life_frozen = false; 
+life_markers = false;
+life_channel_send = true; //Channel 7
+
 
 //Uniform price (0),Hat Price (1),Glasses Price (2),Vest Price (3),Backpack Price (4)
 life_clothing_purchase = [-1,-1,-1,-1,-1];
@@ -57,24 +117,27 @@ life_delivery_in_progress = false;
 life_thirst = 100;
 life_hunger = 100;
 CASH = 0;
+life_nlrtimer_running = false;
+life_nlrtimer_stop = false;
 
-life_istazed = false;
+life_isDowned = false;
 life_vehicles = [];
+life_smartphoneTarget = ObjNull;
 
 switch (playerSide) do {
 	case west: {
-		BANK = 7000; //Starting Bank Money
-		life_paycheck = 500; //Paycheck Amount
+		BANK = 35000; //Starting Bank Money
+		life_paycheck = 1200; //Paycheck Amount
 	};
 	
 	case civilian: {
-		BANK = 3000; //Starting Bank Money
-		life_paycheck = 350; //Paycheck Amount
+		BANK = 35000; //Starting Bank Money
+		life_paycheck = 1200; //Paycheck Amount
 	};
 	
 	case independent: {
-		BANK = 6500;
-		life_paycheck = 450;
+		BANK = 35000;
+		life_paycheck = 1200;
 	};
 };
 
@@ -93,3 +156,12 @@ switch (playerSide) do {
 	
 	SVAR_MNS [LICENSE_VARNAME(_varName,_sideFlag),false];
 } foreach ("true" configClasses (missionConfigFile >> "Licenses"));
+
+/* Safe Zones
+["markername", safe_radius] */
+life_safe_points =
+	[
+		["safezone1", 250]
+
+	];
+__CONST__(life_safe_points,life_safe_points);

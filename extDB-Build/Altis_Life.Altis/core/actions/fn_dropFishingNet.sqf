@@ -5,9 +5,9 @@
 	Description:
 	Drops a virtual fishing net from the boat.
 */
-private["_fish","_type","_typeName"];
+private["_fish","_type","_typeName","_full"];
 if(!(vehicle player isKindOf "Ship")) exitWith {};
-_fish = (nearestObjects[getPos vehicle player,["Fish_Base_F"],20]);
+_fish = (nearestObjects[getPos vehicle player,["Fish_Base_F"],35]);
 life_net_dropped = true;
 titleText[localize "STR_NOTF_NetDrop","PLAIN"];
 sleep 5;
@@ -17,12 +17,12 @@ if(count _fish == 0) exitWith {titleText[localize "STR_NOTF_NetDropFail","PLAIN"
 	{
 		switch(true) do
 		{
-			case ((typeOf _x) == "Salema_F"): {_typeName = localize "STR_ANIM_Salema"; _type = "salema";};
-			case ((typeOf _x) == "Ornate_random_F") : {_typeName = localize "STR_ANIM_Ornate"; _type = "ornate";};
-			case ((typeOf _x) == "Mackerel_F") : {_typeName = localize "STR_ANIM_Mackerel"; _type = "mackerel";};
-			case ((typeOf _x) == "Tuna_F") : {_typeName = localize "STR_ANIM_Tuna"; _type = "tuna";};
-			case ((typeOf _x) == "Mullet_F") : {_typeName = localize "STR_ANIM_Mullet"; _type = "mullet";};
-			case ((typeOf _x) == "CatShark_F") : {_typeName = localize "STR_ANIM_Catshark"; _type = "catshark";};
+			case ((typeOf _x) == "Salema_F"): {_typeName = localize "STR_ANIM_Salema"; _type = "salema_raw";};
+			case ((typeOf _x) == "Ornate_random_F") : {_typeName = localize "STR_ANIM_Ornate"; _type = "ornate_raw";};
+			case ((typeOf _x) == "Mackerel_F") : {_typeName = localize "STR_ANIM_Mackerel"; _type = "mackerel_raw";};
+			case ((typeOf _x) == "Tuna_F") : {_typeName = localize "STR_ANIM_Tuna"; _type = "tuna_raw";};
+			case ((typeOf _x) == "Mullet_F") : {_typeName = localize "STR_ANIM_Mullet"; _type = "mullet_raw";};
+			case ((typeOf _x) == "CatShark_F") : {_typeName = localize "STR_ANIM_Catshark"; _type = "catshark_raw";};
 			default {_type = "";};
 		};
 		

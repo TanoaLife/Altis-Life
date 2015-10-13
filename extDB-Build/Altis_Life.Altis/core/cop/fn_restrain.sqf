@@ -12,6 +12,7 @@ _player = player;
 if(isNull _cop) exitWith {};
 
 //Monitor excessive restrainment
+
 [] spawn {
 	private "_time";
 	while {true} do {
@@ -19,7 +20,7 @@ if(isNull _cop) exitWith {};
 		waitUntil {(time - _time) > (5 * 60)};
 		
 		if(!(player GVAR ["restrained",FALSE])) exitWith {};
-		if(!([west,getPos player,30] call life_fnc_nearUnits) && (player GVAR ["restrained",FALSE]) && vehicle player == player) exitWith {
+		if(!([west,getPos player,75] call life_fnc_nearUnits) && (player GVAR ["restrained",FALSE]) && vehicle player == player) exitWith {
 			player SVAR ["restrained",FALSE,TRUE];
 			player SVAR ["Escorting",FALSE,TRUE];
 			player SVAR ["transporting",false,true];
@@ -29,11 +30,12 @@ if(isNull _cop) exitWith {};
 	};
 };
 
-if((player GVAR["surrender",FALSE])) then { player SVAR["surrender",FALSE,TRUE]; player switchMove ""; };
 
 titleText[format[localize "STR_Cop_Retrained",_cop GVAR ["realname",name _cop]],"PLAIN"];
+player say3D "cuff";
 				
 while {player GVAR  "restrained"} do {
+	life_action_inUse = true;
 	if(vehicle player == player) then {
 		player playMove "AmovPercMstpSnonWnonDnon_Ease";
 	};
@@ -48,10 +50,10 @@ while {player GVAR  "restrained"} do {
 		detach _player;
 	};
 	
-	if(!alive _cop) exitWith {
+	/*if(!alive _cop) exitWith {
 		player SVAR ["Escorting",false,true];
 		detach player;
-	};
+	};*/
 	
 	if(vehicle player != player) then {
 		//disableUserInput true;
@@ -59,6 +61,7 @@ while {player GVAR  "restrained"} do {
 	};
 };
 
+life_action_inUse = false;
 //disableUserInput false;
 		
 if(alive player) then {

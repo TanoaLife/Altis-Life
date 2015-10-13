@@ -4,15 +4,25 @@
 	Description:
 	Breaks the lock on a single door (Closet door to the player).
 */
-private["_building","_door","_doors","_cpRate","_title","_progressBar","_titleText","_cp","_ui"];
+private["_building","_door","_doors","_cpRate","_title","_progressBar","_titleText","_cp","_ui","_owneruid","_owner","_fed"];
 _building = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 if(isNull _building) exitWith {};
 if(!(_building isKindOf "House_F")) exitWith {hint "You are not looking at a house door."};
+if(typeOf _building == "Land_i_Shed_Ind_F") exitWith {hint "The metal door is reinforced, your boltcutter is not strong enough."};
 if(isNil "life_boltcutter_uses") then {life_boltcutter_uses = 0;};
 if((nearestObject [[16019.5,16952.9,0],"Land_Dome_Big_F"]) == _building OR (nearestObject [[16019.5,16952.9,0],"Land_Research_house_V1_F"]) == _building) then {
-	[[[1,2],"STR_ISTR_Bolt_AlertFed",true,[]],"life_fnc_broadcast",true,false] call life_fnc_MP;
+	_fed = true;
 } else {
+	[[_building],"life_fnc_bankalarmsound",true,true] call life_fnc_MP;
 	[[0,"STR_ISTR_Bolt_AlertHouse",true,[profileName]],"life_fnc_broadcast",true,false] call life_fnc_MP;
+	_fed = false;
+};
+
+
+if(_fed && ({side _x == west} count playableUnits < 5)) exitWith {hint localize "STR_Civ_NotEnoughCops"};
+
+if(_fed) then {
+	[[[1,2],"STR_ISTR_Bolt_AlertFed",true,[]],"life_fnc_broadcast",true,false] call life_fnc_MP;
 };
 
 _doors = getNumber(configFile >> "CfgVehicles" >> (typeOf _building) >> "NumberOfDoors");
@@ -42,7 +52,28 @@ _cP = 0.01;
 switch (typeOf _building) do {
 	case "Land_Dome_Big_F": {_cpRate = 0.003;};
 	case "Land_Research_house_V1_F": {_cpRate = 0.0015;};
-	default {_cpRate = 0.08;}
+	default {
+		_cpRate = 0.0010;
+		diag_log format["Building: %1", _building];
+		diag_log format["Type: %1", typeOf _building];
+		_owneruid = (_building getVariable "house_owner") select 0;
+//		if (_owneruid == -1) exitWith {};
+		_owner =
+		{
+			if ((getPlayerUID _x) == _owneruid) exitWith {_x;};
+		} forEach allUnits;
+		_position = position player;
+		_a = floor ((_position select 0)/100);
+		_b = floor ((_position select 1)/100);
+		if (_a < 100) then {
+			_a = format["0%1",_a];
+		};
+		if (_b < 100) then {
+			_b = format["0%1",_b];
+		};
+		_msg = format["The security system on your house (grid %1%2) was activated",_a,_b];
+		[[_owner,_msg,player,6],"TON_fnc_handleMessages",false] spawn life_fnc_MP;
+	}
 };
 
 while {true} do
@@ -63,14 +94,14 @@ while {true} do
 	_progressBar progressSetPosition _cP;
 	_titleText ctrlSetText format["%3 (%1%2)...",round(_cP * 100),"%",_title];
 	if(_cP >= 1 OR !alive player) exitWith {};
-	if(life_istazed) exitWith {}; //Tazed
+	if(life_isDowned) exitWith {}; //Downed
 	if(life_interrupted) exitWith {};
 };
 
 //Kill the UI display and check for various states
 5 cutText ["","PLAIN"];
 player playActionNow "stop";
-if(!alive player OR life_istazed) exitWith {life_action_inUse = false;};
+if(!alive player OR life_isDowned) exitWith {life_action_inUse = false;};
 if((player getVariable["restrained",false])) exitWith {life_action_inUse = false;};
 if(life_interrupted) exitWith {life_interrupted = false; titleText[localize "STR_NOTF_ActionCancel","PLAIN"]; life_action_inUse = false;};
 life_boltcutter_uses = life_boltcutter_uses + 1;

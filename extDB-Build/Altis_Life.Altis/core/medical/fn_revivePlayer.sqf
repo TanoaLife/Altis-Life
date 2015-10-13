@@ -6,10 +6,13 @@
 	Description:
 	Starts the revive process on the player.
 */
-private["_target","_revivable","_targetName","_ui","_progressBar","_titleText","_cP","_title"];
+private["_target","_revivable","_targetName","_ui","_progressBar","_titleText","_cP","_title","_incar","_ploc"];
 _target = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
+_incar = [_this,1,false,[false]] call BIS_fnc_param;
+_ploc = [_this,2,[],[[]]] call BIS_fnc_param;
 if(isNull _target) exitWith {}; //DAFUQ?@!%$!R?EFFD?TGSF?HBS?DHBFNFD?YHDGN?D?FJH
-
+_requested = _target GVAR ["requestMedic",false];
+if(!_requested) exitWith {hint "This player did not request a medic."};
 _revivable = _target GVAR ["Revive",FALSE];
 if(_revivable) exitWith {};
 if(_target GVAR ["Reviving",ObjNull] == player) exitWith {hint localize "STR_Medic_AlreadyReviving";};
@@ -43,7 +46,7 @@ while {true} do {
 	_progressBar progressSetPosition _cP;
 	_titleText ctrlSetText format["%3 (%1%2)...",round(_cP * 100),"%",_title];
 	if(_cP >= 1 OR !alive player) exitWith {};
-	if(life_istazed) exitWith {}; //Tazed
+	if(life_isDowned) exitWith {}; //Downed
 	if(life_interrupted) exitWith {};
 	if((player GVAR ["restrained",false])) exitWith {};
 	if(player distance _target > 4) exitWith {_badDistance = true;};
@@ -56,18 +59,21 @@ while {true} do {
 player playActionNow "stop";
 if(_target GVAR ["Reviving",ObjNull] != player) exitWith {hint localize "STR_Medic_AlreadyReviving"};
 _target SVAR ["Reviving",NIL,TRUE];
-if(!alive player OR life_istazed) exitWith {life_action_inUse = false;};
+if(!alive player OR life_isDowned) exitWith {life_action_inUse = false;};
 if(_target GVAR ["Revive",FALSE]) exitWith {hint localize "STR_Medic_RevivedRespawned"};
 if((player GVAR ["restrained",false])) exitWith {life_action_inUse = false;};
 if(!isNil "_badDistance") exitWith {titleText[localize "STR_Medic_TooFar","PLAIN"]; life_action_inUse = false;};
 if(life_interrupted) exitWith {life_interrupted = false; titleText[localize "STR_NOTF_ActionCancel","PLAIN"]; life_action_inUse = false;};
 
-ADD(BANK,(LIFE_SETTINGS(getNumber,"revive_fee")));
+_fee = (LIFE_SETTINGS(getNumber,"revive_fee"));
+_fee = _fee + 20000;
+
+ADD(BANK,_fee);
 
 life_action_inUse = false;
 _target SVAR ["Revive",TRUE,TRUE];
-[[profileName],"life_fnc_revived",_target,FALSE] call life_fnc_MP;
-titleText[format[localize "STR_Medic_RevivePayReceive",_targetName,[LIFE_SETTINGS(getNumber,"revive_fee")] call life_fnc_numberText],"PLAIN"];
+[[profileName,_incar,_ploc],"life_fnc_revived",_target,FALSE] call life_fnc_MP;
+titleText[format[localize "STR_Medic_RevivePayReceive",_targetName,[_fee] call life_fnc_numberText],"PLAIN"];
 
 sleep .6;
 player reveal _target;

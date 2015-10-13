@@ -9,7 +9,7 @@
 if(life_action_inUse) exitWith {hint localize "STR_NOTF_ActionInProc"};
 disableSerialization;
 private["_nearVehicles","_control"];
-_nearVehicles = nearestObjects [getMarkerPos (_this select 3),["Car","Truck"],25];
+_nearVehicles = nearestObjects [getMarkerPos (_this select 3),["Car","Truck","Air","Ship"],25];
 
 life_chopShop = SEL(_this,3);
 //Error check
@@ -23,7 +23,8 @@ _control = CONTROL(39400,39402);
 		_displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
 		_picture = getText(configFile >> "CfgVehicles" >> _className >> "picture");
 		
-		_price = M_CONFIG(getNumber,CONFIG_VEHICLES,_className,"chopShop");
+		_price = M_CONFIG(getNumber,CONFIG_VEHICLES,_className,"price");
+		_price = round(0.70 * _price);
 		if(!isNil "_price" && EQUAL(count crew _x,0)) then {
 			_control lbAdd _displayName;
 			_control lbSetData [(lbSize _control)-1,str(_forEachIndex)];

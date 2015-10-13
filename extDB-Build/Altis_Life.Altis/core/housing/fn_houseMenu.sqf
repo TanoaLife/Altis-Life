@@ -2,6 +2,8 @@
 /*
 	Author: Bryan "Tonic" Boardwine
 	
+	File: fn_houseMenu.sqf
+	
 	Description:
 	Building interaction menu
 */
@@ -13,17 +15,17 @@
 #define Btn6 37455
 #define Btn7 37456
 #define Btn8 37457
+#define Btn9 37458
+#define Btn10 37459
 #define Title 37401
 
-private["_display","_curTarget","_Btn1","_Btn2","_Btn3","_Btn4","_Btn5","_Btn6","_Btn7"];
+private["_display","_curTarget","_Btn1","_Btn2","_Btn3","_Btn4","_Btn5","_Btn6","_Btn7","_steamid"];
 if(!dialog) then {
 	createDialog "pInteraction_Menu";
 };
 disableSerialization;
 _curTarget = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 if(isNull _curTarget) exitWith {closeDialog 0;}; //Bad target
-_houseCfg = M_CONFIG(getNumber,"Houses",typeOf(_curTarget),"price");
-if (_houseCfg == 0) exitWith {closeDialog 0};
 
 _Btn1 = CONTROL(37400,Btn1);
 _Btn2 = CONTROL(37400,Btn2);
@@ -32,10 +34,15 @@ _Btn4 = CONTROL(37400,Btn4);
 _Btn5 = CONTROL(37400,Btn5);
 _Btn6 = CONTROL(37400,Btn6);
 _Btn7 = CONTROL(37400,Btn7);
-{_x ctrlShow false;} foreach [_Btn1,_Btn2,_Btn3,_Btn4,_Btn5,_Btn6,_Btn7];
+_Btn8 = CONTROL(37400,Btn8);
+_Btn9 = CONTROL(37400,Btn9);
+_Btn10 = CONTROL(37400,Btn10);
+{_x ctrlShow false;} foreach [_Btn1,_Btn2,_Btn3,_Btn4,_Btn5,_Btn6,_Btn7,_Btn8,_Btn9,_Btn10];
+
+diag_log "opened house menu";
 
 life_pInact_curTarget = _curTarget;
-if(_curTarget isKindOf "House_F" && playerSide == west) exitWith {
+if(playerSide == west) exitWith {
 	if((nearestObject [[16019.5,16952.9,0],"Land_Dome_Big_F"]) == _curTarget OR (nearestObject [[16019.5,16952.9,0],"Land_Research_house_V1_F"]) == _curTarget) then {
 		
 		_Btn1 ctrlSetText localize "STR_pInAct_Repair";
@@ -73,17 +80,28 @@ if(_curTarget isKindOf "House_F" && playerSide == west) exitWith {
 	};
 };
 
+_houseCfg = M_CONFIG(getNumber,"Houses",typeOf(_curTarget),"price");
+if (_houseCfg == 0) exitWith {closeDialog 0};
+
 if(!(_curTarget in life_vehicles) OR isNil {_curTarget GVAR "house_owner"}) then {
+	diag_log "curtarget not in life_veh or house owner is null";
 	if(_curTarget in life_vehicles) then {SUB(life_vehicles,[_curTarget]);};
 	_Btn1 ctrlSetText localize "STR_pInAct_BuyHouse";
 	_Btn1 buttonSetAction "[life_pInact_curTarget] spawn life_fnc_buyHouse;";
 	_Btn1 ctrlShow true;
+	
+	if (typeOf _curTarget == "Land_i_Shed_Ind_F") then {
+		if (life_gangrank < 5) then {
+			_Btn1 ctrlEnable false;
+		};
+	};
 	
 	if(!isNil {_curTarget GVAR "house_owner"}) then {
 		_Btn1 ctrlEnable false;
 	};
 } else {
 	if((typeOf _curTarget) in ["Land_i_Garage_V1_F","Land_i_Garage_V2_F"]) then {
+		diag_log "Opened a garage";
 		_Btn1 ctrlSetText localize "STR_pInAct_SellGarage";
 		_Btn1 buttonSetAction "[life_pInact_curTarget] spawn life_fnc_sellHouse; closeDialog 0;";
 		_Btn1 ctrlShow true;
@@ -103,9 +121,27 @@ if(!(_curTarget in life_vehicles) OR isNil {_curTarget GVAR "house_owner"}) then
 		_Btn1 ctrlSetText localize "STR_pInAct_SellHouse";
 		_Btn1 buttonSetAction "[life_pInact_curTarget] spawn life_fnc_sellHouse; closeDialog 0;";
 		_Btn1 ctrlShow true;
-		
+		diag_log "Opened a house";
 		if(((_curTarget GVAR "house_owner") select 0) != (getPlayerUID player)) then {
 			_Btn1 ctrlEnable false;
+		};
+		
+		if (typeOf _curTarget == "Land_i_Shed_Ind_F") then {
+			diag_log "That house was a shed";
+			if (life_gangrank == 5) then {
+				_Btn1 ctrlEnable true;
+			} else {
+				_Btn1 ctrlEnable false;
+				_Btn2 ctrlEnable false;
+			};
+			_Btn4 ctrlSetText localize "STR_pInAct_AccessGarage";
+			_Btn4 buttonSetAction "[life_pInact_curTarget,""Car"",true] spawn life_fnc_vehicleGarage; closeDialog 0;";
+			_Btn4 ctrlShow true;
+			
+			_Btn5 ctrlSetText localize "STR_pInAct_StoreVeh";
+			_Btn5 buttonSetAction "[life_pInact_curTarget,player] spawn life_fnc_storeVehicle; closeDialog 0;";
+			_Btn5 ctrlShow true;
+			
 		};
 		
 		if(_curTarget GVAR ["locked",false]) then {
@@ -123,5 +159,15 @@ if(!(_curTarget in life_vehicles) OR isNil {_curTarget GVAR "house_owner"}) then
 		};
 		_Btn3 buttonSetAction "[life_pInact_curTarget] call life_fnc_lightHouseAction; closeDialog 0;";
 		_Btn3 ctrlShow true;
+	};
+};
+
+if ((!(_curTarget getVariable ["locked",false])&&(!isNil {_curTarget getVariable "house_owner"})) OR (_curTarget in life_vehicles)) then
+{
+	if (isNil {cursorTarget getVariable "inUse"}) then {cursorTarget setVariable ["inUse",[false,""],true];};
+	_Btn7 ctrlSetText "Open Gear Inventory";
+	_Btn7 buttonSetAction "[_curTarget] spawn life_fnc_openHouseVInv; closeDialog 0;";
+	if !((cursorTarget getVariable "inUse") select 0) then {
+		_Btn7 ctrlShow true;
 	};
 };

@@ -22,7 +22,7 @@ if((_veh isKindOf "Car") OR (_veh isKindOf "Ship") OR (_veh isKindOf "Air")) the
 		_ui = uiNameSpace getVariable "life_progress";
 		_progress = _ui displayCtrl 38201;
 		_pgText = _ui displayCtrl 38202;
-		_pgText ctrlSetText format["%2 (1%1)...","%",_upp];
+		_pgText ctrlSetText format["%1",_upp];
 		_progress progressSetPosition 0.01;
 		_cP = 0.01;
 		
@@ -37,18 +37,24 @@ if((_veh isKindOf "Car") OR (_veh isKindOf "Ship") OR (_veh isKindOf "Air")) the
 			_cP = _cP + 0.01;
 			_progress progressSetPosition _cP;
 			_pgText ctrlSetText format["%3 (%1%2)...",round(_cP * 100),"%",_upp];
-			if(_cP >= 1) exitWith {};
-			if(!alive player) exitWith {};
-			if(player != vehicle player) exitWith {};
-			if(life_interrupted) exitWith {};
+			if(_cP >= 1) exitWith {_ui = "osefStatusBar" call BIS_fnc_rscLayer;_ui cutRsc["osefStatusBar","PLAIN"];};
+			if(!alive player) exitWith {_ui = "osefStatusBar" call BIS_fnc_rscLayer;_ui cutRsc["osefStatusBar","PLAIN"];};
+			if(player != vehicle player) exitWith {_ui = "osefStatusBar" call BIS_fnc_rscLayer;_ui cutRsc["osefStatusBar","PLAIN"];};
+			if(life_interrupted) exitWith {_ui = "osefStatusBar" call BIS_fnc_rscLayer;_ui cutRsc["osefStatusBar","PLAIN"];};
 		};
 		
 		life_action_inUse = false;
 		5 cutText ["","PLAIN"];
 		player playActionNow "stop";
-		if(life_interrupted) exitWith {life_interrupted = false; titleText[localize "STR_NOTF_ActionCancel","PLAIN"]; life_action_inUse = false;};
+		if(life_interrupted) exitWith {life_interrupted = false; titleText[localize "STR_NOTF_ActionCancel","PLAIN"]; life_action_inUse = false;_ui = "osefStatusBar" call BIS_fnc_rscLayer;_ui cutRsc["osefStatusBar","PLAIN"];};
 		if(player != vehicle player) exitWith {titleText[localize "STR_NOTF_RepairingInVehicle","PLAIN"];};
-		player removeItem "ToolKit";
+		if (playerSide != independent) then {
+			player removeItem "ToolKit";
+		};
+		_pos = getPosATL _veh;
+		_z = (_pos select 2) + 0.2;
+		_pos set [2,_z];
+		_veh setPosATL _pos;
 		_veh setDamage 0;
 		titleText[localize "STR_NOTF_RepairedVehicle","PLAIN"];
 	};

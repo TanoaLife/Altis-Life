@@ -33,8 +33,8 @@ switch (_var) do
 	case "life_inv_coffee": {(localize "STR_Item_Coffee")};
 	case "life_inv_turtlesoup": {(localize "STR_Item_TurtleSoup")};
 	case "life_inv_donuts": {(localize "STR_Item_Donuts")};
-	case "life_inv_fuelE": {(localize "STR_Item_FuelE")};
-	case "life_inv_fuelF": {(localize "STR_Item_FuelF")};
+	case "life_inv_fuelEmpty": {(localize "STR_Item_FuelEmpty")};
+	case "life_inv_fuelFull": {(localize "STR_Item_FuelFull")};
 	case "life_inv_pickaxe": {(localize "STR_Item_Pickaxe")};
 	case "life_inv_copperore": {(localize "STR_Item_CopperOre")};
 	case "life_inv_ironore": {(localize "STR_Item_IronOre")};
@@ -56,11 +56,22 @@ switch (_var) do
 	case "life_inv_rock": {(localize "STR_Item_Rock")};
 	case "life_inv_cement": {(localize "STR_Item_CementBag")};
 	case "life_inv_goldbar": {(localize "STR_Item_GoldBar")};
+	case "life_inv_goldbarp": {(localize "STR_Item_GoldScrap")};
 	case "life_inv_blastingcharge": {(localize "STR_Item_BCharge")};
 	case "life_inv_boltcutter": {(localize "STR_Item_BCutter")};
 	case "life_inv_defusekit": {(localize "STR_Item_DefuseKit")};
 	case "life_inv_storagesmall": {(localize "STR_Item_StorageBS")};
 	case "life_inv_storagebig": {(localize "STR_Item_StorageBL")};
+	case "life_inv_ziptie": {(localize "STR_Item_Ziptie")};
+	case "life_inv_frog": {(localize "STR_Item_Frog")};
+	case "life_inv_froglsd": {(localize "STR_Item_Froglsd")};
+	case "life_inv_mushroom": {(localize "STR_Item_Mushroom")};
+	case "life_inv_magicm": {(localize "STR_Item_Magicm")};
+	case "life_inv_underwatercharge": {(localize "STR_Item_Underwatercharge")};
+	case "life_inv_lostcargo": {(localize "STR_Item_lostcargo")};
+	case "life_inv_gpstracker": {(localize "STR_Item_gpstracker")};
+	case "life_inv_speedbomb": {(localize "STR_Item_speedbomb")};
+
 	
 	//License Block
 	case "license_civ_driver": {(localize "STR_License_Driver")};
@@ -85,4 +96,10 @@ switch (_var) do
 	case "license_civ_cement": {(localize "STR_License_Cement")};
 	case "license_med_air": {(localize "STR_License_Pilot")};
 	case "license_civ_home": {(localize "STR_License_Home")};
+	case "license_civ_vigilante": {"STR_License_Vigilante"};
+	case "license_civ_news": {"STR_License_News"};
+	case "license_civ_taxi": {"STR_License_Taxi"};
+	case "license_civ_frog": {"STR_License_Frog"};
+	case "license_civ_magicm": {"STR_License_Magicm"};
+	case "license_civ_medmarijuana": {"STR_License_Medmarijuana"};
 };

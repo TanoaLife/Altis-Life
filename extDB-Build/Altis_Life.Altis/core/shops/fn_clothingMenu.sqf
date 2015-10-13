@@ -25,6 +25,7 @@ if(_exit) exitWith {};
 _flag = switch(playerSide) do {case west: {"cop"}; case independent: {"med"}; default {"civ"};};
 if(!(EQUAL(_flag,_shopSide))) exitWith {};
 
+
 /* Open up the menu */
 createDialog "Life_Clothing";
 disableSerialization;
@@ -34,7 +35,9 @@ ctrlSetText [3103,localize _shopTitle];
 if((SEL(_this,3) in ["bruce","dive","reb","kart"] && playerSide != civilian)) exitWith {hint localize "STR_Shop_NotaCiv"; closeDialog 0;};
 if((SEL(_this,3) == "reb" && !license_civ_rebel)) exitWith {hint localize "STR_Shop_NotaReb"; closeDialog 0;};
 if((SEL(_this,3) in ["cop"] && playerSide != west)) exitWith {hint localize "STR_Shop_NotaCop"; closeDialog 0;};
+if((SEL(_this,3) in ["med"] && playerSide != independent)) exitWith {hint "GO SAVE SOMEBODY INSTEAD"; closeDialog 0;};
 if((SEL(_this,3) in ["dive"] && !license_civ_dive)) exitWith { hint localize "STR_Shop_NotaDive"; closeDialog 0;};
+
 
 _pos = [1000,1000,10000];
 _oldDir = getDir player;
@@ -167,6 +170,7 @@ life_clothesPurchased = nil;
 //Check uniform purchase.
 if((life_clothing_purchase select 0) == -1) then {
 	if(life_oldClothes != uniform player) then {player addUniform life_oldClothes;};
+	[] call life_fnc_Uniformscolor;
 };
 //Check hat
 if((life_clothing_purchase select 1) == -1) then {
@@ -186,6 +190,7 @@ if((life_clothing_purchase select 2) == -1) then {
 if((life_clothing_purchase select 3) == -1) then {
 	if(life_oldVest != vest player) then {
 		if(life_oldVest == "") then {removeVest player;} else {
+			removeVest player;
 			player addVest life_oldVest;
 			{[_x,true,false,false,true] call life_fnc_handleItem;} foreach life_oldVestItems;
 		};
@@ -205,3 +210,4 @@ if((life_clothing_purchase select 4) == -1) then {
 
 life_clothing_purchase = [-1,-1,-1,-1,-1];
 [] call life_fnc_saveGear;
+[] call life_fnc_Uniformscolor;

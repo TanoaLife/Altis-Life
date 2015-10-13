@@ -6,7 +6,7 @@
 	Description:
 	Master handling for processing an item.
 */
-private["_vendor","_type","_itemInfo","_oldItem","_newItem","_cost","_upp","_hasLicense","_itemName","_oldVal","_ui","_progress","_pgText","_cP"];
+private["_vendor","_type","_itemInfo","_oldItem","_newItem","_cost","_upp","_hasLicense","_itemName","_oldVal","_ui","_progress","_pgText","_cP","_delayInt"];
 _vendor = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 _type = [_this,3,"",[""]] call BIS_fnc_param;
 //Error check
@@ -14,7 +14,7 @@ if(isNull _vendor OR EQUAL(_type,"") OR (player distance _vendor > 10)) exitWith
 
 //unprocessed item,processed item, cost if no license,Text to display (I.e Processing  (percent) ..."
 _itemInfo = switch (_type) do {
-	case "oil": {["oilu","oilp",1200,(localize "STR_Process_Oil")];};
+	case "oil": {["oil_unprocessed","oil_processed",1200,(localize "STR_Process_Oil")];};
 	case "diamond": {["diamond_uncut","diamond_cut",1350,(localize "STR_Process_Diamond")];};
 	case "heroin": {["heroin_unprocessed","heroin_processed",1750,(localize "STR_Process_Heroin")];};
 	case "copper": {["copper_unrefined","copper_refined",750,(localize "STR_Process_Copper")];};
@@ -24,6 +24,8 @@ _itemInfo = switch (_type) do {
 	case "cocaine": {["cocaine_unprocessed","cocaine_processed",1500,(localize "STR_Process_Cocaine")];};
 	case "marijuana": {["cannabis","marijuana",500,(localize "STR_Process_Marijuana")];};
 	case "cement": {["rock","cement",350,(localize "STR_Process_Cement")];};
+	case "frog": {["frog","froglsd",350,(localize "STR_Process_Frog")];};
+	case "magicm": {["mushroom","magicm",150,(localize "STR_Process_Magicm")];};
 	default {[];};
 };
 
@@ -61,9 +63,10 @@ _cP = 0.01;
 
 life_is_processing = true;
 
+_delayInt = _oldVal * 0.03; 
 if(_hasLicense) then {
 	while{true} do {
-		sleep  0.3;
+		sleep _delayInt;
 		_cP = _cP + 0.01;
 		_progress progressSetPosition _cP;
 		_pgText ctrlSetText format["%3 (%1%2)...",round(_cP * 100),"%",_upp];
@@ -81,7 +84,7 @@ if(_hasLicense) then {
 	if(CASH < _cost) exitWith {hint format[localize "STR_Process_License",[_cost] call life_fnc_numberText]; 5 cutText ["","PLAIN"]; life_is_processing = false;};
 	
 	while{true} do {
-		sleep  0.9;
+		sleep  1;
 		_cP = _cP + 0.01;
 		_progress progressSetPosition _cP;
 		_pgText ctrlSetText format["%3 (%1%2)...",round(_cP * 100),"%",_upp];

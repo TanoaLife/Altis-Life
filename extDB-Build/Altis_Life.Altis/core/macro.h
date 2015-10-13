@@ -5,7 +5,7 @@
 #define SEL(ARRAY,INDEX) (ARRAY select INDEX)
 #define CASH life_cash
 #define BANK life_atmbank
-#define GANG_FUNDS grpPlayer getVariable ["gang_bank",0];
+#define GANG_FUNDS life_gangbank;
 
 //Namespace Macros
 #define SVAR_MNS missionNamespace setVariable 
@@ -32,6 +32,8 @@
 	life_server_extDB_notLoaded = [true,##MESSAGE]; \
 	PVAR_ALL("life_server_extDB_notLoaded"); \
 	diag_log MESSAGE;
+#define __GETC__(var) (call var)
+#define __CONST__(var1,var2) var1 = compileFinal (if(typeName var2 == "STRING") then {var2} else {str(var2)})
 
 //Display Macros
 #define CONTROL(disp,ctrl) ((findDisplay ##disp) displayCtrl ##ctrl)

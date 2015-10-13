@@ -25,13 +25,11 @@ _escSync = {
 			_abortButton ctrlCommit 0;
 			round(_timeStamp - time) <= 0 || isNull (findDisplay 49)
 		};
-		
 		_abortButton ctrlSetText localize "STR_DISP_INT_ABORT";
 		_abortButton ctrlCommit 0;
 	};
 	
 	_abortButton = CONTROL(49,104);
-	[] call SOCK_fnc_updateRequest; //call our silent sync.
 	
 	if(_this) then {
 		_thread = [] spawn _syncManager;
@@ -42,7 +40,7 @@ _escSync = {
 
 _canUseControls = {
 	if(playerSide == west) exitWith {true};
-	if((player GVAR ["restrained",FALSE]) OR (player GVAR ["Escorting",FALSE]) OR (player GVAR ["transporting",FALSE]) OR (life_is_arrested) OR (life_istazed)) then {false} else {true};
+	if((player GVAR ["restrained",FALSE]) OR (player GVAR ["Escorting",FALSE]) OR (player GVAR ["transporting",FALSE]) OR (life_is_arrested) OR (life_isDowned)) then {false} else {true};
 };
 	
 while {true} do

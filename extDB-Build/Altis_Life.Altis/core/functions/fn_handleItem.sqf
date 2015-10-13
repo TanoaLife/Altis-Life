@@ -20,6 +20,7 @@ if(EQUAL(_item,"")) exitWith {};
 _isgun = false;
 
 _details = [_item] call life_fnc_fetchCfgDetails;
+diag_log format["handleItem Details: %1 Item: %2",_details,_item];
 if(EQUAL(count _details,0)) exitWith {};
 
 if(_bool) then {
@@ -250,10 +251,58 @@ if(_bool) then {
 									player addItem _item;
 								} else {
 									private["_wepItems","_action","_slotTaken"];
-									_wepItems = switch(_type) do {case 1:{RIFLE_ITEMS}; case 2:{secondaryWeaponItems player}; case 3:{PISTOL_ITEMS}; default {["","",""]};};
+									_wepItems = switch(_type) do {case 1:{RIFLE_ITEMS}; case 2:{secondaryWeaponItems player}; case 3:{PISTOL_ITEMS}; default {["","","",""]};};
 									_slotTaken = false;
 
 									if(!(EQUAL(SEL(_wepItems,1),""))) then {_slotTaken = true;};
+
+									if(_slotTaken) then {
+										_action = [localize "STR_MISC_AttachmentMSG",localize "STR_MISC_Attachment",localize "STR_MISC_Weapon",localize "STR_MISC_Inventory"] call BIS_fnc_guiMessage;
+										if(_action) then {
+											switch(_type) do {
+												case 1: {player addPrimaryWeaponItem _item;};
+												case 2: {player addSecondaryWeaponItem _item;};
+												case 3: {player addHandgunItem _item;};
+												default {player addItem _item;};
+											};
+										} else {
+											player addItem _item; //Add it to any available container
+										};
+									} else {
+										switch(_type) do {
+											case 1: {player addPrimaryWeaponItem _item;};
+											case 2: {player addSecondaryWeaponItem _item;};
+											case 3: {player addHandgunItem _item;};
+											default {player addItem _item;};
+										};
+									};
+								};
+							};
+						};
+					};
+
+					case 302: {
+						if(_ispack) then {
+							player addItemToBackpack _item;
+						} else {
+							private "_type";
+							_type = 1;
+
+							if(_ongun) then { 
+								switch (_type) do {
+									case 1: { player addPrimaryWeaponItem _item; };
+									case 2: { player addSecondaryWeaponItem _item; };
+									case 3: { player addHandgunItem _item; };
+								};
+							} else {
+								if(_override) then {
+									player addItem _item;
+								} else {
+									private["_wepItems","_action","_slotTaken"];
+									_wepItems = switch(_type) do {case 1:{RIFLE_ITEMS}; case 2:{secondaryWeaponItems player}; case 3:{PISTOL_ITEMS}; default {["","","",""]};};
+									_slotTaken = false;
+
+									if(!(EQUAL(SEL(_wepItems,3),""))) then {_slotTaken = true;};
 
 									if(_slotTaken) then {
 										_action = [localize "STR_MISC_AttachmentMSG",localize "STR_MISC_Attachment",localize "STR_MISC_Weapon",localize "STR_MISC_Inventory"] call BIS_fnc_guiMessage;
@@ -351,7 +400,21 @@ if(_bool) then {
 							};
 						};
 					};
-
+					
+					
+					case (_item in ["Rangefinder","Binocular","Laserdesignator","Laserdesignator_02","Laserdesignator_03"]) : {
+						diag_log "Passed rangefinder check";
+						if(_ispack) then {
+							player addItemToBackpack _item;
+						} else {
+							if(_override) then {
+								player addItem _item;
+							} else {
+								player linkItem _item;
+							};
+						};
+					};
+					
 					default { 
 						if(_ispack) then {
 							player addItemToBackpack _item;
@@ -370,7 +433,18 @@ if(_bool) then {
 		};
 
 		case CONFIG_MAGAZINES: {
-			player removeMagazine _item;
+			if (_item in uniformItems player || _item in backpackItems player|| _item in vestItems player) then {player removeMagazine _item;}
+			else {
+				if (_item == SEL((primaryWeaponMagazine player),0)) then {
+					player removePrimaryWeaponItem _item;
+				};
+				if(_item == SEL((handgunMagazine player),0)) then {
+					player removeHandgunItem _item;
+				};
+				if(_item == SEL((secondaryWeaponMagazine player),0)) then {
+					player removeSecondaryWeaponItem _item;
+				};
+			};
 		};
 
 		case CONFIG_GLASSES: {
@@ -469,18 +543,31 @@ if(_bool) then {
 					};
 				};
 			} else {
-				switch(SEL(_details,5)) do {
-					case 0: {player unlinkItem _item;};
-					case 605: {if(EQUAL(headGear player,_item)) then {removeHeadgear player} else {player removeItem _item};};
-					case 801: {if(EQUAL(uniform player,_item)) then {removeUniform player} else {player removeItem _item};};
-					case 701: {if(EQUAL(vest player,_item)) then {removeVest player} else {player removeItem _item};};
-					case 621: {player unlinkItem _item;};
-					case 616: {player unlinkItem _item;};
-					default {
-						switch (true) do {
-							case (_item in RIFLE_ITEMS) : {player removePrimaryWeaponItem _item;};
-							case (_item in PISTOL_ITEMS) : {player removeHandgunItem _item;};
-							default {player removeItem _item;};
+				if(_item in ["Rangefinder","Binocular","Laserdesignator","Laserdesignator_02","Laserdesignator_03"]) then {
+					diag_log "passed rangefinder check";
+					if (_item in uniformItems player || _item in backpackItems player|| _item in vestItems player) then {
+						player removeItem _item;
+					} else {
+						player unlinkItem _item;
+						player unassignItem _item;
+						player removeItem _item;
+					};
+				} else {
+					diag_log "made it to details switch";
+					switch(SEL(_details,5)) do {
+						case 0: {player unlinkItem _item;};
+						case 605: {if(EQUAL(headGear player,_item)) then {removeHeadgear player} else {player removeItem _item};};
+						case 801: {if(EQUAL(uniform player,_item)) then {removeUniform player} else {player removeItem _item};};
+						case 701: {if(EQUAL(vest player,_item)) then {removeVest player} else {player removeItem _item};};
+						case 621: {player unlinkItem _item;};
+						case 616: {player unlinkItem _item;};
+						default {
+							diag_log "default switch case in details";
+							switch (true) do {
+								case (_item in RIFLE_ITEMS) : {player removePrimaryWeaponItem _item;};
+								case (_item in PISTOL_ITEMS) : {player removeHandgunItem _item;};
+								default {player removeItem _item;};
+							};
 						};
 					};
 				};

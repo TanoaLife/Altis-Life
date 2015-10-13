@@ -69,3 +69,6 @@ _lic ctrlSetStructuredText parseText format["
 %1
 </t>
 ",_struct];
+
+_time = 4*60*60;
+ctrlSetText[1015, format["Next Restart: %1",[(_time - time),"HH:MM"] call BIS_fnc_secondsToString]];

@@ -62,11 +62,13 @@ if(_curTarget isKindOf "Man" && {!alive _curTarget} && {playerSide in [west,inde
 	};
 };
 
-
 //If target is a player then check if we can use the cop menu.
 if(isPlayer _curTarget && _curTarget isKindOf "Man") then {
 	if((_curTarget GVAR ["restrained",false]) && !dialog && playerSide == west) then {
 		[_curTarget] call life_fnc_copInteractionMenu;
+	};
+	if((!dialog && playerSide == civilian && (player distance _curTarget < 4) && !(player getVariable["restrained",false]))) then {
+		[_curTarget] call life_fnc_civInteractionMenu;
 	};
 } else {
 	//OK, it wasn't a player so what is it?
@@ -81,8 +83,14 @@ if(isPlayer _curTarget && _curTarget isKindOf "Man") then {
 	//It's a vehicle! open the vehicle interaction key!
 	if(_isVehicle) then {
 		if(!dialog) then {
-			if(player distance _curTarget < SEL(SEL(boundingBox _curTarget,1),0)+2) then {
+			if(playerSide == west && player distance _curTarget < (((boundingBox _curTarget select 1) select 0) + 2)) then {
 				[_curTarget] call life_fnc_vInteractionMenu;
+			};
+			if(playerSide == civilian && player distance _curTarget < (((boundingBox _curTarget select 1) select 0) + 2)) then {
+			    [_curTarget] call life_fnc_civVInteractionMenu;
+			};
+			if(playerSide == independent && player distance _curTarget < (((boundingBox _curTarget select 1) select 0) + 2)) then {
+			    [_curTarget] call life_fnc_medVInteractionMenu;
 			};
 		};
 	} else {
@@ -104,9 +112,15 @@ if(isPlayer _curTarget && _curTarget isKindOf "Man") then {
 			} else {
 				//It wasn't a misc item so is it money?
 				if(EQUAL((typeOf _curTarget),_money) && {!(_curTarget GVAR ["inUse",false])}) then {
-					[[_curTarget,player,true],"TON_fnc_pickupAction",false,false,true] call life_fnc_MP;
+					[[_curTarget,player,true],"TON_fnc_pickupAction",false,false,true] spawn life_fnc_MP;
 				};
 			};
 		};
 	};
+};
+
+//Check if it's a dead body.
+if(_curTarget isKindOf "Man" && {!alive _curTarget} ) exitWith {
+	// Put your friend inside the vehicle
+	hint "You are looking at a dead man";
 };

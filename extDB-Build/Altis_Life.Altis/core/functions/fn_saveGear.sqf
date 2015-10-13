@@ -8,7 +8,7 @@
     Description:
     Saves the players gear for syncing to the database for persistence..
 */
-private["_return","_uItems","_bItems","_vItems","_pItems","_hItems","_yItems","_uMags","_vMags","_bMags","_pMag","_hMag","_uni","_ves","_bag","_handled"];
+private["_return","_uItems","_bItems","_vItems","_pItems","_hItems","_yItems","_uMags","_vMags","_bMags","_pMag","_hMag","_uni","_ves","_bag","_handled","_sMag"];
 _return = [];
 
 _return pushBack uniform player;
@@ -120,6 +120,32 @@ if(count (handgunMagazine player) > 0 && alive player) then {
     };
 };
 
+if(count (secondaryWeaponMagazine player) > 0 && alive player) then {
+    _sMag = SEL((secondaryWeaponMagazine player),0);
+	
+    if(!(EQUAL(_sMag,""))) then {
+        _uni = player canAddItemToUniform _sMag;
+        _ves = player canAddItemToVest _sMag;
+        _bag = player canAddItemToBackpack _sMag;
+        _handled = false;
+		
+        if(_ves) then {
+			ADD(_vMags,[_sMag]);
+            _handled = true;
+        };
+		
+        if(_uni && !_handled) then {
+			ADD(_uMags,[_sMag]);
+            _handled = true;
+        };
+		
+        if(!_handled) then {
+			ADD(_bMags,[_sMag]);
+            _handled = true;
+        };
+    };
+};
+
 if(count (RIFLE_ITEMS) > 0) then {
     {
 		ADD(_pItems,[_x]);
@@ -134,7 +160,7 @@ if(count (PISTOL_ITEMS) > 0) then {
 
 {
     _val = ITEM_VALUE(_x);
-    if (_val > 0) then {
+    if (finite _val && _val > 0) then {
 		_yItems pushBack [_x,_val];
     };
 } forEach LIFE_SETTINGS(getArray,"allowedSavedVirtualItems");
@@ -153,4 +179,12 @@ if(EQUAL(LIFE_SETTINGS(getNumber,"save_virtualItems"),1)) then {
     _return pushBack [];
 };
 
+if(playerSide == west || playerSide == civilian && {EQUAL(LIFE_SETTINGS(getNumber,"save_civ_weapons"),1)}) then {
+    _return pushBack LAUNCHER;
+} else {
+    _return pushBack [];
+};
+
+
 life_gear = _return;
+diag_log format["Saved Gear: %1", life_gear];

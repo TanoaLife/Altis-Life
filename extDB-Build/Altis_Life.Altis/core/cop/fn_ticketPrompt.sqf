@@ -20,6 +20,7 @@ life_ticket_paid = false;
 life_ticket_val = _val;
 life_ticket_cop = _cop;
 CONTROL(2600,2601) ctrlSetStructuredText parseText format["<t align='center'><t size='.8px'>" +(localize "STR_Cop_Ticket_GUI_Given"),_cop getVariable["realname",name _cop],_val];
+player say3D "ticket";
 
 [] spawn {
 	disableSerialization;
@@ -27,5 +28,9 @@ CONTROL(2600,2601) ctrlSetStructuredText parseText format["<t align='center'><t 
 	if(isNull (findDisplay 2600) && !life_ticket_paid) then {
 		[[0,"STR_Cop_Ticket_Refuse",true,[profileName]],"life_fnc_broadcast",west,false] call life_fnc_MP;
 		[[1,"STR_Cop_Ticket_Refuse",true,[profileName]],"life_fnc_broadcast",life_ticket_cop,false] call life_fnc_MP;
+	}
+	else 
+	{
+		[[1,format["You have a collected $%1 from that ticket.",life_ticket_val]],"life_fnc_broadcast",life_ticket_cop,false] spawn life_fnc_MP;
 	};
 };

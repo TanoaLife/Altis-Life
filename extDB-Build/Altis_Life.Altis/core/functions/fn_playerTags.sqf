@@ -6,9 +6,10 @@
 	Description:
 	Adds the tags above other players heads when close and have visible range.
 */
-private["_ui","_units"];
+private["_ui","_units","_goggles","_rp","_img","_name"];
 #define iconID 78000
 #define scale 0.8
+
 
 if(visibleMap OR {!alive player} OR {dialog}) exitWith {
 	500 cutText["","PLAIN"];
@@ -37,27 +38,82 @@ SUB(_units,[player]);
 		_distance = _pos distance player;
 		if(count _sPos > 1 && {_distance < 15}) then {
 			_text = switch (true) do {
+				case (isPlayer _x && {(uniform _x in life_noname_clothing)}): {"";};
+				case (isPlayer _x && {(headgear _x in life_hidden_clothing) || (goggles _x in life_hidden_clothing)}): {"<t size='1.2'>[Masked Person]</t>";};
 				case (_x in (units grpPlayer) && playerSide == civilian): {format["<t color='#00FF00'>%1</t>",(_x GVAR ["realname",name _x])];};
-				case (!isNil {(_x GVAR "rank")}): {format["<img image='%1' size='1'></img> %2",switch ((_x GVAR "rank")) do {
-					case 2: {"\a3\ui_f\data\gui\cfg\Ranks\corporal_gs.paa"}; 
-					case 3: {"\a3\ui_f\data\gui\cfg\Ranks\sergeant_gs.paa"};
-					case 4: {"\a3\ui_f\data\gui\cfg\Ranks\lieutenant_gs.paa"};
-					case 5: {"\a3\ui_f\data\gui\cfg\Ranks\captain_gs.paa"};
-					case 6: {"\a3\ui_f\data\gui\cfg\Ranks\major_gs.paa"};
-					case 7: {"\a3\ui_f\data\gui\cfg\Ranks\colonel_gs.paa"};
-					case 8: {"\a3\ui_f\data\gui\cfg\Ranks\general_gs.paa"};
-					default {"\a3\ui_f\data\gui\cfg\Ranks\private_gs.paa"};
-					},_x GVAR ["realname",name _x]]};
-				case ((!isNil {_x GVAR "name"} && playerSide == independent)): {format["<t color='#FF0000'><img image='a3\ui_f\data\map\MapControl\hospital_ca.paa' size='1.5'></img></t> %1",_x GVAR ["name","Unknown Player"]]};
+				case (!isNil {(_x GVAR "rank")}): {format["<img image='%1' size='1.5'></img> <t size='1.35'>%2</t><br/><t size='0.8'>[%3]</t>",switch ((_x GVAR "rank")) do {
+					case 1: {"icons\cop\r.paa"};
+					case 2: {"icons\cop\p.paa"};
+					case 3: {"icons\cop\c.paa"};
+					case 4: {"icons\cop\s.paa"};
+					case 5: {"icons\cop\l.paa"};
+					case 6: {"icons\cop\l.paa"};
+					case 7: {"icons\cop\ca.paa"};
+
+					default {"icons\cop\1.paa"};
+					},
+
+					_x GVAR ["realname",name _x],
+					
+					switch ((_x GVAR "rank")) do {
+						case 1: {"Cadet"};
+						case 2: {"Private"};
+						case 3: {"Corporal"};
+						case 4: {"Sergeant"};
+						case 5: {"Warrant Officer"};
+						case 6: {"Lieutenant"};
+						case 7: {"Captain"};
+						default {"Cop In Training"};
+					}]};
+				//NHS
+				case (!isNil {(_x GVAR "medrank")}): {format["<img image='%3' size='1.5'></img> <t size='1.35'>%2</t><br/><t size='0.8'>[%1]</t>",switch ((_x GVAR "medrank")) do {
+					case 1: {"Responder"};
+					case 2: {"First Responder"}; 
+					case 3: {"Advanced Responder"};
+					case 4: {"Paramedic"};
+					case 5: {"MES Co-Director"};
+					case 6: {"MES Director"};
+					default {"Medic In Training"};
+					},_x GVAR ["realname",name _x],
+					switch ((_x GVAR "medrank")) do {
+					case 1: {"icons\medic\medic3.paa"};
+					case 2: {"icons\medic\medic3.paa"}; 
+					case 3: {"icons\medic\medic3.paa"};
+					case 4: {"icons\medic\medic1.paa"};
+					case 5: {"icons\medic\medic1.paa"};
+					case 6: {"icons\medic\medic1.paa"};
+					default {"icons\medic\medic3.paa"};
+					}
+					]};
 				default {
 					if(!isNil {(group _x) GVAR "gang_name"}) then {
 						format["%1<br/><t size='0.8' color='#B6B6B6'>%2</t>",_x GVAR ["realname",name _x],(group _x) GVAR ["gang_name",""]];
 					} else {
 						_x GVAR ["realname",name _x];
 					};
+					
 				};
 			};
 			
+			if(_text != "") then {
+				if(_x GVAR ["speaking",false]) then {_text = "[SPEAKING] " + _text};
+				
+				if (side _x == civilian) then {
+					_img = switch ((_x GVAR "rprank")) do {
+		                case 1: {"icons\rp\rp1.paa"};
+		                case 2: {"icons\rp\rp2.paa"};
+		                case 3: {"icons\rp\rp3.paa"};
+		                default {""};
+		           	};
+		           	if (_img != "") then {
+						_text = format["<img image='%1' size='1.5'></img> ",_img] + _text;
+		           	};
+					_name = _x GVAR ["realname",name _x];
+					if (_name find "[MGS]" >= 0) then {
+						_text = format["<img image='icons\MeccaLogo.paa' size='1.5'></img> ",_img] + _text;
+					};
+				};
+			};
 			_idc ctrlSetStructuredText parseText _text;
 			_idc ctrlSetPosition [_sPos select 0, _sPos select 1, 0.4, 0.65];
 			_idc ctrlSetScale scale;

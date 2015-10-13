@@ -5,16 +5,13 @@
 	Description:
 	Starts the invite process?
 */
-private "_unit";
+private ["_unit","_gang_house"];
 disableSerialization;
 
 if((lbCurSel 2632) == -1) exitWith {hint localize "STR_GNOTF_SelectPerson"};
 _unit = call compile format["%1",CONTROL_DATA(2632)];
 if(isNull _unit) exitWith {}; //Bad unit?
 if(_unit == player) exitWith {hint localize "STR_GNOTF_InviteSelf"};
-if(!isNil {(group _unit) GVAR "gang_name"}) exitWith {hint "This player is already in a gang"}; //Added
-
-if(count(grpPlayer GVAR ["gang_members",8]) == (grpPlayer GVAR ["gang_maxMembers",8])) exitWith {hint localize "STR_GNOTF_MaxSlot"};
 
 _action = [
 	format[localize "STR_GNOTF_InvitePlayerMSG",_unit GVAR ["realname",name _unit]],
@@ -23,11 +20,18 @@ _action = [
 	localize "STR_Global_No"
 ] call BIS_fnc_guiMessage;
 
+_gang_house = objNull;
+
+{
+    _position = call compile format["%1",_x select 0];
+    _b = nearestBuilding _position;
+    if (typeOf _b == "Land_i_Shed_Ind_F") then {
+        _gang_house = _b;
+    };
+}foreach life_houses;
+
 if(_action) then {
-	[[profileName,grpPlayer],"life_fnc_gangInvite",_unit,false] call life_fnc_MP;
-	_members = grpPlayer GVAR "gang_members";
-	_members pushBack getPlayerUID _unit;
-	grpPlayer SVAR ["gang_members",_members,true];
+	[[profileName,[life_gangid,life_gangowner,life_gangbank,life_gangmembers,life_gangname,_gang_house]],"life_fnc_gangInvite",_unit,false] call life_fnc_MP;
 	hint format[localize "STR_GNOTF_InviteSent",_unit GVAR ["realname",name _unit]];
 } else {
 	hint localize "STR_GNOTF_InviteCancel";

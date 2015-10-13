@@ -33,6 +33,25 @@ life_deathCamera camCommit 0;
 
 (findDisplay 7300) displaySetEventHandler ["KeyDown","if((_this select 1) == 1) then {true}"]; //Block the ESC menu
 
+_handle = [_unit] spawn life_fnc_dropItems;
+waitUntil {scriptDone _handle};
+if (playerSide == civilian) then {
+	life_gear set[16,[]];
+};
+life_deadGear = life_gear;
+
+life_hunger = 100;
+life_thirst = 100;
+life_carryWeight = 0;
+life_is_alive = false;
+CASH = 0;
+
+[0] call SOCK_fnc_updatePartial;
+if (playerSide == civilian) then {
+	[7] call SOCK_fnc_updatePartial;
+	[4] call SOCK_fnc_updatePartial;
+};
+
 //Create a thread for something?
 _unit spawn
 {
@@ -41,15 +60,23 @@ _unit spawn
 	_RespawnBtn = ((findDisplay 7300) displayCtrl 7302);
 	_Timer = ((findDisplay 7300) displayCtrl 7301);
 	
-	_maxTime = time + (life_respawn_timer * 60);
+	maxDeathTime = time + (life_respawn_timer * 60);
 	_RespawnBtn ctrlEnable false;
-	waitUntil {_Timer ctrlSetText format[localize "STR_Medic_Respawn",[(_maxTime - time),"MM:SS.MS"] call BIS_fnc_secondsToString]; 
-	round(_maxTime - time) <= 0 OR isNull _this};
+	waitUntil {_Timer ctrlSetText format[localize "STR_Medic_Respawn",[(maxDeathTime - time),"MM:SS"] call BIS_fnc_secondsToString]; 
+	round(maxDeathTime - time) <= 0 OR isNull _this};
 	_RespawnBtn ctrlEnable true;
 	_Timer ctrlSetText localize "STR_Medic_Respawn_2";
 };
 
 [] spawn life_fnc_deathScreen;
+if ((playerSide == civilian)) then {
+	if(life_nlrtimer_running) then
+	{
+		life_nlrtimer_stop = true;
+		waitUntil {!life_nlrtimer_running};
+	};
+	[] spawn life_fnc_newLifeRule;
+};
 
 //Create a thread to follow with some what precision view of the corpse.
 [_unit] spawn
@@ -63,12 +90,14 @@ _unit spawn
 if(!isNull _killer && {_killer != _unit} && {side _killer != west} && {alive _killer}) then {
 	if(vehicle _killer isKindOf "LandVehicle") then {
 		[[getPlayerUID _killer,_killer getVariable["realname",name _killer],"187V"],"life_fnc_wantedAdd",false,false] call life_fnc_MP;
+		//[[_killer],"life_fnc_wantedFetchForCivilian",_killer,false] spawn life_fnc_MP;
 		//Get rid of this if you don't want automatic vehicle license removal.
 		if(!local _killer) then {
 			[[2],"life_fnc_removeLicenses",_killer,FALSE] call life_fnc_MP;
 		};
 	} else {
 		[[getPlayerUID _killer,_killer getVariable["realname",name _killer],"187"],"life_fnc_wantedAdd",false,false] call life_fnc_MP;
+		//[[_killer],"life_fnc_wantedFetchForCivilian",_killer,false] spawn life_fnc_MP;
 		
 		if(!local _killer) then {
 			[[3],"life_fnc_removeLicenses",_killer,FALSE] call life_fnc_MP;
@@ -86,20 +115,10 @@ if(side _killer == west && playerSide != west) then {
 	};
 };
 
-if(!isNull _killer && {_killer != _unit}) then {
+if(!isNull _killer && {_killer != _unit} && {side _killer == west} && {side _killer != civilian}) then {
 	life_removeWanted = true;
 };
-
-_handle = [_unit] spawn life_fnc_dropItems;
-waitUntil {scriptDone _handle};
-
-life_hunger = 100;
-life_thirst = 100;
-life_carryWeight = 0;
-CASH = 0;
 
 [] call life_fnc_hudUpdate; //Get our HUD updated.
 [[player,life_sidechat,playerSide],"TON_fnc_managesc",false,false] call life_fnc_MP;
 
-[0] call SOCK_fnc_updatePartial;
-[3] call SOCK_fnc_updatePartial;

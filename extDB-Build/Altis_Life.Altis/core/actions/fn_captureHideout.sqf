@@ -2,15 +2,18 @@
 /*
 	Author: Bryan "Tonic" Boardwine
 	
+	File: fn_captureHideout.sqf
+	
 	Description:
-	Blah blah.
+	For Gang Hideouts
 */
 private["_group","_hideout","_action","_cpRate","_cP","_progressBar","_title","_titleText","_ui","_flagTexture"];
+if (!life_in_gang) exitWith{};
 _hideout = (nearestObjects[getPosATL player,["Land_u_Barracks_V2_F","Land_i_Barracks_V2_F"],25]) select 0;
 _group = _hideout getVariable ["gangOwner",grpNull];
 
-if(isNil {grpPlayer getVariable "gang_name"}) exitWith {titleText[localize "STR_GNOTF_CreateGang","PLAIN"];};
-if(_group == grpPlayer) exitWith {titleText[localize "STR_GNOTF_Controlled","PLAIN"]};
+if(isNil {(group player) getVariable "gang_name"}) exitWith {titleText[localize "STR_GNOTF_CreateGang","PLAIN"];};
+if(_group == (group player)) exitWith {titleText[localize "STR_GNOTF_Controlled","PLAIN"]};
 if((_hideout getVariable ["inCapture",FALSE])) exitWith {hint localize "STR_GNOTF_Captured";};
 if(!isNull _group) then {
 	_gangName = _group getVariable ["gang_name",""];
@@ -59,14 +62,14 @@ while {true} do
 	_titleText ctrlSetText format["%3 (%1%2)...",round(_cP * 100),"%",_title];
 	_hideout setVariable["inCapture",true,true];
 	if(_cP >= 1 OR !alive player) exitWith {_hideout setVariable["inCapture",false,true];};
-	if(life_istazed) exitWith {_hideout setVariable["inCapture",false,true];}; //Tazed
+	if(life_isDowned) exitWith {_hideout setVariable["inCapture",false,true];}; //Downed
 	if(life_interrupted) exitWith {_hideout setVariable["inCapture",false,true];};
 };
 
 //Kill the UI display and check for various states
 5 cutText ["","PLAIN"];
 player playActionNow "stop";
-if(!alive player OR life_istazed) exitWith {life_action_inUse = false;_hideout setVariable["inCapture",false,true];};
+if(!alive player OR life_isDowned) exitWith {life_action_inUse = false;_hideout setVariable["inCapture",false,true];};
 if((player getVariable["restrained",false])) exitWith {life_action_inUse = false;_hideout setVariable["inCapture",false,true];};
 if(life_interrupted) exitWith {life_interrupted = false; titleText[localize "STR_GNOTF_CaptureCancel","PLAIN"]; life_action_inUse = false;_hideout setVariable["inCapture",false,true];};
 life_action_inUse = false;
@@ -85,4 +88,4 @@ _flagTexture = [
 _this select 0 setFlagTexture _flagTexture;
 [[[0,1],"STR_GNOTF_CaptureSuccess",true,[name player,(group player) getVariable "gang_name"]],"life_fnc_broadcast",true,false] call life_fnc_MP;
 _hideout setVariable["inCapture",false,true];
-_hideout setVariable["gangOwner",grpPlayer,true];
+_hideout setVariable["gangOwner",(group player),true];
