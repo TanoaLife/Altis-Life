@@ -78,11 +78,11 @@ list_of_files = []
 path = "../extDB-Build/Altis_Life.Altis/dialog"
 for (dirpath, dirnames, filenames) in os.walk(path):
     for filename in filenames:
-        if (filename.endswith('.hpp') or filename.endswith('.h')) and filename != "macro.h" and filename != "MasterHandler.h":
+        if (filename.endswith('.hpp') or filename.endswith('.h')) and filename != "macro.h" and filename != "MasterHandler.h" and filename != "common.hpp":
             list_of_files.append(filename)
 
 output = open(path + "/MasterHandler.h", "w")
-output.write("/*\n	Master UI Resource File\n*/\n")
+output.write("/*\n	Master UI Resource File\n*/\n#include \"common.hpp\"\n")
 for filename in list_of_files:
     output.write("#include \"")
     output.write(filename)

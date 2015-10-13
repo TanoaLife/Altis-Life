@@ -12,8 +12,8 @@ _vehicle = call compile format["%1", _vehicle];
 _nearVehicles = nearestObjects [getMarkerPos life_chopShop,["Car","Truck"],25];
 _vehicle = _nearVehicles select _vehicle;
 if(isNull _vehicle) exitWith {};
-_check = false; 	
-{if(player distance _x < 200 && side _x == west) then { _check = true; };} forEach playableUnits; 
+_check = false;
+{if(player distance _x < 200 && side _x == west) then { _check = true; };} forEach playableUnits;
 if(_check) exitWith {hint "The cops are too close to complete this action!";};
 
 
@@ -30,11 +30,11 @@ if(typeOf _vehicle in["B_Quadbike_01_F"]) then { _color = floor(random 9); };
 
 
 hint format["You have been charged %1 for this transaction and the vehicle has been added to your garage.",_price];
-["atm","take",_price] call CASH = CASH - _price;
+CASH = CASH - _price;
 [[_vehicle],"TON_fnc_vehicleIsDead",false,false] spawn life_fnc_MP;
 sleep 0.05;
 [[(getPlayerUID player),playerSide,_vehicle,_color,1],"TON_fnc_vehicleCreate",false,false] spawn life_fnc_MP;
 [[getPlayerUID player,profileName,"490"],"life_fnc_wantedAdd",false,false] spawn life_fnc_MP;
 closeDialog 0;
 sleep 0.5;
-if(!isNil "_vehicle" && !isNull _vehicle) then { deleteVehicle _vehicle; }; 
+if(!isNil "_vehicle" && !isNull _vehicle) then { deleteVehicle _vehicle; };

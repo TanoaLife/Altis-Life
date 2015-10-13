@@ -1,6 +1,7 @@
 /*
 	Master UI Resource File
 */
+#include "common.hpp"
 #include "admin_menu.hpp"
 #include "AH_buy.hpp"
 #include "AH_sell.hpp"
@@ -9,7 +10,6 @@
 #include "channel.hpp"
 #include "chop_shop.h"
 #include "clothing.hpp"
-#include "common.hpp"
 #include "compensate.hpp"
 #include "deathScreen.h"
 #include "federalReserve.h"
