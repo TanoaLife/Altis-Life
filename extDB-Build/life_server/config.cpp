@@ -41,6 +41,14 @@ class CfgServerSettings
 
 class CfgFunctions
 {
+
+	class Jail_Sys
+	{
+	file = "Functions\Jail";
+			class JailPlayer {};
+			class jailSys {};
+			class JailTimer {};
+	};
 	class BIS_Overwrite
 	{
 		tag = "BIS";
@@ -74,6 +82,7 @@ class CfgFunctions
 			class insertRequest {};
 			class insertVehicle {};
 			class mresArray {};
+			class mresString {};
 			class numberSafe {};
 			class queryRequest {};
 			class updatePartial {};
@@ -84,6 +93,14 @@ class CfgFunctions
 	class Life_System
 	{
 		tag = "life";
+		class Custom
+		{
+			file = "Functions\Custom";
+			class atmMarkers {};
+			class spawnCargo {};
+			class spawnGold {};
+			class spawnIllegalArea {};
+		};
 		class Wanted_Sys
 		{
 			file = "Functions\WantedSystem";
@@ -91,15 +108,19 @@ class CfgFunctions
 			class wantedBounty {};
 			class wantedCrimes {};
 			class wantedFetch {};
+			class wantedFetchForCivilian {};
 			class wantedPerson {};
 			class wantedProfUpdate {};
 			class wantedRemove {};
+			class wantedSyncList {};
 		};
 
 		class Jail_Sys
 		{
 			file = "Functions\Jail";
+			class JailPlayer {};
 			class jailSys {};
+			class JailTimer {};
 		};
 
 		class Client_Code
@@ -111,30 +132,53 @@ class CfgFunctions
 
 	class TON_System
 	{
+
+
 		tag = "TON";
 		class Systems
 		{
 			file = "Functions\Systems";
+			class ajustprices {};
+			class blowSafe {};
+			class cargoUpdate {};
 			class chopShopSell {};
 			class cleanup {};
 			class cleanupRequest {};
 			class clientDisconnect {};
 			class federalUpdate {};
 			class getID {};
+			class getprices {};
 			class getVehicles {};
+			class goldUpdate {};
 			class huntingZone {};
 			class keyManagement {};
+			class loadPrices {};
 			class logIt {};
 			class managesc {};
 			class setObjVar {};
 			class spawnVehicle {};
 			class spikeStrip {};
+			class syncPrices {};
 			class vehicleCreate {};
 			class vehicleDead {};
 			class vehicleDelete {};
+			class vehicleIsDead {};
 			class vehicleStore {};
 		};
-
+		class Paintball
+		{
+			file = "Functions\paintball";
+			class game {};
+			class paintball {};
+		};
+        class Airdrop
+		{
+			file = "Functions\airdrop";
+			class generateAirdrop {};
+			class GenerateAirdropAuto {};
+		};
+		class cargoUpdate {};
+		class goldUpdate {};
 		class Housing
 		{
 			file = "Functions\Housing";
@@ -163,6 +207,36 @@ class CfgFunctions
 			file = "Functions\Actions";
 			class pickupAction {};
 		};
+
+		class Smartphone
+		{
+			file = "Functions\Smartphone";
+			class cleanupMessages {};
+			class handleMessages {};
+			class msgRequest {};
+		};
+		class pauction
+		{
+			file = "Functions\pauction";
+			class SAH_addOffer {};
+			class SAH_checkPID {};
+			class SAH_looper {};
+			class SAH_reciever {};
+			class SAH_removeOffer {};
+			class SAH_Transaction {};
+		};
+		class VehicleUpgrades
+		{
+			file = "Functions\VehicleUpgrades";
+			class changeSlingLoad {};
+			class updateUpgrades {};
+		};
+		class Admin
+		{
+			file = "Functions\Admin";
+			class restorePlayers {};
+			class toggleInvisible {};
+		};
 	};
 };
 
@@ -180,7 +254,7 @@ class CfgVehicles
 	{
 		class EventHandlers: EventHandlers
 		{
-			init = "(_this select 0) execVM ""fix_headgear.sqf""";
+			init = "(_this select 0) execVM ""\life_server\fix_headgear.sqf""";
 		};
 	};
 };
