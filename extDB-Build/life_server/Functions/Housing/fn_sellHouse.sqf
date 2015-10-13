@@ -1,6 +1,7 @@
+#include "\life_server\script_macros.hpp"
 /*
 	Author: Bryan "Tonic" Boardwine
-
+	
 	Description:
 	Used in selling the house, sets the owned to 0 and will cleanup with a
 	stored procedure on restart.
@@ -10,10 +11,10 @@ _house = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 if(isNull _house) exitWith {systemChat ":SERVER:sellHouse: House is null";};
 
 _houseID = _house getVariable["house_id",-1];
-if(_houseID == -1) then {
+if(EQUAL(_houseID,-1)) then {
 	_housePos = getPosATL _house;
 	_ownerID = (_house getVariable "house_owner") select 0;
-	_query = format["housingSellHouse:%1:%2:%3",[],_ownerID,_housePos];
+	_query = format["housingSellHouse:%1",_housePos];
 	//systemChat format[":SERVER:sellHouse: house_id does not exist, query: %1",_query];
 } else {
 	//systemChat format[":SERVER:sellHouse: house_id is %1",_houseID];

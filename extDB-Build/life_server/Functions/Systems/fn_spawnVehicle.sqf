@@ -2,7 +2,7 @@
 /*
 	File: fn_spawnVehicle.sqf
 	Author: Bryan "Tonic" Boardwine
-
+	
 	Description:
 	Sends the query request to the database, if an array is returned then it creates
 	the vehicle if it's not in use or dead.
@@ -18,6 +18,8 @@ _unit_return = _unit;
 _name = name _unit;
 _side = side _unit;
 _unit = owner _unit;
+
+_sp set [2,0.3];
 
 if(EQUAL(_vid,-1) OR EQUAL(_pid,"")) exitWith {};
 if(_vid in serv_sv_use) exitWith {};
@@ -92,11 +94,11 @@ _vehicle allowDamage true;
 [[_vehicle],"life_fnc_addVehicle2Chain",_unit,false] call life_fnc_MP;
 [_pid,_side,_vehicle,1] call TON_fnc_keyManagement;
 _vehicle lock 2;
-//Reskin the vehicle
+//Reskin the vehicle 
 [[_vehicle,_vInfo select 8],"life_fnc_colorVehicle",nil,false] call life_fnc_MP;
 _vehicle setVariable["vehicle_info_owners",[[_pid,_name]],true];
 _vehicle setVariable["dbInfo",[(_vInfo select 4),_vInfo select 7]];
-//_vehicle addEventHandler["Killed","_this spawn TON_fnc_vehicleDead"]; //Obsolete function?
+_vehicle addEventHandler["Killed","_this spawn TON_fnc_vehicleDead"]; //Obsolete function?
 [_vehicle] call life_fnc_clearVehicleAmmo;
 
 //Sets of animations
@@ -114,3 +116,21 @@ if(EQUAL(SEL(_vInfo,1),"med") && EQUAL(SEL(_vInfo,2),"C_Offroad_01_F")) then {
 };
 [[1,"Your vehicle is ready!"],"life_fnc_broadcast",_unit,false,true] call life_fnc_MP;
 serv_sv_use deleteAt _servIndex;
+
+//Add upgrades to vehicle
+
+
+_gps = _vInfo select 9;
+_gps = [_gps, 1] call DB_fnc_bool;
+_security = _vInfo select 10;
+_security = [_security, 1] call DB_fnc_bool;
+_trunk = _vInfo select 11;
+_insurance = _vInfo select 12;
+_hooks = _vInfo select 13;
+_hooks = [_hooks, 1] call DB_fnc_bool;
+_vehicle setVariable["gps",_gps,true];
+_vehicle setVariable["security",_security,true];
+_vehicle setVariable["trunklevel",_trunk,true];
+_vehicle setVariable["insurance",_insurance,true];
+_vehicle setVariable["hooks",_hooks,true];
+_vehicle enableRopeAttach false;

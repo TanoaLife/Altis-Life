@@ -2,7 +2,7 @@
 /*
 	File: fn_insertRequest.sqf
 	Author: Bryan "Tonic" Boardwine
-
+	
 	Description:
 	Does something with inserting... Don't have time for
 	descriptions... Need to write it...
@@ -44,19 +44,20 @@ _money = [_money] call DB_fnc_numberSafe;
 _bank = [_bank] call DB_fnc_numberSafe;
 
 //Prepare the query statement..
-_query = format["playerInfoInsert:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11",
-	_uid,
-	_name,
-	_money,
-	_bank,
-	_alias,
-	[],	// Cop Licenses
-    [], // Med Licenses
-    [], // Civ Licenses
-    [], // Civ Gear
-    [], // Cop Gear
-    []  // Med Gear
-];
+_query = format["playerInfoInsert:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11:%12",
+        _uid,
+        _name,
+        _money,
+        _bank,
+		_alias,
+		[],	// Cop Licenses
+		[], // Med Licenses
+		[], // Civ Licenses
+		[], // Civ Gear
+		[], // Cop Gear
+		[],  // Med Gear
+		[]   // Player position
+	];
 
 waitUntil {!DB_Async_Active};
 [_query,1] call DB_fnc_asyncCall;

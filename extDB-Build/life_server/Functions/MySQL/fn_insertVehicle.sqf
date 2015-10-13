@@ -1,7 +1,7 @@
 /*
 	File: fn_insertVehicle.sqf
 	Author: Bryan "Tonic" Boardwine
-
+	
 	Description:
 	Inserts the vehicle into the database
 */
@@ -15,6 +15,7 @@ _plate = [_this,5,-1,[0]] call BIS_fnc_param;
 
 //Stop bad data being passed.
 if(_uid == "" OR _side == "" OR _type == "" OR _className == "" OR _color == -1 OR _plate == -1) exitWith {};
+
 _query = format["vehicleInsert:%1:%2:%3:%4:%5:%6:%7:%8:%9",
 	_side,
 	_className,

@@ -2,15 +2,18 @@
 /*
 	File: fn_chopShopSell.sqf
 	Author: Bryan "Tonic" Boardwine
-
+	
 	Description:
 	Checks whether or not the vehicle is persistent or temp and sells it.
 */
-private["_unit","_vehicle","_price","_cash"];
+private["_unit","_vehicle","_price","_cash","_query"];
 _unit = [_this,0,objNull,[objNull]] call BIS_fnc_param;
 _vehicle = [_this,1,objNull,[objNull]] call BIS_fnc_param;
 _price = [_this,2,500,[0]] call BIS_fnc_param;
 _cash = [_this,3,0,[0]] call BIS_fnc_param;
+
+_delay = 2 + random 8;
+sleep _delay;
 
 //Error checks
 if(isNull _vehicle OR isNull _unit) exitWith  {
@@ -25,8 +28,11 @@ _dbInfo = _vehicle GVAR ["dbInfo",[]];
 if(count _dbInfo > 0) then {
 	_uid = SEL(_dbInfo,0);
 	_plate = SEL(_dbInfo,1);
-
-	_query = format["vehicleDead:0:%1:%2",_uid,_plate];
+	if ((_vehicle getVariable["insurance",0] == 3) && !(_vehicle getVariable["siezed",false]) ) then {
+		_query = format["removeInsurance:%1:%2",_uid,_plate];
+	} else {
+		_query = format["vehicleDead:0:%1:%2",_uid,_plate];
+	};
 	waitUntil {!DB_Async_Active};
 	_sql = [_query,1] call DB_fnc_asyncCall;
 };

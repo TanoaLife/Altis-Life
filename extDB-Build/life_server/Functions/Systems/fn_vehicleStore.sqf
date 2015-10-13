@@ -1,7 +1,7 @@
 /*
 	File: fn_vehicleStore.sqf
 	Author: Bryan "Tonic" Boardwine
-
+	
 	Description:
 	Stores the vehicle in the 'Garage'
 */
@@ -42,13 +42,13 @@ if(_impound) then {
 		life_garage_store = false;
 		(owner _unit) publicVariableClient "life_garage_store";
 	};
-
+	
 	if(_uid != getPlayerUID _unit) exitWith {
 		[[1,(localize "STR_Garage_Store_NoOwnership")],"life_fnc_broadcast",(owner _unit),false] call life_fnc_MP;
 		life_garage_store = false;
 		(owner _unit) publicVariableClient "life_garage_store";
 	};
-
+	
 	_query = format["vehicleUpdateActivePlate:0:%1:%2",_uid,_plate];
 	waitUntil {!DB_Async_Active};
 	_thread = [_query,1] call DB_fnc_asyncCall;

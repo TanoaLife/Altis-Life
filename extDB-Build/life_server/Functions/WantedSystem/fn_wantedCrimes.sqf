@@ -4,19 +4,37 @@
 	Author: ColinM
 	Assistance by: Paronity
 	Stress Tests by: Midgetgrimm
-
+	
 	Description:
 	Grabs a list of crimes committed by a person.
 */
-private["_display","_criminal","_tab","_queryResult","_result","_ret","_crimesDb","_crimesArr","_type"];
+private["_display","_criminal","_tab","_queryResult","_result","_ret","_crimesDb","_crimesArr","_type","_uid","_list"];
 disableSerialization;
 _ret = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 _criminal = [_this,1,[],[]] call BIS_fnc_param;
 
+/*
 _result = format["wantedFetchCrimes:%1",_criminal select 0];
 waitUntil{!DB_Async_Active};
 _tickTime = diag_tickTime;
 _queryResult = [_result,2] call DB_fnc_asyncCall;
+
+["diag_log",[
+		"------------- Wanted Fetch Crimes Request -------------",
+		format["QUERY: %1",_result],
+		format["Time to complete: %1 (in seconds)",(diag_tickTime - _tickTime)],
+		format["Result: %1",_queryResult],
+		"-------------------------------------------------"
+	]] call TON_fnc_logIt;
+*/
+
+_list = missionNamespace getVariable "wantedList";
+_uid = _criminal select 0;
+{
+	if (EQUAL(_uid, SEL(_x,0))) then {
+		_queryResult = [SEL(_x,2),SEL(_x,3)];
+	};
+} forEach _list;
 
 _ret = owner _ret;
 _crimesArr = [];
@@ -46,7 +64,18 @@ _type = _queryResult select 0;
 		case "668": {_x = "STR_Crime_668"};
 		case "919": {_x = "STR_Crime_919"};
 		case "919A": {_x = "STR_Crime_919A"};
-
+		case "5447": {_x = "STR_Crime_5447"};
+		case "5489": {_x = "STR_Crime_5489"};
+		case "1412": {_x = "STR_Crime_1412"};
+		case "1337": {_x = "STR_Crime_1337"};
+		case "13371": {_x = "STR_Crime_13371"};
+		case "4389": {_x = "STR_Crime_4389"};
+		case "4532": {_x = "STR_Crime_4532"};
+		case "5217": {_x = "STR_Crime_5217"};
+		case "1018": {_x = "STR_Crime_1018"};
+		case "5894": {_x = "STR_Crime_1018"};
+		
+		
 		case "1": {_x = "STR_Crime_1"};
 		case "2": {_x = "STR_Crime_2"};
 		case "3": {_x = "STR_Crime_3"};
@@ -54,6 +83,8 @@ _type = _queryResult select 0;
 		case "5": {_x = "STR_Crime_5"};
 		case "6": {_x = "STR_Crime_6"};
 		case "7": {_x = "STR_Crime_7"};
+		case "8": {_x = "STR_Crime_8"};
+		case "9": {_x = "STR_Crime_9"};
 	};
 	_crimesArr pushBack _x;
 }forEach _type;
@@ -68,5 +99,4 @@ if((EQUAL(EXTDB_SETTINGS("MySQL_Query"),1))) then {
 		"------------------------------------------------"
 	]] call TON_fnc_logIt;
 };
-
 [[_queryResult],"life_fnc_wantedInfo",_ret,false] spawn life_fnc_MP;

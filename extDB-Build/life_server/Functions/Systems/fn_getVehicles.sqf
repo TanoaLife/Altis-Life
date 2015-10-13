@@ -2,7 +2,7 @@
 /*
 	File: fn_getVehicles.sqf
 	Author: Bryan "Tonic" Boardwine
-
+	
 	Description:
 	Sends a request to query the database information and returns vehicles.
 */
@@ -39,7 +39,7 @@ _queryResult = [_query,2,true] call DB_fnc_asyncCall;
 
 if((EQUAL(EXTDB_SETTINGS("MySQL_Query"),1))) then {
 	["diag_log",[
-		"------------- Vehicle Query Request -------------",
+		"------------- VehiclesInfo Query Request -------------",
 		format["QUERY: %1",_query],
 		format["Time to complete: %1 (in seconds)",(diag_tickTime - _tickTime)],
 		format["Result: %1",_queryResult],

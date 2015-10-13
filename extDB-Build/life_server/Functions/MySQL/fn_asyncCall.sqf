@@ -1,8 +1,10 @@
 /*
 	File: fn_asyncCall.sqf
 	Author: Bryan "Tonic" Boardwine
+
 	Description:
 	Commits an asynchronous call to ExtDB
+
 	Parameters:
 		0: STRING (Query to be ran).
 		1: INTEGER (1 = ASYNC + not return for update/insert, 2 = ASYNC + return for query's).
@@ -12,15 +14,13 @@ waitUntil {!DB_Async_Active};
 private["_queryStmt","_queryResult","_key","_mode","_return","_loop"];
 
 _tickTime = diag_tickTime;
-
 _queryStmt = [_this,0,"",[""]] call BIS_fnc_param;
 _mode = [_this,1,1,[0]] call BIS_fnc_param;
 _multiarr = [_this,2,false,[false]] call BIS_fnc_param;
 
+
 _key = "extDB" callExtension format["%1:%2:%3",_mode,(call life_sql_id),_queryStmt];
-
 if(_mode == 1) exitWith {DB_Async_Active = false; true};
-
 _key = call compile format["%1",_key];
 _key = _key select 1;
 
@@ -30,6 +30,7 @@ _queryResult = "";
 _loop = true;
 
 waitUntil{uisleep (random .03); !DB_Async_ExtraLock};
+
 DB_Async_ExtraLock = true;
 while{_loop} do
 {
@@ -57,7 +58,11 @@ DB_Async_Active = false;
 
 _queryResult = call compile _queryResult;
 
+
+
 // Not needed, its SQF Code incase extDB ever returns error message i.e Database Died
+if (isNil "_queryResult") exitWith{[]};
+if (typeName _queryResult != "ARRAY") exitWith{[]};
 if ((_queryResult select 0) == 0) exitWith {diag_log format ["extDB: Error: %1", _queryResult]; []};
 _queryResult = (_queryResult select 1);
 if ((_queryResult select 0) == 0) exitWith {diag_log format ["extDB: Protocol Error: %1", _queryResult]; []};
