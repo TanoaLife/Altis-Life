@@ -2,7 +2,7 @@
 #define false 0
 
 class DefaultEventhandlers;
-class CfgPatches 
+class CfgPatches
 {
 	class life_server
 	{
@@ -10,7 +10,7 @@ class CfgPatches
 		weapons[] = {};
 		requiredAddons[] = {"A3_Data_F","A3_Soft_F","A3_Soft_F_Offroad_01","A3_Characters_F"};
 		fileName = "life_server.pbo";
-		author[]= {"Tonic"}; 
+		author[]= {"Tonic"};
 	};
 };
 
@@ -46,7 +46,7 @@ class CfgFunctions
 		tag = "BIS";
 		class MP
 		{
-			file = "\life_server\Functions\MP";
+			file = "Functions\MP";
 			class initMultiplayer{};
 			class call{};
 			class spawn{};
@@ -60,13 +60,13 @@ class CfgFunctions
 			class missionTimeLeft{};
 		};
 	};
-	
+
 	class MySQL_Database
 	{
 		tag = "DB";
 		class MySQL
 		{
-			file = "\life_server\Functions\MySQL";
+			file = "Functions\MySQL";
 			class numberSafe {};
 			class mresArray {};
 			class queryRequest{};
@@ -78,13 +78,13 @@ class CfgFunctions
 			class updatePartial {};
 		};
 	};
-	
+
 	class Life_System
 	{
 		tag = "life";
 		class Wanted_Sys
 		{
-			file = "\life_server\Functions\WantedSystem";
+			file = "Functions\WantedSystem";
 			class wantedFetch {};
 			class wantedPerson {};
 			class wantedBounty {};
@@ -93,25 +93,25 @@ class CfgFunctions
 			class wantedCrimes {};
 			class wantedProfUpdate {};
 		};
-		
+
 		class Jail_Sys
 		{
-			file = "\life_server\Functions\Jail";
+			file = "Functions\Jail";
 			class jailSys {};
 		};
-		
+
 		class Client_Code
 		{
-			file = "\life_server\Functions\Client";
+			file = "Functions\Client";
 		};
 	};
-	
+
 	class TON_System
 	{
 		tag = "TON";
 		class Systems
 		{
-			file = "\life_server\Functions\Systems";
+			file = "Functions\Systems";
 			class managesc {};
 			class cleanup {};
 			class huntingZone {};
@@ -131,10 +131,10 @@ class CfgFunctions
 			class setObjVar {};
 			class keyManagement {};
 		};
-		
+
 		class Housing
 		{
-			file = "\life_server\Functions\Housing";
+			file = "Functions\Housing";
 			class addHouse {};
 			class fetchPlayerHouses {};
 			class initHouses {};
@@ -144,10 +144,10 @@ class CfgFunctions
 			class houseCleanup {};
 			class preCheckHouse {};
 		};
-		
+
 		class Gangs
 		{
-			file = "\life_server\Functions\Gangs";
+			file = "Functions\Gangs";
 			class insertGang {};
 			class queryPlayerGang {};
 			class removeGang {};
@@ -156,7 +156,7 @@ class CfgFunctions
 
 		class Actions
 		{
-			file = "\life_server\Functions\Actions";
+			file = "Functions\Actions";
 			class pickupAction {};
 		};
 	};
@@ -171,12 +171,12 @@ class CfgVehicles
 	{
 		class EventHandlers;
 	};
-	
+
 	class C_man_1 : Civilian_F
 	{
 		class EventHandlers: EventHandlers
 		{
-			init = "(_this select 0) execVM ""\life_server\fix_headgear.sqf""";
+			init = "(_this select 0) execVM ""fix_headgear.sqf""";
 		};
 	};
 };

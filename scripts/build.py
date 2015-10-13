@@ -1,6 +1,6 @@
 import re
 import os
-classStart = re.compile(ur'\t\tfile \= \"\S+";')
+classStart = re.compile(ur'\s*file \= \"\S+";')
 classEnd = re.compile(ur'\s*};')
 pathfind = re.compile(ur"\"")
 namesplit = re.compile(ur"fn_|[\.]")
@@ -8,7 +8,7 @@ isfunc = re.compile(ur"fn_\S+\.sqf")
 
 print "Compiling Client-Side Functions.h"
 
-#Building the Client-Side Functions.h
+# Building the Client-Side Functions.h
 original = open("../extDB-Build/Altis_Life.Altis/Functions.h")
 
 lines = original.readlines()
@@ -40,6 +40,34 @@ for line in lines:
         currfiles = getSQFFiles(root+fname)
         for filename in currfiles:
             new.write("\t\tclass "+re.split(namesplit, filename)[1]+" {};\n")
+    else:
+        new.write(line)
+
+print "Compiling Server-Side config.cpp"
+
+# Building the Server-Side config.cpp
+original = open("../extDB-Build/life_server/config.cpp")
+
+lines = original.readlines()
+
+new = open("../extDB-Build/life_server/config.cpp", "w")
+
+skip = False
+
+root = "../extDB-Build/life_server/"
+
+for line in lines:
+    if skip:
+        if classEnd.match(line):
+            skip = False
+            new.write(line)
+    elif classStart.match(line):
+        skip = True
+        new.write(line)
+        fname = re.split(pathfind, line)[1]
+        currfiles = getSQFFiles(os.path.join(root,fname))
+        for filename in currfiles:
+            new.write("\t\t\tclass "+re.split(namesplit, filename)[1]+" {};\n")
     else:
         new.write(line)
 
