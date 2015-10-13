@@ -15,7 +15,6 @@
 #include "hud_nameTags.h"
 #include "impound.hpp"
 #include "key_chain.hpp"
-#include "MasterHandler1.h"
 #include "pInteraction.h"
 #include "player_inv.hpp"
 #include "progress.hpp"
