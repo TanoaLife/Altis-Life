@@ -18,8 +18,9 @@ _queryStmt = [_this,0,"",[""]] call BIS_fnc_param;
 _mode = [_this,1,1,[0]] call BIS_fnc_param;
 _multiarr = [_this,2,false,[false]] call BIS_fnc_param;
 
-
-_key = "extDB" callExtension format["%1:%2:%3",_mode,(call life_sql_id),_queryStmt];
+diag_log format["%1:%2:%3",_mode,(call life_sql_id),_queryStmt];
+_key = "extDB2" callExtension format["%1:%2:%3",_mode,(call life_sql_id),_queryStmt];
+diag_log format["asyncCall with _key = %1", _key];
 if(_mode == 1) exitWith {DB_Async_Active = false; true};
 _key = call compile format["%1",_key];
 _key = _key select 1;
@@ -34,7 +35,7 @@ waitUntil{uisleep (random .03); !DB_Async_ExtraLock};
 DB_Async_ExtraLock = true;
 while{_loop} do
 {
-    _queryResult = "extDB" callExtension format["4:%1", _key];
+    _queryResult = "extDB2" callExtension format["4:%1", _key];
     if (_queryResult == "[5]") then {
 		// extDB returned that result is Multi-Part Message
 		_queryResult = "";

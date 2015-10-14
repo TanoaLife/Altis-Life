@@ -21,7 +21,7 @@ class CfgServerSettings
 	class extDB
 	{
 		/*Database Selection*/
-		Database = "AltisLife"; //Database config name
+		Database = "arma3life"; //Database config name
 		/*RCON Settings*/
 		RCON = false; //Enabled?
 		RCON_Selection = "RCON"; //Selection of what RCON config to pull from the extDB Configuration file eg. [RCON]

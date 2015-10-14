@@ -19,6 +19,7 @@ copy %ExtDB%extdb-conf.ini %ARMA%@extDB\extdb-conf.ini"
 copy %ExtDB2%extdb-conf.ini %ARMA%@extDB2\extdb-conf.ini"
 
 copy %ExtDB%extdb-conf.ini %ARMA%@ExtDB\extdb-conf.ini"
-copy %ExtDB%extdb\db_custom\altis-life-rpg-4.ini %ARMA%@ExtDB\extdb\db_custom\altis-life-rpg-4.ini"
+copy %ExtDB%extdb\db_custom\altis-life-rpg-4.ini %ARMA%@extDB\extdb\db_custom\altis-life-rpg-4.ini"
+copy %ExtDB2%extdb\sql_custom_v2\altis-life-rpg-4.ini %ARMA%@extDB2\extdb\sql_custom_v2\altis-life-rpg-4.ini"
 
 copy %ClientFiles%.pbo %ARMA%\mpmissions\Altis_Life.Altis.pbo"
