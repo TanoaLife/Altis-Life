@@ -65,6 +65,8 @@ for line in lines:
         skip = True
         new.write(line)
         fname = re.split(pathfind, line)[1]
+        # Drop the absolute \life_server\ reference
+        fname = fname[13:]
         currfiles = getSQFFiles(os.path.join(root,fname))
         for filename in currfiles:
             new.write("\t\t\tclass "+re.split(namesplit, filename)[1]+" {};\n")

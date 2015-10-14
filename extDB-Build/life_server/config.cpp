@@ -44,7 +44,7 @@ class CfgFunctions
 
 	class Jail_Sys
 	{
-	file = "Functions\Jail";
+	file = "\life_server\Functions\Jail";
 			class JailPlayer {};
 			class jailSys {};
 			class JailTimer {};
@@ -54,7 +54,7 @@ class CfgFunctions
 		tag = "BIS";
 		class MP
 		{
-			file = "Functions\MP";
+			file = "\life_server\Functions\MP";
 			class addScore {};
 			class call {};
 			class execFSM {};
@@ -76,7 +76,7 @@ class CfgFunctions
 		tag = "DB";
 		class MySQL
 		{
-			file = "Functions\MySQL";
+			file = "\life_server\Functions\MySQL";
 			class asyncCall {};
 			class bool {};
 			class insertRequest {};
@@ -95,7 +95,7 @@ class CfgFunctions
 		tag = "life";
 		class Custom
 		{
-			file = "Functions\Custom";
+			file = "\life_server\Functions\Custom";
 			class atmMarkers {};
 			class spawnCargo {};
 			class spawnGold {};
@@ -103,7 +103,7 @@ class CfgFunctions
 		};
 		class Wanted_Sys
 		{
-			file = "Functions\WantedSystem";
+			file = "\life_server\Functions\WantedSystem";
 			class wantedAdd {};
 			class wantedBounty {};
 			class wantedCrimes {};
@@ -117,7 +117,7 @@ class CfgFunctions
 
 		class Jail_Sys
 		{
-			file = "Functions\Jail";
+			file = "\life_server\Functions\Jail";
 			class JailPlayer {};
 			class jailSys {};
 			class JailTimer {};
@@ -125,7 +125,7 @@ class CfgFunctions
 
 		class Client_Code
 		{
-			file = "Functions\Client";
+			file = "\life_server\Functions\Client";
 			class updateMoney {};
 		};
 	};
@@ -137,7 +137,7 @@ class CfgFunctions
 		tag = "TON";
 		class Systems
 		{
-			file = "Functions\Systems";
+			file = "\life_server\Functions\Systems";
 			class ajustprices {};
 			class blowSafe {};
 			class cargoUpdate {};
@@ -167,21 +167,20 @@ class CfgFunctions
 		};
 		class Paintball
 		{
-			file = "Functions\paintball";
+			file = "\life_server\Functions\paintball";
 			class game {};
 			class paintball {};
 		};
         class Airdrop
 		{
-			file = "Functions\airdrop";
+			file = "\life_server\Functions\airdrop";
 			class generateAirdrop {};
 			class GenerateAirdropAuto {};
 		};
-		class cargoUpdate {};
-		class goldUpdate {};
+
 		class Housing
 		{
-			file = "Functions\Housing";
+			file = "\life_server\Functions\Housing";
 			class addHouse {};
 			class fetchPlayerHouses {};
 			class houseCleanup {};
@@ -195,7 +194,7 @@ class CfgFunctions
 
 		class Gangs
 		{
-			file = "Functions\Gangs";
+			file = "\life_server\Functions\Gangs";
 			class insertGang {};
 			class queryPlayerGang {};
 			class removeGang {};
@@ -204,20 +203,20 @@ class CfgFunctions
 
 		class Actions
 		{
-			file = "Functions\Actions";
+			file = "\life_server\Functions\Actions";
 			class pickupAction {};
 		};
 
 		class Smartphone
 		{
-			file = "Functions\Smartphone";
+			file = "\life_server\Functions\Smartphone";
 			class cleanupMessages {};
 			class handleMessages {};
 			class msgRequest {};
 		};
 		class pauction
 		{
-			file = "Functions\pauction";
+			file = "\life_server\Functions\pauction";
 			class SAH_addOffer {};
 			class SAH_checkPID {};
 			class SAH_looper {};
@@ -227,13 +226,13 @@ class CfgFunctions
 		};
 		class VehicleUpgrades
 		{
-			file = "Functions\VehicleUpgrades";
+			file = "\life_server\Functions\VehicleUpgrades";
 			class changeSlingLoad {};
 			class updateUpgrades {};
 		};
 		class Admin
 		{
-			file = "Functions\Admin";
+			file = "\life_server\Functions\Admin";
 			class restorePlayers {};
 			class toggleInvisible {};
 		};
