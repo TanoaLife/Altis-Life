@@ -8,10 +8,10 @@
 #define GANG_FUNDS grpPlayer getVariable ["gang_bank",0];
 
 //Namespace Macros
-#define SVAR_MNS missionNamespace setVariable 
-#define SVAR_UINS uiNamespace setVariable 
-#define SVAR_PNS parsingNamespace setVariable 
-#define GVAR_MNS missionNamespace getVariable 
+#define SVAR_MNS missionNamespace setVariable
+#define SVAR_UINS uiNamespace setVariable
+#define SVAR_PNS parsingNamespace setVariable
+#define GVAR_MNS missionNamespace getVariable
 #define GVAR_UINS uiNamespace getVariable
 
 //Scripting Macros
@@ -31,8 +31,9 @@
 #define EXTDB_FAILED(MESSAGE) \
 	life_server_extDB_notLoaded = [true,##MESSAGE]; \
 	PVAR_ALL("life_server_extDB_notLoaded"); \
-	["diag_log",[MESSAGE]] call TON_fnc_logIt;
-#define EXTDB "extDB" callExtension
+	["diag_log",[MESSAGE]] call TON_fnc_logIt; \
+	diag_log MESSAGE;
+#define EXTDB "extDB2" callExtension
 #define RCON_SELECTION getText(configFile >> "CfgServerSettings" >> "extDB" >> "RCON_Selection")
 #define DATABASE_SELECTION getText(configFile >> "CfgServerSettings" >> "extDB" >> "Database")
 

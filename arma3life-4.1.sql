@@ -14,6 +14,12 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `arma3life` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `arma3life`;
 
+CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'testuser'@'%' IDENTIFIED BY 'password';
+GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE ON `arma3life`.* TO 'arma3'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE ON `arma3life`.* TO 'arma3'@'%';
+
+
 DELIMITER $$
 --
 -- Procedures
