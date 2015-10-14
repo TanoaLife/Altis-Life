@@ -29,13 +29,50 @@ if(isNil {GVAR_UINS "life_sql_id"}) then {
 	diag_log format["extDB: Version: %1",_result];
 	if(EQUAL(_result,"")) exitWith {diag_log "No extension."; EXTDB_FAILED("The server-side extension extDB was not loaded into the engine, report this to the server admin.")};
 	if ((parseNumber _result) < 35) exitWith {diag_log  "Incompatible ExtDB version."; EXTDB_FAILED("extDB version is not compatible with current Altis life version. Require version 35 or higher.")};
-	//Lets start logging in extDB
-	EXTDB "9:ADD:LOG:SPY_LOG:spyglass.log";
 	//Initialize connection to Database
-	_result = EXTDB format["9:DATABASE:%1",DATABASE_SELECTION];
+	_result = EXTDB format["9:ADD_DATABASE:%1",DATABASE_SELECTION];
 	if(!(EQUAL(_result,"[1]"))) exitWith {EXTDB_FAILED("extDB: Error with Database Connection")};
-	_result = EXTDB format["9:ADD:DB_CUSTOM_v5:%1:altis-life-rpg-4",FETCH_CONST(life_sql_id)];
+
+// EXILE CODE
+		try
+		{
+			_result = "extDB2" callExtension "9:VERSION";
+			if(_result == "") then
+			{
+				throw "Unable to locate extDB2 extension!";
+			};
+			format ["Installed extDB2 version: %1", _result] call ExileServer_util_log;
+			_result = call compile ("extDB2" callExtension "9:ADD_DATABASE:exile");
+			if (_result select 0 isEqualTo 0) then
+			{
+				throw format ["Could not add database: %1", _result];
+			};
+			"Connected to database!" call ExileServer_util_log;
+			ExileServerDatabaseSessionId = str(round(random(999999)));
+			_result = call compile ("extDB2" callExtension format["9:ADD_DATABASE_PROTOCOL:exile:SQL_CUSTOM_V2:%1:exile", ExileServerDatabaseSessionId]);
+			if ((_result select 0) isEqualTo 0) then
+			{
+				throw format ["Failed to initialize database protocol: %1", _result];
+			};
+			ExileServerStartTime = (call compile ("extDB2" callExtension "9:TIME")) select 1;
+			"Database protocol initialized!" call ExileServer_util_log;
+			"extDB2" callExtension "9:LOCK";
+			_isConnected = true;
+		}
+		catch
+		{
+			"MySQL connection error!" call ExileServer_util_log;
+			format ["MySQL Error: %1",_exception]  call ExileServer_util_log;
+			"Server will shutdown now :(" call ExileServer_util_log;
+			"extDB2" callExtension "9:SHUTDOWN";
+		};
+// END OF EXILE CODE
+
+
+
+	_result = EXTDB format["9:ADD_DATABASE_PROTOCOL:%1:DB_CUSTOM_v5:SQL_CUSTOM_V2:%2:altis-life-rpg-4",DATABASE_SELECTION,FETCH_CONST(life_sql_id)];
 	if(!(EQUAL(_result,"[1]"))) exitWith {EXTDB_FAILED("extDB: Error with Database Connection")};
+	/*
 	//Initialize Logging options from extDB
 	if((EQUAL(EXTDB_SETTINGS("LOG"),1))) then {
 		{
@@ -72,6 +109,7 @@ if(isNil {GVAR_UINS "life_sql_id"}) then {
 		EXTDB format["9:ADD:MISC:%1",FETCH_CONST(MISC_ID)];
 		["diag_log",["extDB: MISC is enabled"]] call TON_fnc_logIt;
 	};
+	*/
 	EXTDB "9:LOCK";
 	["diag_log",["extDB: Connected to the Database"]] call TON_fnc_logIt;
 } else {
@@ -79,6 +117,7 @@ if(isNil {GVAR_UINS "life_sql_id"}) then {
 	life_sql_id = GVAR_UINS "life_sql_id";
 	CONSTVAR(life_sql_id);
 	["diag_log",["extDB: Still Connected to the Database"]] call TON_fnc_logIt;
+	/*
 	if((EQUAL(EXTDB_SETTINGS("RCON"),1))) then {
 		RCON_ID = GVAR_UINS "RCON_ID";
 		CONSTVAR(RCON_ID);
@@ -94,6 +133,7 @@ if(isNil {GVAR_UINS "life_sql_id"}) then {
 		CONSTVAR(MISC_ID);
 		["diag_log",["extDB: MISC still enabled"]] call TON_fnc_logIt;
 	};
+	*/
 };
 
 diag_log "Checking if extDB is loaded";
