@@ -64,7 +64,6 @@ diag_log format["_queryResult = %1", _queryResult];
 // Not needed, its SQF Code incase extDB ever returns error message i.e Database Died
 if (isNil "_queryResult") exitWith{[]};
 if (typeName _queryResult != "ARRAY") exitWith{[]};
-if ((_queryResult select 0) == 0) exitWith {diag_log format ["extDB: Error: %1", _queryResult]; []};
 _return = (_queryResult select 1);
 
 if(!_multiarr) then {
