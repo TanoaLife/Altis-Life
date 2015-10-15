@@ -3,7 +3,7 @@
 /*
 	File: fn_marketGrab.sqf
 	Author: Derek Benson
-	
+
 	Description:
 	Gets the data for the market item you are looking at
 */
@@ -23,6 +23,8 @@ _good = lbData[39001,(lbCurSel 39001)];
 {
 	if (EQUAL(SEL(_x,0),_good)) exitWith {_good = _x;};
 }forEach life_market;
+
+diag_log format["marketGrab: _good : %1 : life_market : %2", _good, life_market];
 
 _name = ITEM_NAME(SEL(_good,0));
 

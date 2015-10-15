@@ -7,6 +7,7 @@
 
 
 private["_query","_queryResult","_units","_wanted"];
+if (isNil "life_wantedsync") then {life_wantedsync = 0;};
 if (life_wantedsync > time) exitWith {};
 life_wantedsync = time + 10;
 sleep 10;

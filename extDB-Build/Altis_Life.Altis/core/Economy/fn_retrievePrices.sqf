@@ -32,39 +32,34 @@ _shoptype = [];
 _shoptype pushBack _data;
 
 _query = switch (_data) do {
-
-
-case "market" :{
-    _shoptype pushBack "civ";
-};
-
-case "rebel" :{
-    _shoptype pushBack "market";
-    _shoptype pushBack "vigilante";
-    _shoptype pushBack "special";
-    _shoptype pushBack "civ";
-};
-
-case "cop" :{
-    _shoptype pushBack "market";
-    _shoptype pushBack "coffee";
-    _shoptype pushBack "special";
-};
-
-case "gang" :{
-    _shoptype pushBack "rebel";
-    _shoptype pushBack "market";
-    _shoptype pushBack "special";
-    _shoptype pushBack "civ";
-};
-case "economy" :{
-    _factor = [2,3,4];
-};
-case "vigilante" :{
-    _shoptype pushBack "market";
-    _shoptype pushBack "civ";
-};
-default {""};
+    case "market" :{
+        _shoptype pushBack "civ";
+    };
+    case "rebel" :{
+        _shoptype pushBack "market";
+        _shoptype pushBack "vigilante";
+        _shoptype pushBack "special";
+        _shoptype pushBack "civ";
+    };
+    case "cop" :{
+        _shoptype pushBack "market";
+        _shoptype pushBack "coffee";
+        _shoptype pushBack "special";
+    };
+    case "gang" :{
+        _shoptype pushBack "rebel";
+        _shoptype pushBack "market";
+        _shoptype pushBack "special";
+        _shoptype pushBack "civ";
+    };
+    case "economy" :{
+        _factor = [2,3,4];
+    };
+    case "vigilante" :{
+        _shoptype pushBack "market";
+        _shoptype pushBack "civ";
+    };
+    default {""};
 };
 
 {
