@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `gps` tinyint(4) NOT NULL DEFAULT '0',
   `trunk` tinyint(4) NOT NULL DEFAULT '0',
+  `security` tinyint(4) NOT NULL DEFAULT '0',
   `insurance` tinyint(4) NOT NULL DEFAULT '0',
   `hooks` tinyint(4) NOT NULL DEFAULT '0',
   `plate` int(20) NOT NULL,

@@ -40,7 +40,7 @@ while{_loop} do
 		// extDB returned that result is Multi-Part Message
 		_queryResult = "";
 		while{true} do {
-			_pipe = "extDB" callExtension format["5:%1", _key];
+			_pipe = "extDB2" callExtension format["5:%1", _key];
 			if(_pipe == "") exitWith {_loop = false};
         	_queryResult = _queryResult + _pipe;
         };

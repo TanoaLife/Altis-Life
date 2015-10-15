@@ -3,9 +3,9 @@
 #define SPY_SETTINGS(TYPE,SETTING) TYPE(missionConfigFile >> "SpyGlass" >> SETTING)
 /*
 	File: fn_variableCheck.sqf
-	
+
 	Description:
-	Checks against harmful variables, disable this if client-performance is 
+	Checks against harmful variables, disable this if client-performance is
 	to bad in the fn_initSpy.sqf, the menuCheck should be good enough!
 */
 private["_BIS_Functions","_LIFE_Functions","_SERVER_Functions","_SOCK_Functions","_DB_Functions","_allowedVariables","_checkFunction","_BIS_UI_Functions","_allowedVariables_UI","_profileCount"];
@@ -100,6 +100,7 @@ while {true} do {
 	uiSleep 10;
 	objNull call _uiCheckFunction;
 	if(!(EQUAL((count allVariables profileNameSpace),_profileCount)) OR ((count allVariables parsingNamespace) > 0)) then {
+		diag_log "Failed the SpyGlass counting check"
 		failMission "SpyGlass";
 	};
 	uiSleep (5 * 60); //Wait 5 minutes
