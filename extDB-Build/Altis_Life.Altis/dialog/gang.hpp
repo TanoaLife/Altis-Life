@@ -4,9 +4,9 @@ class Life_My_Gang_Diag {
 	movingEnable = false;
 	enableSimulation = true;
 	onLoad = "";
-	
+
 	class controlsBackground {
-	
+
 	    class fondtablet: Life_RscPicture
 		{
 			idc = 9090909;
@@ -16,7 +16,7 @@ class Life_My_Gang_Diag {
 			w = 1;
 			h = 1.28;
 		};
-		
+
 		class MainBackground:life_RscText {
 			idc = -1;
 			x = 0.1;
@@ -25,10 +25,10 @@ class Life_My_Gang_Diag {
 			h = 0.6 - (22 / 250);
 		};
 	};
-	
+
 	class controls {
 
-		
+
 		class PlayerList:Life_RscListbox
 		{
 			idc = 2621;
@@ -38,7 +38,7 @@ class Life_My_Gang_Diag {
 			w = 0.4625;
 			h = 0.54;
 		};
-		
+
 		class InviteGangButton : Life_RscButtonMenu
 		{
 			idc = 2630;
@@ -119,7 +119,7 @@ class Life_Create_Gang_Diag {
 	movingEnable = false;
 	enableSimulation = true;
 	onLoad = "[] spawn {waitUntil {!isNull (findDisplay 2520)}; ((findDisplay 2520) displayCtrl 2523) ctrlSetText format[localize ""STR_Gang_PriceTxt"",[15000] call life_fnc_numberText]};";
-	
+
 	class controlsBackground {
 		class fondtablet: Life_RscPicture
 		{
@@ -130,7 +130,7 @@ class Life_Create_Gang_Diag {
 			w = 1;
 			h = 1.28;
 		};
-		
+
 		class MainBackground:life_RscText {
 			idc = -1;
 			x = 0.1;
@@ -139,9 +139,9 @@ class Life_Create_Gang_Diag {
 			h = 0.6 - (22 / 250);
 		};
 	};
-	
+
 	class controls {
-	
+
 		class InfoMsg : Life_RscStructuredText
 		{
 			idc = 2523;
@@ -151,7 +151,7 @@ class Life_Create_Gang_Diag {
 			y = 0.25;
 			w = 0.5; h = .11;
 		};
-		
+
 		class Title : Life_RscTitle {
 			colorBackground[] = {0, 0, 0, 0};
 			idc = -1;
@@ -172,7 +172,7 @@ class Life_Create_Gang_Diag {
 			w = (6.25 / 40);
 			h = (1 / 25);
 		};
-		
+
 		class GangCreateField : Life_RscButtonMenu {
 			idc = -1;
 			text = "$STR_Gang_Create";
@@ -183,7 +183,7 @@ class Life_Create_Gang_Diag {
 			w = (6.25 / 40);
 			h = (1 / 25);
 		};
-		
+
 		class CreateGangText : Life_RscEdit
 		{
 			idc = 2522;
@@ -203,9 +203,9 @@ class Life_My_Group_Diag {
 	movingEnable = false;
 	enableSimulation = true;
 	onLoad = "[false] spawn life_fnc_gangManagement;";
-	
+
 	class controlsBackground {
-	
+
 	    class fondtablet: Life_RscPicture
 		{
 			idc = 9090909;
@@ -215,7 +215,7 @@ class Life_My_Group_Diag {
 			w = 1;
 			h = 1.28;
 		};
-		
+
 		class MainBackground:life_RscText {
 			idc = -1;
 			x = 0.1;
@@ -224,10 +224,10 @@ class Life_My_Group_Diag {
 			h = 0.6 - (22 / 250);
 		};
 	};
-	
+
 	class controls {
 
-		
+
 		class PlayerList:Life_RscListbox
 		{
 			idc = 2621;

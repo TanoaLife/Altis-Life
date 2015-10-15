@@ -1,6 +1,6 @@
-class Life_My_Group_Diag {
+class Old_Life_My_Group_Diag {
 	idd = 2620;
-	name= "life_my_group_menu";
+	name= "Old_Life_My_Group_menu";
 	movingEnable = false;
 	enableSimulation = true;
 	onLoad = "[false] spawn life_fnc_gangManagement;";
@@ -282,7 +282,7 @@ class Life_Create_Group_Diag {
 	};
 };
 
-class Life_Gang_Prompt
+class Old_Life_Gang_Prompt
 {
 	idd = 2550;
 	name = "Gang_Prompt";
@@ -322,7 +322,7 @@ class Life_Gang_Prompt
 			w = 0.5; h = 0.12;
 		};
 
-		class life_gang_browse : Life_RscButtonMenu {
+		class Old_Life_Gang_browse : Life_RscButtonMenu {
 			idc = -1;
 			text = "$STR_Gang_Browse";
 			colorBackground[] = {0, 0, 0, 0};
@@ -333,7 +333,7 @@ class Life_Gang_Prompt
 			h = (1 / 25);
 		};
 
-		class life_gang_create_button : Life_RscButtonMenu {
+		class Old_Life_Gang_create_button : Life_RscButtonMenu {
 			idc = -1;
 			text = "$STR_Gang_Create";
 			colorBackground[] = {0, 0, 0, 0};
