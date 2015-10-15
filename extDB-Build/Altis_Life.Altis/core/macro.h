@@ -8,13 +8,14 @@
 #define GANG_FUNDS life_gangbank;
 
 //Namespace Macros
-#define SVAR_MNS missionNamespace setVariable 
-#define SVAR_UINS uiNamespace setVariable 
-#define SVAR_PNS parsingNamespace setVariable 
-#define GVAR_MNS missionNamespace getVariable 
+#define SVAR_MNS missionNamespace setVariable
+#define SVAR_UINS uiNamespace setVariable
+#define SVAR_PNS parsingNamespace setVariable
+#define GVAR_MNS missionNamespace getVariable
 #define GVAR_UINS uiNamespace getVariable
 
 //Scripting Macros
+#define DEBUGVAR(var) diag_log format["DEBUG: VarName: var Value: %1", var];
 #define CONST(var1,var2) var1 = compileFinal (if(typeName var2 == "STRING") then {var2} else {str(var2)})
 #define CONSTVAR(var) var = compileFinal (if(typeName var == "STRING") then {var} else {str(var)})
 #define FETCH_CONST(var) (call var)

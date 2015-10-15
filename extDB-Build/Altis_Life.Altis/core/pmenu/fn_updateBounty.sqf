@@ -7,10 +7,12 @@ private["_val","_total","_list","_uid","_updateBounty"];
 
 _uid = getPlayerUID player;
 _list = wantedList;
-
+diag_log format["in updateBounty, _list : %1", _list];
 {
-	if (EQUAL(_uid, SEL(_x,0))) then {
-		_updateBounty = SEL(_x,3);
+	if (count _x > 0) then {
+		if (EQUAL(_uid, SEL(_x,0))) then {
+			_updateBounty = SEL(_x,3);
+		};
 	};
 } forEach _list;
 

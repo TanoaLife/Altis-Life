@@ -198,3 +198,4 @@ PVAR_ALL("life_server_isReady");
 
 /* Initialize hunting zone(s) */
 ["hunting_zone",30] spawn TON_fnc_huntingZone;
+[] spawn life_fnc_wantedSyncList;
