@@ -28,7 +28,7 @@ diag_log "data ou type ou unit null";
 
 _unit = owner _unit;
 
-_market = missionNamespace getVariable "MeccaMarketPrices";
+_market = missionNamespace getVariable "MarketPrices";
 
 _itemArray = [];
 _factor = [];
@@ -76,7 +76,7 @@ default {""};
     _fact = SEL(_x,1);
     _shop = SEL(_x,2);
     if ((_fact in _factor) or (_shop in _shoptype)) then {
-        _name = format["%1MeccaMarketGoodPrice",SEL(_x,0)];
+        _name = format["%1MarketGoodPrice",SEL(_x,0)];
         _priceArray = missionNamespace getVariable (_name);
         _itemArray pushBack _priceArray;
     };

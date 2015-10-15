@@ -16,7 +16,7 @@ class Clothing {
 
 		uniforms[] = {
 			{ "NONE", "Remove Uniform", 0, { "", "", -1 } },
-			{ "U_C_Poloshirt_blue", "Mecca Tshirt", 250, { "", "", -1 } },
+			{ "U_C_Poloshirt_blue", "Tshirt", 250, { "", "", -1 } },
 			{ "U_C_Poloshirt_burgundy", "Poloshirt Burgundy", 275, { "", "", -1 } },
 			{ "U_C_Poloshirt_redwhite", "Poloshirt Red/White", 150, { "", "", -1 } },
 			{ "U_C_Poloshirt_salmon", "Poloshirt Salmon", 175, { "", "", -1 } },
@@ -28,7 +28,7 @@ class Clothing {
 			{ "U_IG_Guerilla2_3", "The Outback Rangler", 700, { "", "", -1 } },
 			{ "U_C_HunterBody_grn", "The Hunters Look", 700, { "", "", -1 } },
 			{ "U_OrestesBody", "Surfing On Land", 1100, { "", "", -1 } },
-			{ "U_NikosBody", "Bro Suit", 5187, { "life_donator", "SCALAR", 1 } },			
+			{ "U_NikosBody", "Bro Suit", 5187, { "life_donator", "SCALAR", 1 } },
 			{ "U_I_CombatUniform", "Mafia suit", 5187, { "life_donator", "SCALAR", 4 } },
 			{ "U_B_Protagonist_VR", "VR Suit Blue", 5187, { "life_donator", "SCALAR", 3 } },
 			{ "U_O_Protagonist_VR", "VR Suit Red", 5187, { "life_donator", "SCALAR", 3 } },
@@ -210,7 +210,7 @@ class Clothing {
 		goggles[] = {
 			{ "NONE", "Remove Glasses", 0, { "", "", -1 } },
 			{ "G_Diving", "Dive Goggles", 5000, { "", "", -1 } }
-			
+
 		};
 
 		vests[] = {
@@ -263,9 +263,9 @@ class Clothing {
 			{ "U_B_Wetsuit", "", 2000, { "", "", -1 } },
 			{ "U_I_Wetsuit", "", 2000, { "", "", -1 } },
 			{ "U_O_Wetsuit", "", 2000, { "", "", -1 } }
-			
-			
-			
+
+
+
 		};
 
 		headgear[] = {
@@ -307,7 +307,7 @@ class Clothing {
 			{ "H_CrewHelmetHeli_I", "Camo", 5000, { "life_donator", "SCALAR", 3 } },
 			{ "H_CrewHelmetHeli_O", "Green", 5000, { "life_donator", "SCALAR", 3 } },
 			{ "H_CrewHelmetHeli_B", "Vader", 5000, { "life_donator", "SCALAR", 3 } }
-			
+
 		};
 
 		goggles[] = {
@@ -350,9 +350,9 @@ class Clothing {
 			{ "V_PlateCarrierSpec_mtp", "Special Carrier", 250000, { "", "", -1 } },
 			{ "V_PlateCarrierSpec_rgr", "Special Carrier", 250000, { "", "", -1 } },
 			{ "V_PlateCarrierGL_rgr", "Carrier GL Green", 500000, { "", "", -1 } },
-			{ "V_PlateCarrierIAGL_dgtl", "Carrier Rig Donor", 350000, { "life_donator", "SCALAR", 2 } }, 
+			{ "V_PlateCarrierIAGL_dgtl", "Carrier Rig Donor", 350000, { "life_donator", "SCALAR", 2 } },
 			{ "V_PlateCarrierIAGL_oli", "Carrier GL Rig DonorSkin", 350000, { "life_donator", "SCALAR", 2 } }
-			
+
 		};
 
 		backpacks[] = {
@@ -438,7 +438,7 @@ class Clothing {
 			{ "G_Sport_Blackyellow", "", 20, { "", "", -1 } },
 			{ "G_Sport_BlackWhite", "", 20, { "", "", -1 } },
 			{ "G_Squares", "", 10, { "", "", -1 } }
-			
+
 		};
 
 		vests[] = {

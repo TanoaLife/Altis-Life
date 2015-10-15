@@ -66,10 +66,10 @@ if (isNil "_queryResult") exitWith{[]};
 if (typeName _queryResult != "ARRAY") exitWith{[]};
 _return = (_queryResult select 1);
 diag_log format ["_return pre multiarr check: %1 and count %2", _return, count _return];
-if (count _return == 0) exitWith{[]};
 
 if(!_multiarr) then {
-        _return = _return select 0;
+    if (count _return == 0) exitWith{[]};
+    _return = _return select 0;
 };
 diag_log format ["_return post multiarr check: %1 and count %2", _return, count _return];
 

@@ -7,7 +7,6 @@ private["_val","_total","_list","_uid","_updateBounty"];
 
 _uid = getPlayerUID player;
 _list = wantedList;
-diag_log format["in updateBounty, _list : %1", _list];
 {
 	if (count _x > 0) then {
 		if (EQUAL(_uid, SEL(_x,0))) then {
@@ -19,4 +18,4 @@ diag_log format["in updateBounty, _list : %1", _list];
 
 if(isNil "_updateBounty") then {_updateBounty = 0};
 
-mecca_wanted_status = _updateBounty;
+wanted_status = _updateBounty;

@@ -1,6 +1,6 @@
-author = "Tonic, MeccaDevTeam";
-onLoadName = "Mecca AltisLife v2.0";
-onLoadMission = "An RPG game mode developed by Tonic, edited by MeccaDevTeam";
+author = "Tonic";
+onLoadName = "Altis Life";
+onLoadMission = "An RPG game mode developed by Tonic, ItsYuka, and others";
 joinUnassigned = 1;
 respawn = BASE;
 respawndelay = 5;
@@ -54,14 +54,14 @@ class introLife
             h = 0.75;
             w = 0.75;
             font = "EtelkaNarrowMediumPro";
-            sizeEx = 0.05; 
+            sizeEx = 0.05;
             colorBackground[] = {1,1,1,0};
             colorText[] = {1,1,1,1};
             text = "textures\logo.paa";
             lineSpacing = 1;
-         }; 
-      }; 
-   }; 
+         };
+      };
+   };
 };
 
 class CfgFunctions
@@ -96,35 +96,35 @@ class CfgSounds
 		sound[] = {"\sounds\ambsiren.ogg", 1.0, 1};
 		titles[] = {};
 	};
-	
+
 	class tazersound
 	{
 		name = "Tazersound";
 		sound[] = {"\sounds\tazer.ogg", 0.25, 1};
 		titles[] = {};
 	};
-	
+
 	class flashbang
 	{
 		name = "flashbang";
 		sound[] = {"\sounds\flashbang.ogg", 1.0, 1};
 		titles[] = {};
 	};
-	
+
 	class Yelp
 	{
 	name = "Yelp";
 	sound[] = {"\sounds\Yelp.ogg", 1.0, 1};
 	titles[] = {};
 	};
-	
+
 	class medic_siren
 	{
     name = "medic_siren";
     sound[] = {"\sounds\Siren_Med.ogg", 1.0, 1};
     titles[] = {};
 	};
-	
+
    	class car_alarm
 	{
     name = "car_alarm";
@@ -137,7 +137,7 @@ class CfgSounds
 		sound[] = {"\sounds\vehicle_lock.ogg", 1.0, 1};
 		titles[] = {};
 	};
- 
+
 	class unlock
 	{
 		name = "unlock";
@@ -145,13 +145,13 @@ class CfgSounds
 		titles[] = {};
 	};
 
-	class Cuff 
+	class Cuff
 	{
 		name = "cuff";
 		sound[] = {"\sounds\cuff.ogg", 0.95, 0.95};
 		titles[] = {};
 	};
-	
+
     class ticket
 	{
 		name="ticket";
@@ -165,7 +165,7 @@ class CfgSounds
         sound[] = {"\sounds\trunk_open.ogg", 1.0, 1};
         titles[] = {};
     };
-	
+
     class buy
 	{
 		name = "buy";
@@ -173,13 +173,13 @@ class CfgSounds
 		titles[] = {};
 	};
 
-	class bank_alarm 
+	class bank_alarm
 	{
 		name = "bank_alarm";
 		sound[] = {"\sounds\bank.ogg", 0.95, 0.95};
 		titles[] = {};
 	};
-	
+
 	class blinker
 	{
     name = "blinker";
@@ -201,7 +201,7 @@ class CfgDebriefing
 		picture = "";
 		pictureColor[] = {0,0.3,0.6,1};
 	};
-	
+
 	class Blacklisted
 	{
 		title = "Mission Failed";
@@ -211,7 +211,7 @@ class CfgDebriefing
 		picture = "";
 		pictureColor[] = {0,0.3,0.6,1};
 	};
-	
+
 	class SpyGlass
 	{
 		title = "The SpyGlass sees you";
@@ -233,7 +233,7 @@ class CfgNotifications
 		duration = 5;
 		priority = 7;
 	};
-	
+
 	class DeliveryAssigned
 	{
 		title = "Delivery Job Accepted";
@@ -242,7 +242,7 @@ class CfgNotifications
 		duration = 10;
 		priority = 7;
 	};
-	
+
 	class DeliveryFailed
 	{
 		title = "Delivery Job Failed";
@@ -251,7 +251,7 @@ class CfgNotifications
 		duration = 7;
 		priority = 7;
 	};
-	
+
 	class DeliverySucceeded
 	{
 		title = "Delivery Job Completed";
@@ -260,7 +260,7 @@ class CfgNotifications
 		duration = 6;
 		priority = 6;
 	};
-	
+
 	class TextMessage
 	{
 		title = "Received A Text Message";
@@ -269,7 +269,7 @@ class CfgNotifications
 		duration = 10;
 		priority = 6;
 	};
-	
+
 	class PoliceDispatch
 	{
 		title = "911 Dispatch Center";
@@ -278,7 +278,7 @@ class CfgNotifications
 		duration = 10;
 		priority = 6;
 	};
-	
+
 	class AdminDispatch
 	{
 		title = "Admin Dispatch Center";
@@ -287,7 +287,7 @@ class CfgNotifications
 		duration = 10;
 		priority = 6;
 	};
-	
+
 	class AdminMessage
 	{
 		title = "Admin Message";
@@ -301,29 +301,29 @@ class CfgNotifications
 		name = "dog_whine";
 		sound[] = {"sounds\dog_whine.ogg", 1, 1};
 		titles[] = {};
-		
+
 	};
 	class dog_growl
 	{
 		name = "dog_growl";
 		sound[] = {"sounds\dog_growl.ogg", 1, 1};
 		titles[] = {};
-		
+
 	};
 	class dog_ruff
 	{
 		name = "dog_ruff";
 		sound[] = {"sounds\dog_ruff.ogg", 1, 1};
 		titles[] = {};
-		
+
 	};
-	
+
 	class whistle
 	{
 		name = "whistle";
 		sound[] = {"sounds\whistle.ogg", 1, 1};
 		titles[] = {};
-		
+
 	};
 
 	class dog_close
@@ -331,14 +331,14 @@ class CfgNotifications
 		name = "dog_close";
 		sound[] = {"sounds\dog_close.ogg", 1, 1};
 		titles[] = {};
-		
+
 	};
-	
+
 	class dog_one
 	{
 		name = "dog_one";
 		sound[] = {"sounds\dog_one.ogg", 1, 1};
 		titles[] = {};
-		
+
 	};
 };

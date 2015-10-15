@@ -2,7 +2,7 @@
 /*
 	File: fn_keyHandler.sqf
 	Author: Bryan "Tonic" Boardwine
-	
+
 	Description:
 	Main key handler for event 'keyDown'
 */
@@ -73,7 +73,7 @@ switch (_code) do {
 	case 16:
 	{
 		_veh = vehicle player;
-		if(!life_blinker_active && alive _veh && _veh != player && ((driver _veh) == player) ) then {		
+		if(!life_blinker_active && alive _veh && _veh != player && ((driver _veh) == player) ) then {
 			[] spawn
 			{
 			life_blinker_active=true;
@@ -83,12 +83,12 @@ switch (_code) do {
 			[_veh,"left"] call life_fnc_BlinkerInit;
 		};
 	};
-	
+
 	//E: right signal
 	case 18:
 	{
 		_veh = vehicle player;
-		
+
 		if(alive _veh && !life_blinker_active && _veh != player && ((driver _veh) == player) ) then{
 			[] spawn
 			{
@@ -99,8 +99,8 @@ switch (_code) do {
 			[_veh,"right"] call life_fnc_BlinkerInit;
 		};
 	};
-	
-	
+
+
 
 
 	//Open Wanted
@@ -116,7 +116,7 @@ switch (_code) do {
 			[] call life_fnc_wantedMenu;
 		};
 	};
-	
+
 
 	//2 Cellphone
 	case 3:
@@ -130,7 +130,7 @@ switch (_code) do {
 			createDialog "life_my_smartphone";
 		};
 	};
-	
+
 	//3 Market
 	case 4:
 	{
@@ -188,7 +188,7 @@ switch (_code) do {
 			player playMove "AmovPercMstpSnonWnonDnon_exercisePushup";
 		};
 	};
-	
+
 	//Pushup(Shift + 6)
 	case 8:
 	{
@@ -199,7 +199,7 @@ switch (_code) do {
 			player playMove "AmovPercMstpSnonWnonDnon_Scared";
 		};
 	};
-	
+
 	//Pushup(Shift + 7)
 	case 9:
 	{
@@ -210,18 +210,18 @@ switch (_code) do {
 			player playMove "AmovPercMstpSnonWnonDnon_Scared2";
 		};
 	};
-	
+
 	//Space key for Jumping
 	case 57: {
 		if(isNil "jumpActionTime") then {jumpActionTime = 0;};
 		if(_shift && {!(EQUAL(animationState player,"AovrPercMrunSrasWrflDf"))} && {isTouchingGround player} && {EQUAL(stance player,"STAND")} && {speed player > 2} && {!life_is_arrested} && {SEL((velocity player),2) < 2.5} && {time - jumpActionTime > 1.5}) then {
 			jumpActionTime = time; //Update the time.
 			[player,true] spawn life_fnc_jumpFnc; //Local execution
-			[[player,false],"life_fnc_jumpFnc",nil,FALSE] call life_fnc_MP; //Global execution 
+			[[player,false],"life_fnc_jumpFnc",nil,FALSE] call life_fnc_MP; //Global execution
 			_handled = true;
 		};
 	};
-	
+
 	//Map Key
 	case _mapKey: {
 		switch (playerSide) do {
@@ -230,7 +230,7 @@ switch (_code) do {
 			case civilian: {if(!visibleMap) then {[] spawn life_fnc_gangMarkers;}};
 		};
 	};
-	
+
 	//Holster / recall weapon.
 	case 35: {
 		if ((vehicle player) == player) then {
@@ -260,17 +260,17 @@ switch (_code) do {
 	//Cop Horn
 	case 36:
 	{
-		if(playerSide == west && vehicle player != player && ((driver vehicle player) == player)) then		
-		{				
-			[[vehicle player],"life_fnc_copHorn",nil,true] spawn life_fnc_MP;			
-			[] spawn { sleep 1; 
-			};		
+		if(playerSide == west && vehicle player != player && ((driver vehicle player) == player)) then
+		{
+			[[vehicle player],"life_fnc_copHorn",nil,true] spawn life_fnc_MP;
+			[] spawn { sleep 1;
+			};
 			_handled = true;
 		};
 	};
 	*/
-	
-		
+
+
 	//Restraining or robbing (Shift + R)
 	case 19:
 	{
@@ -279,8 +279,8 @@ switch (_code) do {
 		{
 			[] call life_fnc_restrainAction;
 		};
-	};	
-	
+	};
+
 	//Shift+P = Faded Sound
 	case 25: {
 		if(_shift) then
@@ -295,10 +295,10 @@ switch (_code) do {
 		if (!_shift && !_alt && !_ctrlKey && ((playerSide == west) OR (playerSide == independent)) && (vehicle player != player)) then {
 			[] call life_fnc_copOpener;
 		} else {
-			if ((playerSide == west) && (vehicle player == player)) then 
+			if ((playerSide == west) && (vehicle player == player)) then
 			{
-				if(life_inv_spikeStrip > 0) then 
-				{ 
+				if(life_inv_spikeStrip > 0) then
+				{
 					[false,"spikeStrip",1] call life_fnc_handleInv;
 					[] spawn life_fnc_spikeStrip;
 				};
@@ -330,7 +330,7 @@ switch (_code) do {
 					_uid = getPlayerUID life_smartphoneTarget;
 					{
 						if(_uid == getPlayerUID _x) then{
-							life_smartphoneTarget = _x;	
+							life_smartphoneTarget = _x;
 						};
 					} foreach playableUnits;
 					createDialog "Life_smartphone_schreiben";
@@ -348,7 +348,7 @@ switch (_code) do {
 		//If cop run checks for turning lights on.
 		if(_shift && playerSide in [west,independent]) then {
 			if(vehicle player != player) then {
-				if(playerSide != civilian) then {	
+				if(playerSide != civilian) then {
 					if(playerSide == west) then {
 						[vehicle player] call life_fnc_sirenLights;
 					} else {
@@ -359,23 +359,23 @@ switch (_code) do {
 			};
 		};
 	};
-	
+
 	//Advanced Radar "/" button
-	case 181: 
+	case 181:
 	{
 	if (!_alt && !_ctrlKey && playerSide == west) then
 		{
 			[] call life_fnc_radar;
 		};
 	};
-	
+
 	//Y Player Menu
 	case 21: {
 		if(!_alt && !_ctrlKey && !dialog && !life_is_processing) then {
 			[] call life_fnc_p_openMenu;
 		};
 	};
-	
+
 	//F Key
 	case 33:
 	{	if (!_shift) then
@@ -437,7 +437,7 @@ switch (_code) do {
 		};
 	};
 };
-	
+
 	//U Key
 	case 22: {
 		if(!_alt && !_ctrlKey) then {
@@ -446,13 +446,13 @@ switch (_code) do {
 			} else {
 				_veh = vehicle player;
 			};
-			
+
 			if(_veh isKindOf "House_F" && {playerSide == civilian}) then {
 				if(_veh in life_vehicles && player distance _veh < 13) then {
 					_door = [_veh] call life_fnc_nearestDoor;
 					if(EQUAL(_door,0)) exitWith {hint localize "STR_House_Door_NotNear"};
 					_locked = _veh GVAR [format["bis_disabled_Door_%1",_door],0];
-					
+
 					if(EQUAL(_locked,0)) then {
 						_veh SVAR [format["bis_disabled_Door_%1",_door],1,true];
 						_veh animate [format["door_%1_rot",_door],0];
@@ -508,7 +508,7 @@ switch (_code) do {
 						if ((typeOf _veh) == "O_APC_Wheeled_02_rcws_F") then {
 							_veh disableTIEquipment true;
 						};
-						
+
 					} else {
 						if(local _veh) then {
 							_veh lock 2;
@@ -551,13 +551,13 @@ switch (_code) do {
 			};
 		};
 	};
-	
-	
+
+
 	// TAB key
 	case 15:
 	{
 		if(!_alt && !_ctrlKey && !_shift) then {
-			
+
 			if (vehicle player == player && !(player GVAR ["restrained", false]) && (animationState player) != "Incapacitated" && !life_isDowned) then
 			{
 				if (player GVAR ["surrender", false]) then
@@ -611,7 +611,7 @@ if ((player getVariable["restrained",false]) && (_code in (actionKeys "ShowMap")
 
 if (_code in (actionKeys "TacticalView")) then
 {
-	hint "TacticalView Mode is disabled on Mecca AltisLife" ;
+	hint "TacticalView Mode is disabled on Altis Life" ;
 	_handled = true;
 };
 

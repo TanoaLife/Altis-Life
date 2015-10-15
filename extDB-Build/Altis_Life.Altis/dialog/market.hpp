@@ -4,7 +4,7 @@ class Market
 	name = "Market";
 	movingEnable = false;
 	enableSimulation = true;
-	
+
 	class controlsBackground
 	{
 		class TitleBackground: Life_RscText
@@ -29,14 +29,14 @@ class Market
 		class Title: Life_RscText
 		{
 			idc = 1002;
-			text = "The Mecca Market"; //--- ToDo: Localize;
+			text = "The Goods Market"; //--- ToDo: Localize;
 			x = 0.29375 * safezoneW + safezoneX;
 			y = 0.225 * safezoneH + safezoneY;
 			w = 0.4125 * safezoneW;
 			h = 0.044 * safezoneH;
 		};
 	};
-	
+
 	class Controls
 	{
 		class GoodsDisplay: Life_RscListbox

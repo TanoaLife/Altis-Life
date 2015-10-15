@@ -1,7 +1,7 @@
 private["_msg"];
 _msg = "The player with the above name has been automatically jailed for reaching 4 counts of VDM - They need removed from the server (Kick First, Ban Second)";
-mecca_vdm_watcher_count = mecca_vdm_watcher_count + 1;
-switch(mecca_vdm_watcher_count) do
+vdm_watcher_count = vdm_watcher_count + 1;
+switch(vdm_watcher_count) do
 {
 	case 1:
 	{

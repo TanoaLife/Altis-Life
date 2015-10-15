@@ -67,8 +67,8 @@ class CarShops {
 	class civ_car {
 		side = "civ";
 		vehicles[] = {
-			{ "B_Quadbike_01_F", pquadbike, "" }, 
-			{ "C_Hatchback_01_F", phatchback, "driver" }, 
+			{ "B_Quadbike_01_F", pquadbike, "" },
+			{ "C_Hatchback_01_F", phatchback, "driver" },
 			{ "C_Offroad_01_F", poffroad, "driver" },
 			{ "C_SUV_01_F", psuv, "driver" },
 			{ "C_Hatchback_01_sport_F", phatchbacksport, "driver" }
@@ -76,7 +76,7 @@ class CarShops {
 	};
 
 	class kart_shop {
-		side = "civ";	
+		side = "civ";
 		vehicles[] = {
 			{ "C_Kart_01_Blu_F", pkart , "driver" },
 			{ "C_Kart_01_Fuel_F", pkart, "driver" },
@@ -134,7 +134,7 @@ class CarShops {
 	class cop_car {
 		side = "cop";
 		vehicles[] = {
-			{ "I_Quadbike_01_F", pquadbike, "" }, 
+			{ "I_Quadbike_01_F", pquadbike, "" },
 			{ "C_Offroad_01_F", poffroadcop, "", { "life_coplevel", 2 } },
 			{ "C_SUV_01_F", psuvcop, "", { "life_coplevel", 2 } },
 			{ "B_MRAP_01_F", phuntercop, "", { "life_coplevel", 4 } },
@@ -322,7 +322,7 @@ class CfgVehicles {
         chopShop = 5000;
         textures[] = { };
     };
-	
+
 	class B_Heli_Transport_03_F {
         vItemSpace = 250;
 		price = huron;
@@ -630,9 +630,9 @@ class CfgVehicles {
             } }
         };
     };
-	
+
 	class I_Quadbike_01_F : B_Quadbike_01_F {};
-	
+
 	class I_Truck_02_covered_F {
         vItemSpace = 500;
         price = pzamakcov;
@@ -667,7 +667,7 @@ class CfgVehicles {
 		chopShop = 5000;
 		textures[] = {};
 	};
-	
+
 
 
 	class C_Hatchback_01_F {
@@ -726,7 +726,7 @@ class CfgVehicles {
 	                "\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_04_co.paa"
             } },
             { "Cop", "cop", {
-                "textures\meccapolicesuv.jpg"
+                "textures\Meccapolicesuv.jpg"
             } },
             { "Donut", "civ", {
                 "textures\donut_suv_textures.paa"
@@ -793,7 +793,7 @@ class CfgVehicles {
         chopShop = 5000;
         textures[] = {
         	{ "Cop", "cop", {
-                "textures\meccalittlebird.jpg"
+                "textures\Meccalittlebird.jpg"
             } },
 			{ "Black", "fed", {
 	                "\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_ion_co.paa"
@@ -859,11 +859,11 @@ class CfgVehicles {
         insurance = 2500;
         chopShop = 5000;
         textures[] = {
-            { 
+            {
              }
         };
     };
-	
+
 	class C_Van_01_fuel_F {
         vItemSpace = 800;
         price = ftruck;
@@ -872,7 +872,7 @@ class CfgVehicles {
         insurance = 2500;
         chopShop = 5000;
         textures[] = {
-            { 
+            {
              }
         };
     };
@@ -884,11 +884,11 @@ class CfgVehicles {
         insurance = 2500;
         chopShop = 5000;
         textures[] = {
-            { 
+            {
              }
         };
     };
-	
+
 
 	class O_Heli_Light_02_unarmed_F {
         vItemSpace = 210;
@@ -902,20 +902,20 @@ class CfgVehicles {
                 "\a3\air_f\Heli_Light_02\Data\heli_light_02_ext_co.paa"
             } },
 			{ "White / Blue", "civ", {
-	                "\a3\air_f\Heli_Light_02\Data\heli_light_02_ext_civilian_co.paa"   
+	                "\a3\air_f\Heli_Light_02\Data\heli_light_02_ext_civilian_co.paa"
             } },
 			{ "Digi Green", "reb", {
 	                "\a3\air_f\Heli_Light_02\Data\heli_light_02_ext_indp_co.paa"
             } },
 			{ "Desert Digi", "reb", {
-	                "\a3\air_f\Heli_Light_02\Data\heli_light_02_ext_opfor_co.paa" 
+	                "\a3\air_f\Heli_Light_02\Data\heli_light_02_ext_opfor_co.paa"
             } },
             { "MES Orca", "med", {
                 "textures\morca.jpg"
             } }
         };
     };
-	
+
 	class I_Heli_Transport_02_F {
         vItemSpace = 375;
         storageFee[] = { 55000, 0, 0, 0 };
@@ -936,12 +936,12 @@ class CfgVehicles {
             } }
         };
     };
-    
+
     class B_SDV_01_F : Default {
         vItemSpace = 100;
         price = psdv;
     };
-    
+
     class C_Heli_Light_01_civil_F : Default {
         vItemSpace = 90;
         price = pm900;

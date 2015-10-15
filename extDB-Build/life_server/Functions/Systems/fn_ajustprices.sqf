@@ -40,9 +40,9 @@ diag_log "data ou type ou unit null";
 
 _unit = owner _unit; //for hack purpose!
 
-_market = missionNamespace getVariable "MeccaMarketPrices";
+_market = missionNamespace getVariable "MarketPrices";
 
-_good = missionNamespace getVariable format["%1MeccaMarketGoodPrice",_var];
+_good = missionNamespace getVariable format["%1MarketGoodPrice",_var];
 
 if(isNil "_good") exitWith {format["ERROR: _good variable was nil in adjust prices. _var = %1", _var]};
 _itemArray = [];
@@ -65,7 +65,7 @@ if (_factor == 0) exitwith {};//the factor 0 is not a real group
 
 {
     if(SEL(_x,1) == _factor) then {
-        _name = format["%1MeccaMarketGoodPrice",SEL(_x,0)];
+        _name = format["%1MarketGoodPrice",SEL(_x,0)];
         _itemArray pushBack (missionNamespace getVariable _name);
     };
 } forEach _market;
@@ -82,8 +82,8 @@ _sellingfactor =((count _itemArray)-1);
     _maxprice = (_x select 5);
     _changeco = 0.3 + random 1.4;
     _x set [8, _sellprice];
-    if (_ressource == _var) then { 
-        if (_type == 0) then { 
+    if (_ressource == _var) then {
+        if (_type == 0) then {
             if ((_sellprice - (_varprice * _amount * _sellingfactor)) > _minprice) then {
                 _sellprice = _sellprice - (_varprice * _amount * _sellingfactor);
             } else {
@@ -105,10 +105,9 @@ _sellingfactor =((count _itemArray)-1);
             };
         };
     };
-    
+
     _x set [2, _sellprice];
-    _name = format["%1MeccaMarketGoodPrice",SEL(_x,0)];
+    _name = format["%1MarketGoodPrice",SEL(_x,0)];
     missionNamespace setVariable [_name,_x];
     publicVariable _name;
 } forEach _itemArray;
-

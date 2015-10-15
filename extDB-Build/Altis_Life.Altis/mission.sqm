@@ -9237,7 +9237,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.60000002;
-			init="this enableSimulation false; this allowDamage false;this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]";
+			init="this enableSimulation false; this allowDamage false;this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]";
 		};
 		class Item240
 		{
@@ -9258,7 +9258,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.60000002;
-			init="this enableSimulation false; this allowDamage false;this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]";
+			init="this enableSimulation false; this allowDamage false;this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]";
 		};
 		class Item242
 		{
@@ -9279,7 +9279,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.60000002;
-			init="this enableSimulation false; this allowDamage false;this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]";
+			init="this enableSimulation false; this allowDamage false;this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]";
 		};
 		class Item244
 		{
@@ -66320,7 +66320,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.60000002;
-			init="this allowDamage false; this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]";
+			init="this allowDamage false; this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]";
 		};
 		class Item5672
 		{
@@ -81308,7 +81308,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.40000001;
-			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]";
+			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]";
 		};
 		class Item7066
 		{
@@ -81319,7 +81319,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.40000001;
-			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]";
+			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]";
 		};
 		class Item7067
 		{
@@ -89835,7 +89835,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.40000001;
-			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]";
+			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]";
 		};
 		class Item7832
 		{
@@ -89846,7 +89846,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.40000001;
-			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]";
+			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]";
 		};
 		class Item7833
 		{
@@ -92633,7 +92633,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.60000002;
-			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]; this setPos[getPos this select 0, getPos this select 1, 0.20];this setVectorUp [0,0,1];";
+			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]; this setPos[getPos this select 0, getPos this select 1, 0.20];this setVectorUp [0,0,1];";
 		};
 		class Item8083
 		{
@@ -92643,7 +92643,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.60000002;
-			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]; this setPos[getPos this select 0, getPos this select 1, 0.20];this setVectorUp [0,0,1];";
+			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]; this setPos[getPos this select 0, getPos this select 1, 0.20];this setVectorUp [0,0,1];";
 		};
 		class Item8084
 		{
@@ -92653,7 +92653,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.60000002;
-			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\meccagamingbillboard512x512.jpg""]; this setPos[getPos this select 0, getPos this select 1, 0.20];this setVectorUp [0,0,1];";
+			init="this allowDamage false; this enableSimulation false; this setObjectTexture [0, ""textures\Meccagamingbillboard512x512.jpg""]; this setPos[getPos this select 0, getPos this select 1, 0.20];this setVectorUp [0,0,1];";
 		};
 		class Item8085
 		{

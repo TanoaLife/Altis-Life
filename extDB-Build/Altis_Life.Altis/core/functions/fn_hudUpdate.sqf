@@ -30,17 +30,17 @@ LIFEctrl(IDC_LIFE_BAR_WATER) progressSetPosition (1 / (100 / life_thirst));
 LIFEctrl(IDC_LIFE_BAR_HEALTH) progressSetPosition (1 - (damage player));
 if(playerSide == civilian) then
 {
-	if(mecca_wanted_status > 0) then
+	if(wanted_status > 0) then
 	{
 		LIFEctrl(IDC_LIFE_BAR_WANTED)ctrlSetBackgroundColor [1, 0, 0, .5];
 		LIFEctrl(IDC_LIFE_BAR_WANTED) progressSetPosition (100);
-		LIFEctrl(IDC_LIFE_WANTED_TEXT) ctrlSetText format["$%1", ([mecca_wanted_status] call life_fnc_numberText)];
+		LIFEctrl(IDC_LIFE_WANTED_TEXT) ctrlSetText format["$%1", ([wanted_status] call life_fnc_numberText)];
 	}
 	else
 	{
 		LIFEctrl(IDC_LIFE_BAR_WANTED)ctrlSetBackgroundColor [0, 1, 0, .5];
 		LIFEctrl(IDC_LIFE_BAR_WANTED) progressSetPosition (100);
-		LIFEctrl(IDC_LIFE_WANTED_TEXT) ctrlSetText format["$%1", ([mecca_wanted_status] call life_fnc_numberText)];
+		LIFEctrl(IDC_LIFE_WANTED_TEXT) ctrlSetText format["$%1", ([wanted_status] call life_fnc_numberText)];
 	};
 }
 else

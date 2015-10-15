@@ -19,33 +19,33 @@ player createDiarySubject ["serverfeatures","Server Features"];
 */
 		player createDiaryRecord ["CivRules",
 		[
-			"Civ Rules", 
+			"Civ Rules",
 				"
-				Civilian rules may located on our website here. http://meccagaming.ipbhost.com/topic/26-mecca-civilian-rules/<br/>
-				"
-		]
-	];
-	
-	player createDiaryRecord["CopRules",
-		[
-			"Cop Rules",
-				"
-					Cop rules may be located on our website here. http://meccagaming.ipbhost.com/topic/14-mecca-state-troopers-handbook/<br/>
-				"
-		]
-	];
-					
-	
-	player createDiaryRecord ["MedicRules",
-		[
-			"Medic Rules", 
-				"
-				Medic rules may be located on our website here. http://meccagaming.ipbhost.com/topic/17-mecca-emergency-services-handbook/<br/>
+				TODO: Civilian Rules/<br/>
 				"
 		]
 	];
 
-	
+	player createDiaryRecord["CopRules",
+		[
+			"Cop Rules",
+				"
+				TODO: Cop Rules/<br/>
+				"
+		]
+	];
+
+
+	player createDiaryRecord ["MedicRules",
+		[
+			"Medic Rules",
+				"
+				TODO: Medic Rules/<br/>
+				"
+		]
+	];
+
+
 // Controls Section
 
 	player createDiaryRecord ["controls",
@@ -68,7 +68,7 @@ player createDiarySubject ["serverfeatures","Server Features"];
 				"
 		]
 	];
-	
+
 	player createDiaryRecord ["controls",
 		[
 			"Cop Controls",
@@ -87,7 +87,7 @@ player createDiarySubject ["serverfeatures","Server Features"];
 				"
 		]
 	];
-	
+
 	player createDiaryRecord ["serverfeatures",
 		[
 			"Vehicle Upgrades",
@@ -95,7 +95,7 @@ player createDiarySubject ["serverfeatures","Server Features"];
 				You can upgrade your vehicle at any garage or air<br/>    garage on the map.<br/>
 				<br/>
 				Trunk Level: There are 5 levels of trunk space from 0-4.<br/>    Each additional level adds 5% to your vehicle's<br/>    trunk space.<br/>
-			    <br/>     
+			    <br/>
 				Insurance Level: There are 3 levels of insurance.<br/>
 					1: Protection from vehicle explosions, only the vehicle<br/>    body is covered.<br/>
 					2: Adds protection for modifications to the vehicle.<br/>
@@ -109,16 +109,16 @@ player createDiarySubject ["serverfeatures","Server Features"];
 				"
 		]
 	];
-	
+
 	player createDiaryRecord ["serverfeatures",
 		[
 			"Paintball",
 				"
-				Paintball can be played at a number of the major cities on Altis. Simply proceed to the paintball vendor and select to join the match. 
+				Paintball can be played at a number of the major cities on Altis. Simply proceed to the paintball vendor and select to join the match.
 				"
 		]
 	];
-	
+
 	player createDiaryRecord ["serverfeatures",
 		[
 			"Random Fields",

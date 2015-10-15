@@ -46,7 +46,7 @@ if(playerSide == civilian) then {
 	};
 	
 	if(uniform player == "U_C_Poloshirt_blue") then {
-	player setObjectTextureGlobal [0, "textures\meccashirt.jpg"];
+	player setObjectTextureGlobal [0, "textures\Meccashirt.jpg"];
 	};
 	
 	if (uniform player == "U_BG_Guerilla2_2") then {

@@ -18,17 +18,17 @@ class WeaponShops {
 			{ "Rangefinder", "",5000, { "", "", -1 } },
             { "NVGoggles_INDEP", "", 1000, { "", "", -1 } },
             { "NVGoggles", "", 1000, { "", "", -1 } },
-			
+
 			{ "SMG_02_F", "", 45000, { "", "", -1 } },
 			{ "30Rnd_9x21_Mag", "", 1000, { "", "", -1 } },
-			
+
 			{ "acc_flashlight", "", 500, { "", "", -1 } },
 			{ "optic_ACO_grn", "", 500, { "", "", -1 } },
-			{ "optic_Aco", "", 5000, { "", "", -1 } }	
+			{ "optic_Aco", "", 5000, { "", "", -1 } }
         };
-    };    
-	
-	
+    };
+
+
 	//Armory Shops
     class gun {
         name = "Billy Joe's Firearms";
@@ -46,8 +46,8 @@ class WeaponShops {
 			{ "9Rnd_45ACP_Mag", "", 500, { "", "", -1 } },
 			{ "hgun_Pistol_heavy_02_F", "", 25000, { "", "", -1 } },
             { "6Rnd_45ACP_Cylinder", "", 500, { "", "", -1 } },
-			
-			
+
+
             { "optic_ACO_grn", "", 2500, { "", "", -1 } },
             { "optic_Aco", "", 2500, { "", "", -1 } }
         };
@@ -70,47 +70,47 @@ class WeaponShops {
 			{ "Rangefinder", "", 5000, { "", "", -1 } },
             { "NVGoggles_INDEP", "", 1000, { "", "", -1 } },
             { "NVGoggles", "", 1000, { "", "", -1 } },
-			
+
             { "hgun_Rook40_F", "", 5000, { "", "", -1 } },
             { "30Rnd_9x21_Mag", "", 500, { "", "", -1 } },
 
 			{ "hgun_ACPC2_F", "", 6000, { "", "", -1 } },
 			{ "9Rnd_45ACP_Mag", "", 500, { "", "", -1 } },
-			
+
             { "hgun_PDW2000_F", "", 10000, { "", "", -1 } },
             { "30Rnd_9x21_Mag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_sdar_F", "", 25000, { "", "", -1 } },
             { "20Rnd_556x45_UW_mag", "", 500, { "", "", -1 } },
-			
+
             { "hgun_Pistol_heavy_02_F", "", 25000, { "", "", -1 } },
             { "6Rnd_45ACP_Cylinder", "", 500, { "", "", -1 } },
-			
+
             { "arifle_Mk20C_F", "", 20000, { "", "", -1 } },
             { "30Rnd_556x45_Stanag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_TRG20_F", "", 20000, { "", "", -1 } },
             { "30Rnd_556x45_Stanag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_TRG21_F", "", 20000, { "", "", -1 } },
             { "30Rnd_556x45_Stanag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_Katiba_F", "", 50000, { "", "", -1 } },
             { "30Rnd_65x39_caseless_green", "", 500, { "", "", -1 } },
-			
+
             { "SMG_01_F", "", 50000, { "", "", -1 } },
             { "30Rnd_45ACP_Mag_SMG_01", "", 500, { "", "", -1 } },
-			
+
             { "srifle_DMR_01_F", "", 80000, { "", "", -1 } },
             { "10Rnd_762x54_Mag", "", 500, { "", "", -1 } },
-			
+
             { "srifle_LRR_LRPS_F", "", 1000000, { "", "", -1 } },
             { "7Rnd_408_Mag", "", 200000, { "", "", -1 } },
-				
+
 			{ "LMG_Mk200_F", "", 150000, { "", "", -1 } },
             { "200Rnd_65x39_cased_Box", "", 50000, { "", "", -1 } },
 			{ "200Rnd_65x39_cased_Box_Tracer", "", 50000, { "", "", -1 } },
-			
+
 			{ "srifle_DMR_03_F", "", 125000, { "", "", -1 } },
 			{ "srifle_DMR_03_multicam_F", "", 125000, { "", "", -1 } },
 			{ "srifle_DMR_03_khaki_F", "", 125000, { "", "", -1 } },
@@ -119,32 +119,32 @@ class WeaponShops {
 			{ "srifle_DMR_06_olive_F", "", 125000, { "", "", -1 } },
 			{ "srifle_EBR_F", "", 125000, { "", "", -1 } },
             { "20Rnd_762x51_Mag", "", 500, { "", "", -1 } },
-				
+
 			{ "bipod_01_F_blk", "Black Bipod", 35000, { "", "", -1 } },
 			{ "bipod_01_F_snd", "Desert Bipod", 35000, { "", "", -1 } },
 			{ "bipod_01_F_mtp", "Woodland Bipod", 35000, { "", "", -1 } },
-			
+
 			{ "launch_Titan_F", "", 500000, { "", "", -1 } },
             { "Titan_AA", "", 200000, { "", "", -1 } },
             { "acc_flashlight", "", 500, { "", "", -1 } },
-            { "optic_ACO_grn", "", 2500, { "", "", -1 } },	
+            { "optic_ACO_grn", "", 2500, { "", "", -1 } },
             { "optic_Aco", "", 2500, { "", "", -1 } },
-            { "optic_MRCO", "", 20000, { "", "", -1 } },	
-			{ "optic_Hamr", "", 20000, { "", "", -1 } },			
+            { "optic_MRCO", "", 20000, { "", "", -1 } },
+			{ "optic_Hamr", "", 20000, { "", "", -1 } },
             { "optic_Holosight", "", 15000, { "", "", -1 } },
-            { "optic_Arco", "", 20000, { "", "", -1 } },		
+            { "optic_Arco", "", 20000, { "", "", -1 } },
             { "acc_pointer_IR", "", 500, { "", "", -1 } },
-            { "SmokeShell", "", 1000, { "", "", -1 } },		
+            { "SmokeShell", "", 1000, { "", "", -1 } },
             { "SmokeShellRed", "", 1000, { "", "", -1 } },
-            { "SmokeShellGreen", "", 1000, { "", "", -1 } },		
+            { "SmokeShellGreen", "", 1000, { "", "", -1 } },
             { "SmokeShellYellow", "", 1000, { "", "", -1 } },
-            { "SmokeShellPurple", "", 1000, { "", "", -1 } },		
+            { "SmokeShellPurple", "", 1000, { "", "", -1 } },
             { "SmokeShellOrange", "", 1000, { "", "", -1 } },
-            { "HandGrenade", "", 50000, { "", "", -1 } },		
-            { "SLAMDirectionalMine_Wire_Mag", "", 275000, { "", "", -1 } }										
+            { "HandGrenade", "", 50000, { "", "", -1 } },
+            { "SLAMDirectionalMine_Wire_Mag", "", 275000, { "", "", -1 } }
         };
     };
-	
+
     class rebelA {
         name = "Mohammed's Jihadi Shop";
         side = "civ";
@@ -163,67 +163,67 @@ class WeaponShops {
 			{ "Rangefinder", "",5000, { "", "", -1 } },
             { "NVGoggles_INDEP", "", 1000, { "", "", -1 } },
             { "NVGoggles", "", 1000, { "", "", -1 } },
-			
+
             { "hgun_Rook40_F", "", 500, { "", "", -1 } },
             { "30Rnd_9x21_Mag", "", 500, { "", "", -1 } },
-			
+
             { "hgun_PDW2000_F", "", 10000, { "", "", -1 } },
             { "30Rnd_9x21_Mag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_sdar_F", "", 25000, { "", "", -1 } },
             { "20Rnd_556x45_UW_mag", "", 500, { "", "", -1 } },
-			
+
             { "hgun_Pistol_heavy_02_F", "", 25000, { "", "", -1 } },
             { "6Rnd_45ACP_Cylinder", "", 500, { "", "", -1 } },
-			
+
             { "arifle_Mk20C_F", "", 30000, { "", "", -1 } },
             { "30Rnd_556x45_Stanag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_TRG20_F", "", 20000, { "", "", -1 } },
             { "30Rnd_556x45_Stanag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_TRG21_F", "", 20000, { "", "", -1 } },
             { "30Rnd_556x45_Stanag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_Katiba_F", "", 35000, { "", "", -1 } },
             { "30Rnd_65x39_caseless_green", "", 500, { "", "", -1 } },
-			
+
             { "SMG_01_F", "", 50000, { "", "", -1 } },
             { "30Rnd_45ACP_Mag_SMG_01", "", 500, { "", "", -1 } },
-			
+
             { "srifle_DMR_01_F", "", 80000, { "", "", -1 } },
             { "10Rnd_762x54_Mag", "", 500, { "", "", -1 } },
-			
+
             { "srifle_EBR_F", "", 100000, { "", "", -1 } },
             { "20Rnd_762x51_Mag", "", 500, { "", "", -1 } },
-			
+
             { "srifle_LRR_LRPS_F", "", 1200000, { "", "", -1 } },
             { "7Rnd_408_Mag", "", 500000, { "", "", -1 } },
-			
+
 			{ "LMG_Mk200_F", "", 150000, { "", "", -1 } },
             { "200Rnd_65x39_cased_Box", "", 50000, { "", "", -1 } },
 			{ "200Rnd_65x39_cased_Box_Tracer", "", 50000, { "", "", -1 } },
-				
+
 			{ "launch_Titan_F", "", 500000, { "", "", -1 } },
             { "Titan_AA", "", 200000, { "", "", -1 } },
             { "acc_flashlight", "", 500, { "", "", -1 } },
-            { "optic_ACO_grn", "", 10000, { "", "", -1 } },	
+            { "optic_ACO_grn", "", 10000, { "", "", -1 } },
 			{ "optic_Hamr", "", 4000, { "", "", -1 } },
             { "optic_Aco", "", 10000, { "", "", -1 } },
-            { "optic_MRCO", "", 20000, { "", "", -1 } },		
+            { "optic_MRCO", "", 20000, { "", "", -1 } },
             { "optic_Holosight", "", 25000, { "", "", -1 } },
-            { "optic_Arco", "", 20000, { "", "", -1 } },		
+            { "optic_Arco", "", 20000, { "", "", -1 } },
             { "acc_pointer_IR", "", 500, { "", "", -1 } },
-            { "SmokeShell", "", 1000, { "", "", -1 } },		
+            { "SmokeShell", "", 1000, { "", "", -1 } },
             { "SmokeShellRed", "", 1000, { "", "", -1 } },
-            { "SmokeShellGreen", "", 1000, { "", "", -1 } },		
+            { "SmokeShellGreen", "", 1000, { "", "", -1 } },
             { "SmokeShellYellow", "", 1000, { "", "", -1 } },
-            { "SmokeShellPurple", "", 1000, { "", "", -1 } },		
+            { "SmokeShellPurple", "", 1000, { "", "", -1 } },
             { "SmokeShellOrange", "", 1000, { "", "", -1 } },
-            { "HandGrenade", "", 50000, { "", "", -1 } }											
+            { "HandGrenade", "", 50000, { "", "", -1 } }
         };
     };
-	
+
     class gang {
         name = "Hideout Armament";
         side = "civ";
@@ -242,58 +242,58 @@ class WeaponShops {
 			{ "Rangefinder", "",5000, { "", "", -1 } },
             { "NVGoggles_INDEP", "", 1000, { "", "", -1 } },
             { "NVGoggles", "", 1000, { "", "", -1 } },
-			
+
             { "hgun_Rook40_F", "", 500, { "", "", -1 } },
             { "30Rnd_9x21_Mag", "", 500, { "", "", -1 } },
-			
+
             { "hgun_PDW2000_F", "", 10000, { "", "", -1 } },
             { "30Rnd_9x21_Mag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_sdar_F", "", 25000, { "", "", -1 } },
             { "20Rnd_556x45_UW_mag", "", 500, { "", "", -1 } },
-			
+
             { "hgun_Pistol_heavy_02_F", "", 25000, { "", "", -1 } },
             { "6Rnd_45ACP_Cylinder", "", 500, { "", "", -1 } },
-			
+
             { "arifle_Mk20C_F", "", 20000, { "", "", -1 } },
             { "30Rnd_556x45_Stanag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_TRG20_F", "", 20000, { "", "", -1 } },
             { "30Rnd_556x45_Stanag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_TRG21_F", "", 20000, { "", "", -1 } },
             { "30Rnd_556x45_Stanag", "", 500, { "", "", -1 } },
-			
+
             { "arifle_Katiba_F", "", 45000, { "", "", -1 } },
             { "30Rnd_65x39_caseless_green", "", 500, { "", "", -1 } },
-			
+
             { "SMG_01_F", "", 50000, { "", "", -1 } },
             { "30Rnd_45ACP_Mag_SMG_01", "", 500, { "", "", -1 } },
-			
+
             { "srifle_DMR_01_F", "", 80000, { "", "", -1 } },
             { "10Rnd_762x54_Mag", "", 500, { "", "", -1 } },
-			
-			
+
+
             { "acc_flashlight", "", 500, { "", "", -1 } },
-            { "optic_ACO_grn", "", 2500, { "", "", -1 } },	
+            { "optic_ACO_grn", "", 2500, { "", "", -1 } },
             { "optic_Aco", "", 2500, { "", "", -1 } },
-            { "optic_MRCO", "", 20000, { "", "", -1 } },		
+            { "optic_MRCO", "", 20000, { "", "", -1 } },
             { "optic_Holosight", "", 15000, { "", "", -1 } },
             { "optic_Arco", "", 20000, { "", "", -1 } },
-			{ "optic_Hamr", "", 20000, { "", "", -1 } },			
+			{ "optic_Hamr", "", 20000, { "", "", -1 } },
             { "acc_pointer_IR", "", 500, { "", "", -1 } },
-            { "SmokeShell", "", 1000, { "", "", -1 } },		
+            { "SmokeShell", "", 1000, { "", "", -1 } },
             { "SmokeShellRed", "", 1000, { "", "", -1 } },
-            { "SmokeShellGreen", "", 1000, { "", "", -1 } },		
+            { "SmokeShellGreen", "", 1000, { "", "", -1 } },
             { "SmokeShellYellow", "", 1000, { "", "", -1 } },
-            { "SmokeShellPurple", "", 1000, { "", "", -1 } },		
+            { "SmokeShellPurple", "", 1000, { "", "", -1 } },
             { "SmokeShellOrange", "", 1000, { "", "", -1 } },
-            { "HandGrenade", "", 50000, { "", "", -1 } }	
+            { "HandGrenade", "", 50000, { "", "", -1 } }
         };
     };
     //Basic Shops
     class genstore {
-        name = "Mecca General Store";
+        name = "General Store";
         side = "civ";
         license = "";
         level = -1;
@@ -318,7 +318,7 @@ class WeaponShops {
     };
     //Cop Shops
     class cop_basic {
-        name = "Mecca Cop Shop";
+        name = "Cop Shop";
         side = "cop";
         license = "";
         level = -1;
@@ -335,11 +335,11 @@ class WeaponShops {
 			{ "Rangefinder", "",5000, { "", "", -1 } },
             { "NVGoggles_OPFOR", "", 1000, { "", "", -1 } },
             { "Chemlight_blue", "", 1000, { "", "", -1 } },
-			{ "SmokeShell", "", 1000, { "life_coplevel", "SCALAR", 2 } },		
+			{ "SmokeShell", "", 1000, { "life_coplevel", "SCALAR", 2 } },
             { "SmokeShellRed", "", 1000, { "life_coplevel", "SCALAR", 2 } },
-            { "SmokeShellGreen", "", 1000, { "life_coplevel", "SCALAR", 2 } },		
+            { "SmokeShellGreen", "", 1000, { "life_coplevel", "SCALAR", 2 } },
             { "SmokeShellYellow", "", 1000, { "life_coplevel", "SCALAR", 2 } },
-            { "SmokeShellPurple", "", 1000, { "life_coplevel", "SCALAR", 2 } },		
+            { "SmokeShellPurple", "", 1000, { "life_coplevel", "SCALAR", 2 } },
             { "SmokeShellOrange", "", 1000, { "life_coplevel", "SCALAR", 2 } },
 			{ "SmokeShellBlue", "Swat Tear Gas", 500, { "life_swatlevel", "SCALAR", 1 } },
             { "hgun_P07_F", "", 500, { "", "", -1 } },
@@ -377,8 +377,8 @@ class WeaponShops {
 			{ "acc_pointer_IR", "", 1000, { "life_coplevel", "SCALAR", 2 } }
         };
     };
- 
- 
+
+
     //Medic Shops
     class med_basic {
         name = "store";
@@ -399,7 +399,7 @@ class WeaponShops {
             { "NVGoggles", "", 1000, { "", "", -1 } },
 			{ "SmokeShell", "", 1000, { "", "", -1 } },
 			{ "H_MilCap_gry", "", 50, { "", "Hat", -1 } },
-			{ "U_I_CombatUniform_tshirt", "Uniform", 50, { "", "", -1 } },			
+			{ "U_I_CombatUniform_tshirt", "Uniform", 50, { "", "", -1 } },
             { "B_AssaultPack_blk", "", 3000, { "", "", -1 } }
         };
     };

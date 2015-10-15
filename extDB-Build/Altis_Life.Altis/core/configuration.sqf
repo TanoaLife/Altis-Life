@@ -37,8 +37,8 @@ life_earplugs = false;
 life_is_alive = false;
 life_siren2_active = false;
 life_fake_weapons = ["Binocular","Laserdesignator","Rangefinder"];
-mecca_vdm_watcher_count = 0;
-mecca_wanted_status = 0;
+vdm_watcher_count = 0;
+wanted_status = 0;
 life_hudStarted = false;
 life_isSuicide = false;
 life_redgull_effect = time;
@@ -85,11 +85,11 @@ life_hidden_clothing = [
 	"U_B_FullGhillie_ard",
 	"U_O_FullGhillie_ard",
 	"U_I_FullGhillie_ard"
-	
+
 ];
 
-life_god = false; 
-life_frozen = false; 
+life_god = false;
+life_frozen = false;
 life_markers = false;
 life_channel_send = true; //Channel 7
 
@@ -129,12 +129,12 @@ switch (playerSide) do {
 		BANK = 35000; //Starting Bank Money
 		life_paycheck = 1200; //Paycheck Amount
 	};
-	
+
 	case civilian: {
 		BANK = 35000; //Starting Bank Money
 		life_paycheck = 1200; //Paycheck Amount
 	};
-	
+
 	case independent: {
 		BANK = 35000;
 		life_paycheck = 1200;
@@ -153,7 +153,7 @@ switch (playerSide) do {
 {
 	_varName = getText(_x >> "variable");
 	_sideFlag = getText(_x >> "side");
-	
+
 	SVAR_MNS [LICENSE_VARNAME(_varName,_sideFlag),false];
 } foreach ("true" configClasses (missionConfigFile >> "Licenses"));
 

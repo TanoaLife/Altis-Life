@@ -418,7 +418,7 @@ class Life_Client_Core
 		class chopShopSell {};
 		class clothingFilter {};
 		class clothingMenu {};
-		class impoundMenu {};
+		class garageMenu {};
 		class vehicleShopBuy {};
 		class vehicleShopLBChange {};
 		class vehicleShopMenu {};
