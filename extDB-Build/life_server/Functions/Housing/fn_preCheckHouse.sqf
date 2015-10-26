@@ -13,7 +13,6 @@ if(isNull _unit) exitWith {false;};
 _housePos = getPosATL _house;
 
 _query = format ["housingCheckHouse:%1",_housePos];
-waitUntil {!DB_Async_Active};
 _queryResult = [_query,2,true] call DB_fnc_asyncCall;
 
 ["diag_log",[

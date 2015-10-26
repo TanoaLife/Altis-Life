@@ -1,6 +1,6 @@
 /*
 	File: fn_vehicleDead.sqf
-	
+
 	Description:
 	Tells the database that this vehicle has died and can't be recovered.
 */
@@ -33,7 +33,6 @@ switch (_insurance) do
 		_query = format["vehicleDead:0:%1:%2",_uid,_plate];
 	};
 };
-waitUntil {!DB_Async_Active};
 _thread = [_query,1] call DB_fnc_asyncCall;
 
 ["diag_log",[

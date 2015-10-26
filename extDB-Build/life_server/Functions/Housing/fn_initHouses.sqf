@@ -14,14 +14,12 @@ _nogood = [[8439.86,12758.9,0.132305],[8972.68,15504.6,0.681137],[8946.03,15514.
 	_b setVariable ["house_owner",["0","Unknown"],true];
 } foreach _nogood;
 
-waitUntil{!DB_Async_Active};
 _count = (["housingCount",2] call DB_fnc_asyncCall) select 0;
 
 for [{_x=0},{_x<=_count},{_x=_x+10}] do {
-	waitUntil{!DB_Async_Active};
 	_query = format["housingInit:%1",_x];
 	_queryResult = [_query,2,true] call DB_fnc_asyncCall;
-	
+
 	/*if((EQUAL(EXTDB_SETTINGS("MySQL_Query"),1))) then {
 		["diag_log",[
 			"------------- initHouses Request -------------",
@@ -37,7 +35,6 @@ for [{_x=0},{_x<=_count},{_x=_x+10}] do {
 		_house = nearestBuilding _pos;
 		if (typeOf _house == "Land_i_Shed_Ind_F") then {
 			_query2 = format["housingInitGang:%1",_pos];
-			waitUntil{!DB_Async_Active};
 			_queryResult2 = [_query2,2,false] call DB_fnc_asyncCall;
 			diag_log format["housinginit gang queryresult2: %1",_queryResult2];
 			if(count _queryResult2 > 0) then {
@@ -45,11 +42,11 @@ for [{_x=0},{_x<=_count},{_x=_x+10}] do {
 			} else {
 				_house setVariable["house_owner",["0","Unknown"],true];
 			};
-			
+
 			_house allowDamage false;
 			_containers = [];
 			_house setVariable["slots",[],true];
-			
+
 			_content = [];
 			_trunk = _queryResult2 select 2;
 			_containerData = _queryResult2 select 3;
@@ -58,7 +55,7 @@ for [{_x=0},{_x<=_count},{_x=_x+10}] do {
 			if (count _containerData > 0) then {
 				if (typeName (_containerData select 0 select 1) == "ARRAY") then { _convert = true; };
 			};
-		
+
 			if (_convert) then
 			{
 				{
@@ -67,9 +64,9 @@ for [{_x=0},{_x<=_count},{_x=_x+10}] do {
 					_magazines = (_x select 1) select 1; // [[`Chemlight_yellow`],[1]]
 					_items = (_x select 1) select 2;
 					_backpacks = (_x select 1) select 3;
-		
+
 					_content pushBack [_className,1];
-		
+
 					_index = -1;
 					{
 						_index = _index + 1;
@@ -89,7 +86,7 @@ for [{_x=0},{_x<=_count},{_x=_x+10}] do {
 							_content set [count _content,[_itemName,_itemAmount]];
 						};
 					} forEach (_weapons select 0);
-		
+
 					_index = -1;
 					{
 						_index = _index + 1;
@@ -109,7 +106,7 @@ for [{_x=0},{_x<=_count},{_x=_x+10}] do {
 							_content set [count _content,[_itemName,_itemAmount]];
 						};
 					} forEach (_magazines select 0);
-		
+
 					_index = -1;
 					{
 						_index = _index + 1;
@@ -129,7 +126,7 @@ for [{_x=0},{_x<=_count},{_x=_x+10}] do {
 							_content set [count _content,[_itemName,_itemAmount]];
 						};
 					} forEach (_items select 0);
-		
+
 					_index = -1;
 					{
 						_index = _index + 1;
@@ -153,12 +150,11 @@ for [{_x=0},{_x<=_count},{_x=_x+10}] do {
 			} else {
 				_content = _containerData;
 			};
-			
+
 			_house setVariable ["content", _content,true];
-			
+
 		} else {
 			_query2 = format["housingInitCiv:%1",_pos];
-			waitUntil{!DB_Async_Active};
 			_queryResult2 = [_query2,2,false] call DB_fnc_asyncCall;
 			diag_log format["housinginit civ queryresult2: %1",_queryResult2];
 			if(count _queryResult2 > 0) then {

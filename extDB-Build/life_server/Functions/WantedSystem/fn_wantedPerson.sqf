@@ -5,7 +5,7 @@
 	Database Persistence By: ColinM
 	Assistance by: Paronity
 	Stress Tests by: Midgetgrimm
-	
+
 	Description:
 	Fetches a specific person from the wanted array.
 */
@@ -15,7 +15,6 @@ if(isNull _unit) exitWith {[]};
 _uid = getPlayerUID player;
 
 /*_result = format["wantedFetchPerson:%1",_uid];
-waitUntil{!DB_Async_Active};
 _queryResult = [_result,2] call DB_fnc_asyncCall;
 if(count _queryResult == 0) exitWith {[]};*/
 _list = missionNamespace getVariable "wantedList";

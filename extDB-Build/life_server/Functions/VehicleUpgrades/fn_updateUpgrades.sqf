@@ -2,7 +2,7 @@
 /*
 	File: fn_updateUpgrades.sqf
 	Author: Derek
-	
+
 	Description:
 	Upgrades the vehicle in the database.
 */
@@ -49,5 +49,4 @@ if((EQUAL(EXTDB_SETTINGS("MySQL_Query"),1))) then {
 	]] call TON_fnc_logIt;
 };
 
-waitUntil {!DB_Async_Active};
 _thread = [_query,1] call DB_fnc_asyncCall;

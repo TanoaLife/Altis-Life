@@ -1,7 +1,7 @@
 #include "\life_server\script_macros.hpp"
 /*
 	Author: Bryan "Tonic" Boardwine
-	
+
 	Description:
 	Fetches all the players houses and sets them up.
 */
@@ -16,7 +16,6 @@ if (count _gang > 0) then {
 };
 
 _query = format["housingFetchPlayerHouse:%1:%2",_this,_gangid];
-waitUntil{!DB_Async_Active};
 _houses = [_query,2,true] call DB_fnc_asyncCall;
 if((EQUAL(EXTDB_SETTINGS("MySQL_Query"),1))) then {
 	["diag_log",[
@@ -55,9 +54,9 @@ _return = [];
 				_magazines = (_x select 1) select 1; // [[`Chemlight_yellow`],[1]]
 				_items = (_x select 1) select 2;
 				_backpacks = (_x select 1) select 3;
-	
+
 				_content pushBack [_className,1];
-	
+
 				_index = -1;
 				{
 					_index = _index + 1;
@@ -77,7 +76,7 @@ _return = [];
 						_content set [count _content,[_itemName,_itemAmount]];
 					};
 				} forEach (_weapons select 0);
-	
+
 				_index = -1;
 				{
 					_index = _index + 1;
@@ -97,7 +96,7 @@ _return = [];
 						_content set [count _content,[_itemName,_itemAmount]];
 					};
 				} forEach (_magazines select 0);
-	
+
 				_index = -1;
 				{
 					_index = _index + 1;
@@ -117,7 +116,7 @@ _return = [];
 						_content set [count _content,[_itemName,_itemAmount]];
 					};
 				} forEach (_items select 0);
-	
+
 				_index = -1;
 				{
 					_index = _index + 1;
@@ -141,7 +140,7 @@ _return = [];
 		} else {
 			_content = _containerData;
 		};
-		
+
 		_house setVariable["containers",_containers,true];
 		_house setVariable ["content", _content,true];
 	};

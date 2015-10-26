@@ -10,7 +10,6 @@
 		1: INTEGER (1 = ASYNC + not return for update/insert, 2 = ASYNC + return for query's).
 		3: BOOL (True to return a single array, false to return multiple entries mainly for garage).
 */
-waitUntil {!DB_Async_Active};
 private["_queryStmt","_queryResult","_key","_mode","_return","_loop"];
 
 _tickTime = diag_tickTime;
@@ -21,11 +20,9 @@ _multiarr = [_this,2,false,[false]] call BIS_fnc_param;
 diag_log format["%1:%2:%3",_mode,(call life_sql_id),_queryStmt];
 _key = "extDB2" callExtension format["%1:%2:%3",_mode,(call life_sql_id),_queryStmt];
 diag_log format["asyncCall with _key = %1", _key];
-if(_mode == 1) exitWith {DB_Async_Active = false; true};
 _key = call compile format["%1",_key];
 _key = _key select 1;
 
-DB_Async_Active = true;
 // Get Result via 4:x (single message return)  v19 and later
 _queryResult = "";
 _loop = true;
@@ -50,8 +47,6 @@ while{_loop} do
 		};
 	};
 };
-
-DB_Async_Active = false;
 
 _queryResult = call compile _queryResult;
 diag_log format["_queryResult = %1", _queryResult];

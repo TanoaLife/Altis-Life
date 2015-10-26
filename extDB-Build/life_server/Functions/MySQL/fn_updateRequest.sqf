@@ -1,7 +1,7 @@
 /*
 	File: fn_updateRequest.sqf
 	Author: Bryan "Tonic" Boardwine
-	
+
 	Description:
 	Ain't got time to describe it, READ THE FILE NAME!
 */
@@ -17,7 +17,7 @@ _isjailed = [_this,7,false] call BIS_fnc_param;
 _isjailed = [_isjailed] call DB_fnc_bool;
 _position = [_this,8,""] call BIS_fnc_param;
 _isalive = [_this,9,false] call BIS_fnc_param;
-_isalive = [_isalive] call DB_fnc_bool; 
+_isalive = [_isalive] call DB_fnc_bool;
 
 //Get to those error checks.
 if((_uid == "") OR (_name == "")) exitWith {};
@@ -39,14 +39,12 @@ switch (_side) do {
 	case independent: {_query = format["playerIndependentUpdate:%1:%2:%3:%4:%6:%5",_name,_cash,_bank,_licenses,_uid,_gear];};
 };
 
-waitUntil {sleep (random 0.3); !DB_Async_Active};
 _queryResult = [_query,1] call DB_fnc_asyncCall;
 
 /*
-// Update player position 
+// Update player position
 if (_side == civilian) then {
 	_query = format["playerPositionUpdate:%1:%2:%3",_position,_isalive,_uid];
-	waitUntil {sleep (random 0.3); !DB_Async_Active};
 	_queryResult = [_query,1] call DB_fnc_asyncCall;
 };
 

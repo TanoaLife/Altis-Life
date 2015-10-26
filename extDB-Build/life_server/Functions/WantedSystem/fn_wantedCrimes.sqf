@@ -4,7 +4,7 @@
 	Author: ColinM
 	Assistance by: Paronity
 	Stress Tests by: Midgetgrimm
-	
+
 	Description:
 	Grabs a list of crimes committed by a person.
 */
@@ -15,7 +15,6 @@ _criminal = [_this,1,[],[]] call BIS_fnc_param;
 
 /*
 _result = format["wantedFetchCrimes:%1",_criminal select 0];
-waitUntil{!DB_Async_Active};
 _tickTime = diag_tickTime;
 _queryResult = [_result,2] call DB_fnc_asyncCall;
 
@@ -74,8 +73,8 @@ _type = _queryResult select 0;
 		case "5217": {_x = "STR_Crime_5217"};
 		case "1018": {_x = "STR_Crime_1018"};
 		case "5894": {_x = "STR_Crime_1018"};
-		
-		
+
+
 		case "1": {_x = "STR_Crime_1"};
 		case "2": {_x = "STR_Crime_2"};
 		case "3": {_x = "STR_Crime_3"};

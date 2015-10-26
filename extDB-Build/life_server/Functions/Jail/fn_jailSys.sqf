@@ -17,7 +17,6 @@ if(_bad) then //Load time from database
 diag_log "[Jailtime] Loading time ...";
 
 _query = format["getJailTime:%2", _time, getPlayerUID _unit];
-waitUntil{!DB_Async_Active};
 _result = [_query,2] call DB_fnc_asyncCall;
 _result = (_result select 0);
 
@@ -29,7 +28,6 @@ else //Set time to database
 {
 diag_log "[Jailtime] sending jailtime to databse";
 _query = format["setJailTime:%1:%2", _time, getPlayerUID _unit];
-waitUntil{!DB_Async_Active};
 _result = [_query,1] call DB_fnc_asyncCall;
 };
 

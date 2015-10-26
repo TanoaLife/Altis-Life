@@ -1,7 +1,7 @@
 #include "\life_server\script_macros.hpp"
 /*
 	Author: Bryan "Tonic" Boardwine
-	
+
 	Description:
 	Updates the storage for a house blah blah
 */
@@ -17,12 +17,11 @@ _query = format["housingUpdateInventory:%1:%2",_trunkData,_houseID];
 if(EQUAL(_houseID,-1)) then {
 	_housePos = getPosATL _house;
 	_query = format["housingUpdateInventory2:%1:%2",_trunkData,_housePos];
-	
+
 } else {
 	_query = format["housingUpdateInventory:%1:%2",_trunkData,_houseID];
 };
 
 
 
-waitUntil{!DB_Async_Active};
 [_query,1] call DB_fnc_asyncCall;

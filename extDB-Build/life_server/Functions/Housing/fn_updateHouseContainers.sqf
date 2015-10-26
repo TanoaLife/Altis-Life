@@ -19,10 +19,9 @@ _arr = _content;
 if(EQUAL(_houseID,-1)) then {
 	_housePos = getPosATL _house;
 	_query = format["houseUpdateContainer2:%1:%2",_arr,_housePos];
-	
+
 } else {
 	_query = format["houseUpdateContainer:%1:%2",_arr,_houseID];
 };
-waitUntil{!DB_Async_Active};
 [_query,1] call DB_fnc_asyncCall;
 //systemChat "Query ran?";

@@ -4,7 +4,7 @@
 	Database Persistence By: ColinM
 	Assistance by: Paronity
 	Stress Tests by: Midgetgrimm
-	
+
 	Description:
 	Checks if the person is on the bounty list and awards the cop for killing them.
 */
@@ -16,7 +16,6 @@ _half = [_this,3,false,[false]] call BIS_fnc_param;
 if(isNull _civ OR isNull _cop) exitWith {};
 
 _result = format["wantedFetchBounty:%1",_uid];
-waitUntil{!DB_Async_Active};
 _queryResult = [_result,2] call DB_fnc_asyncCall;
 
 if(count _queryResult != 0) then

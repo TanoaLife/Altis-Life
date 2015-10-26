@@ -23,7 +23,6 @@ diag_log "------------- Called wantedSyncList -------------";
     _wanted = [];
     {
     	_query = format["wantedSyncTable:%1",_x];
-        waitUntil{!DB_Async_Active};
         _queryResult = [_query,2] call DB_fnc_asyncCall;
 
         /*["diag_log",[

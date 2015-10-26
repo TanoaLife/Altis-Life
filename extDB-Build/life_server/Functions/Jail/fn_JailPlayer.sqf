@@ -15,5 +15,4 @@ _player = owner _player;
 
 
 _query = format["jailPlayer:%1:%2:%3",1, _time, _playeruid];
-waitUntil {!DB_Async_Active};
 [_query,1] call DB_fnc_asyncCall;

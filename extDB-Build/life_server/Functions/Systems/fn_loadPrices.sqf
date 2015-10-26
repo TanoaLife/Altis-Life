@@ -24,7 +24,6 @@ Structure of each price variable
 */
 _query = format["loadPrices"];
 
-waitUntil{sleep (random 0.3); !DB_Async_Active};
 _tickTime = diag_tickTime;
 _queryResult = [_query,2,true] call DB_fnc_asyncCall;
 

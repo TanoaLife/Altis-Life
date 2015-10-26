@@ -1,9 +1,9 @@
 #include <macro.h>
 /*
 	Author: Derek
-	
+
 	File: fn_updateGangInfo.sqf
-	
+
 	Description:
 	Updates the gang for all players in the gang
 	Execute on all clients. Updates database on server as necessary.
@@ -36,17 +36,14 @@ if(!isServer)then {
 } else {
     if(str(_gang_owner) != str(-1)) then {
         _query = format["gangOwnerUpdate:%1:%2",_gang_owner,_gang_id];
-    	waitUntil{!DB_Async_Active};
     	[_query,1] call DB_fnc_asyncCall;
     };
     if(_gang_bank != -1) then {
         _query = format["gangBankInfoUpdate:%1:%2",([_gang_bank] call DB_fnc_numberSafe),_gang_id];
-    	waitUntil{!DB_Async_Active};
     	[_query,1] call DB_fnc_asyncCall;
     };
     if(EQUAL(_gang_members,[])) then { } else {
         _query = format["gangMembersUpdate:%1:%2",_gang_members,_gang_id];
-    	waitUntil{!DB_Async_Active};
     	[_query,1] call DB_fnc_asyncCall;
     };
 };

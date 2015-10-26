@@ -13,7 +13,6 @@ _plate = _dbInfo select 1;
 
 _query = format["vehicleDead:0:%1:%2",0,_uid,_plate];
 
-waitUntil {!DB_Async_Active};
 _thread = [_query,1] call DB_fnc_asyncCall;
 
 sleep 0.6;

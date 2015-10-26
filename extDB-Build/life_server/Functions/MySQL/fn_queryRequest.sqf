@@ -29,7 +29,6 @@ _query = switch(_side) do {
 	case independent: {_returnCount = 9; format["playerIndependentInfo:%1",_uid];};
 };
 
-waitUntil{sleep (random 0.3); !DB_Async_Active};
 _tickTime = diag_tickTime;
 _queryResult = [_query,2] call DB_fnc_asyncCall;
 
@@ -92,12 +91,11 @@ diag_log format["GARAGE INFORMATION %1", _queryResult select 12];
 
 /*
  * We want to run a new query just to get the player position and living status
- * because the client setup procedure is pretty fragile and hard to debug. 
+ * because the client setup procedure is pretty fragile and hard to debug.
  */
 _returnCount = 2;
 _query = format["playerPosition:%1",_uid];
 
-waitUntil{sleep (random 0.3); !DB_Async_Active};
 _tickTime = diag_tickTime;
 _deadstatus = [_query,2] call DB_fnc_asyncCall;
 
@@ -114,7 +112,7 @@ if((EQUAL(EXTDB_SETTINGS("MySQL_Query"),1))) then {
 /* Let's use _queryResult,13 for the player position */
 _playerPos = _deadstatus select 1;
 _playerPos = call compile format["%1", _playerPos];
-_queryResult set[13,_playerPos];               
+_queryResult set[13,_playerPos];
 
 /* Position 14 becomes the player's living status */
 _queryResult set[14,([_deadstatus select 0,1] call DB_fnc_bool)];

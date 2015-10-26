@@ -2,7 +2,7 @@
 /*
 	File: fn_insertRequest.sqf
 	Author: Bryan "Tonic" Boardwine
-	
+
 	Description:
 	Does something with inserting... Don't have time for
 	descriptions... Need to write it...
@@ -20,7 +20,6 @@ if(isNull _returnToSender) exitWith {systemChat "ReturnToSender is Null!";}; //N
 
 _query = format["playerInfo:%1",_uid];
 
-waitUntil{sleep (random 0.3); !DB_Async_Active};
 _tickTime = diag_tickTime;
 _queryResult = [_query,2] call DB_fnc_asyncCall;
 
@@ -59,6 +58,5 @@ _query = format["playerInfoInsert:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11:%12",
 		[]   // Player position
 	];
 
-waitUntil {!DB_Async_Active};
 [_query,1] call DB_fnc_asyncCall;
 [[],"SOCK_fnc_dataQuery",(owner _returnToSender),false] call life_fnc_MP;
