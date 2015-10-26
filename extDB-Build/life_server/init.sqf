@@ -8,7 +8,6 @@
 "BIS_fnc_MP_packet" addPublicVariableEventHandler {_this call life_fnc_MPexec};
 diag_log "Running server init.sqf";
 DB_Async_Active = false;
-DB_Async_ExtraLock = false;
 life_server_isReady = false;
 life_server_extDB_notLoaded = "";
 serv_sv_use = [];
